@@ -1,0 +1,288 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  --accent: rgba(0, 255, 183,1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+.card {
+  border-radius: 0%; /* Set border radius to 0% */
+  /* Add any other styles you need for the card */
+}
+
+img {
+  border-radius: 0px;
+}
+
+
+a {
+  text-decoration: none; /* Remove underline */
+  color: inherit;       /* Use the inherited color */
+}
+
+.user img {
+  border: 2px solid white; 
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.564);
+}
+.user img:hover {
+  border: 2px solid white; 
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.564);
+}
+
+
+#slider-parent {
+  position: relative;
+  height: 25%;
+}
+
+.slider{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background:
+      linear-gradient(
+          to right,
+          rgba(159, 138, 190, 0.3),
+          rgba(159, 138, 190, 0)
+      );
+  margin-top: 1.5rem;
+  border-radius: 5px;
+  margin-right: 0%;
+}
+
+.slider .bar{
+  width: 100%;
+  height: 33%;
+  background: linear-gradient(
+      to right,
+      rgba(0, 251, 255,1),
+      rgba(0, 251, 255,0)
+  );
+  border-radius: 5px;
+}
+
+/*Animations*/
+.slider .bar {
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0.3s;
+  -webkit-transition: all 300ms ease-in-out;
+  -moz-transition: all 300ms ease-in-out;
+}
+
+.slider-anim-0 {
+  transform: translateY(0px); 
+}
+
+.slider-anim-50 {
+  transform: translateY(50px); 
+}
+
+.slider-anim-100 {
+  transform: translateY(100px); 
+}
+
+
+h1 {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 3rem;
+  opacity: 0.8;
+}
+
+img {
+  width: 45%;
+  border-radius: 0%;
+}
+
+h2,
+p {
+  color: white;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+h3 {
+  color: white;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+main {
+  font-family: "Lato", sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(
+      to right top,
+      #001f32,
+      #112240 
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glass {
+  background: rgb(255, 255, 255);
+  min-height: 80vh;
+  width: 83%;
+  background: linear-gradient(
+      to right bottom,
+      rgba(0, 60, 78, 0.719),
+      rgba(0, 255, 183,0.2)
+  );
+  border-radius: 1rem;
+  z-index: 3;
+  backdrop-filter: blur(2rem);
+  display: flex;
+  font-family: "Exo 2", sans-serif;
+}
+
+.circle1, 
+.circle2 {
+  background: linear-gradient(
+      to right bottom,
+      rgb(40, 40, 253, 0.9),
+      rgba(22, 10, 49, 0.2)
+  );
+  height: 20rem;
+  width: 20rem;
+  position: absolute;
+  top: 5%;
+  border-radius: 50%;
+}
+
+.circle1 {
+  top: 15%;
+  left: 5%;
+}
+
+.circle2 {
+  right: 5%;
+  top: 58%;
+}
+
+.fadeOut {
+  opacity: 0;
+}
+.fadeIn {
+  opacity: 1;
+}
+
+.user {color: white;}
+
+.dashboard {
+  padding-top: 3rem;
+  flex: 0.5;
+  display: inline-block;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient( 
+      to right bottom, 
+      rgba(0, 11, 50, 70%), 
+      rgba(35, 0, 83, 0.3) 
+  );
+  border-radius: 1rem;
+  font-family: 'SF Mono','Fira Code','Fira Mono','Roboto Mono',monospace;
+}
+.links{
+  position: relative;
+  padding-top: 1.5rem;
+  padding-left: 0rem;
+  width: 100%;
+}
+
+.link {
+  display: flex;
+  margin: 0rem 0rem;
+  padding: 1rem 3.4rem;
+}
+
+.link h2{
+  padding: 0rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+
+
+.link h2:hover{
+  color: var(--accent);
+  transition: 0.5s;
+}
+
+#1, #2, #3 {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.5s;
+}
+
+.section {
+  flex: 2;
+  display: inline-block;
+  flex-direction: column;
+  justify-content: left;
+  margin-top: 1.5rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.5s;
+  position: relative;
+  z-index:3;
+  overflow-y: auto;
+  height: 35rem;
+}
+
+.visible {
+  opacity: 1;
+  display: flex;
+  transition: opacity 0.5s ease-in-out;
+}
+
+
+.card {
+  border: 1px solid var(--accent);
+  display: flex;
+  background: linear-gradient(
+      to right top,
+      rgba(0, 63, 122, 0.8),
+      rgba(0, 0, 0, 0.5)
+  );
+  border-radius: 0.3rem;
+  stroke-width: 2px;
+  margin: 2rem 0rem;
+  padding: 2rem;
+  box-shadow: 6px 6px 20px rgba(122,122,122,0.2);
+  justify-content: left;
+}
+
+.un {
+  display: inline-block;
+  position: relative;
+}
+
+.un:after {
+  content: '';
+  width: 0px;
+  height: 2px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--accent);
+  transition: 300ms;
+}
+
+.un:hover:after {
+  width: 100%;
+}
+
+.un:not(:hover):after {
+  right: 0;
+  left: auto;
+}
+
+#case {
+  position: relative; 
+  display: inline-flex;
+}
