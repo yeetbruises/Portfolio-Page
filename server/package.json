@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server",
-    "dev": "nodemon server",
-    "preinstall": "npm explore -g sharp || npm install --global --production windows-build-tools && npm install -g sharp"
+    "dev": "nodemon server"
   },
 
   "author": "vs",
