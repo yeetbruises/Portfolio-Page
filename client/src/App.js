@@ -49,33 +49,33 @@ function App() {
               <section className="glass">
                   <div className="dashboard">
                       <div className="user">
-                          <img src="/images/profile.png" style={{borderRadius: '100%'}} />
+                          <img src="./images/profile.png" style={{borderRadius: '100%'}} />
                           <h3>Vineet Saraf</h3>
                           <p>Description</p>
                       </div>
                       <NavBar prop={classes} />
                   </div>
-                  <div id="div0" className="section">
-                  <div id="t1" ref={myRef1} style={{opacity: obj === true ? 1 : 0}}>
-                      <div className="status">
-                          <h1>About</h1>
+                  <div id="div0" className="section" style={{overflowY: 'auto'}}>
+                      <div id="t1" ref={myRef1} style={{opacity: obj === true ? 1 : 0}}>
+                        <div className="status">
+                            <h1>About</h1>
+                        </div>
+                        <div className="cards">
+                            <div className="card">
+                                <div className="card-info">
+                                    <h2>Vineet Saraf</h2>
+                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
+                                    <p>
+                                        My name is Vineet Saraf, and I'm a computer science student based in South Carolina. 
+                                        As a senior, I am currently pursuing a master's degree in computer science. 
+                                        I have a passion for technology and innovation, which drives my academic and personal projects.
+                                    </p>
+                                    <br/>
+                                    <img src="/images/banner.png"></img>
+                                </div>
+                            </div>
+                        </div>
                       </div>
-                      <div className="cards">
-                          <div className="card">
-                              <div className="card-info">
-                                  <h2>Vineet Saraf</h2>
-                                  <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                  <p>
-                                      My name is Vineet Saraf, and I'm a computer science student based in South Carolina. 
-                                      As a senior, I am currently pursuing a master's degree in computer science. 
-                                      I have a passion for technology and innovation, which drives my academic and personal projects.
-                                  </p>
-                                  <br/>
-                                  <img src="/images/banner.png"></img>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
                       <div id="t2" ref={myRef2}>
                           <div className="status">
                               <h1>Projects</h1>
