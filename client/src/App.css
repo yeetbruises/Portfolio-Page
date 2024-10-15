@@ -240,6 +240,13 @@ main {
   transition: opacity 0.5s ease-in-out;
 }
 
+.showcase {
+  width: 100%
+}
+
+  .showcase img {
+    width: inherit;
+  }
 
 .card {
   border: 1px solid var(--accent);

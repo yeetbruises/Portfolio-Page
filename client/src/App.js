@@ -51,7 +51,7 @@ function App() {
                       <div className="user">
                           <img src="/images/profile.png" style={{borderRadius: '100%'}} />
                           <h3>Vineet Saraf</h3>
-                          <p>Description</p>
+                          <p>Software Engineer</p>
                       </div>
                       <NavBar prop={classes} />
                   </div>
@@ -71,7 +71,10 @@ function App() {
                                         I have a passion for technology and innovation, which drives my academic and personal projects.
                                     </p>
                                     <br/>
-                                    <img src="/images/banner2.png"></img>
+                                    <div class="showcase">
+                                        <img src="/images/banner2.png"></img>
+                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -96,8 +99,10 @@ function App() {
                                         automated system for data collection and visualization.
                                     </p>
                                     <br/>
-                                    <img src="/images/hurricane.gif" alt="Hurricane Helene Power Outage Visual" />
-                                    <p><strong>Date:</strong> [Insert Date]</p>
+                                    <div class="showcase">
+                                        <img src="/images/hurricane.gif" alt="Hurricane Helene Power Outage Visual" />
+                                    </div>
+                                    <p><strong>Date:</strong> 10/05/2024</p>
                                 </div>
 
                               </div>
@@ -115,8 +120,10 @@ function App() {
                                           in QGIS software, which were used to fine-tune potential player locations within the game.
                                       </p>
                                       <br/>
-                                      <img src="/images/gg.png" alt="Geoguessr on Discord" />
-                                      <p><strong>Date:</strong> [Insert Date]</p>
+                                      <div class="showcase">
+                                          <img src="/images/gg.png" alt="Geoguessr on Discord"></img>
+                                      </div>
+                                      <p><strong>Date:</strong> 8/20/2023</p>
                                   </div>
                               </div>
 
@@ -140,7 +147,7 @@ function App() {
                                       <br/>
                                       <img src="/images/graph2.png" alt="Training a Two Arm Actuator" />
                                       <img src="/images/graph.png" alt="Training a Two Arm Actuator" />
-                                      <p><strong>Date:</strong> [Insert Date]</p>
+                                      <p><strong>Date:</strong> 12/14/2023</p>
                                   </div>
                               </div>
 
@@ -150,6 +157,7 @@ function App() {
                                       <h2>Discord Chat JSON to CSV Converter</h2>
                                       <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                       <p>This is a JSON to CSV converter that allows exported Discord chat data to easily be converted into a more readable format for data visualization purposes.</p>
+                                      <p><strong>Date:</strong> 1/27/2023</p>
                                   </div>
                               </div>
                           </div>
