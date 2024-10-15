@@ -12,6 +12,10 @@ app.use(cors());
 
 app.get("/api", (req, res) => {
     res.json({"users": ["userOne"]})
+})
+
+app.use("/", (req, res) => {
+    res.send("server is running")
 });
 
 app.use("/images", express.static(path.join(__dirname, '/images')));
