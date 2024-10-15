@@ -49,7 +49,7 @@ function App() {
               <section className="glass">
                   <div className="dashboard">
                       <div className="user">
-                          <img src="./images/profile.png" style={{borderRadius: '100%'}} />
+                          <img src="/images/profile.png" style={{borderRadius: '100%'}} />
                           <h3>Vineet Saraf</h3>
                           <p>Description</p>
                       </div>
@@ -71,7 +71,7 @@ function App() {
                                         I have a passion for technology and innovation, which drives my academic and personal projects.
                                     </p>
                                     <br/>
-                                    <img src="/images/banner.png"></img>
+                                    <img src="/images/banner2.png"></img>
                                 </div>
                             </div>
                         </div>
