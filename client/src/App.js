@@ -54,6 +54,7 @@ function App() {
                           <p>Software Engineer</p>
                       </div>
                       <NavBar prop={classes} />
+                      
                   </div>
                   <div id="div0" className="section" style={{overflowY: 'auto'}}>
                       <div id="t1" ref={myRef1} style={{opacity: obj === true ? 1 : 0}}>
@@ -71,6 +72,14 @@ function App() {
                                         I have a passion for technology and innovation, which drives my academic and personal projects.
                                     </p>
                                     <br/>
+                                    <a href='https://www.linkedin.com/in/vineet-saraf'>
+                                        <img style={{width: '100px'}} src="https://camo.githubusercontent.com/8c0692475a5bfc1d9e7361074bdb648e567cae7b5b40ffd32adae31180b0d7b6/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c696e6b6564496e2d3030373742353f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e6b6564696e266c6f676f436f6c6f723d7768697465"/>
+                                    </a>
+                                    <a href='https://github.com/yeetbruises'>
+                                        <img style={{paddingLeft: '10px', width: '100px'}} src="https://camo.githubusercontent.com/17a3cfebe6cf2dcf7b339b7b008adb9a55ddc15aec622a27a2a66b207e1e357a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4769744875622d3130303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d676974687562266c6f676f436f6c6f723d7768697465"/>
+                                    </a>
+                                    <br />
+                                    <br />
                                     <div class="showcase">
                                         <img src="/images/banner2.png"></img>
                                     </div>
