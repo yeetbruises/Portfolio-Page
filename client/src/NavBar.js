@@ -11,15 +11,9 @@ export function NavBar({ prop }) {
             <div className={`bar ${visible}`} id="bar"></div>
             </div>
             <div className="links">
-                <div id="btn1" className="link">
-                    <h2 id="label1" className="un"><a href="#t1">About</a></h2> 
-                </div>
-                <div id="btn2" className="link">
-                    <h2 id="label2" className="un"><a href="#t2">Projects</a></h2> 
-                </div>
-                <div id="btn3" className="link">
-                    <h2 id="label3" className="un"><a href="#t3">Experience</a></h2> 
-                </div>
+                <h2 id="label1" className="un"><a href="#t1" style={{fontSize: '20px'}}>About</a></h2> 
+                <h2 id="label2" className="un"><a href="#t2" style={{fontSize: '20px'}}>Projects</a></h2> 
+                <h2 id="label3" className="un"><a href="#t3" style={{fontSize: '20px'}}>Experience</a></h2> 
             </div>
         </div>
     );

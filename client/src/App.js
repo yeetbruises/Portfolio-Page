@@ -46,7 +46,7 @@ function App() {
               <link rel="stylesheet" href="./style.css" />
           </Helmet>
           <main>
-              <section className="glass">
+              <section className="glass" style={{height: '40em'}}>
                   <div className="dashboard">
                       <div className="user">
                           <img src="/images/profile.png" style={{borderRadius: '100%'}} />
@@ -56,7 +56,7 @@ function App() {
                       <NavBar prop={classes} />
                       
                   </div>
-                  <div id="div0" className="section" style={{overflowY: 'auto'}}>
+                  <div id="div0" className="section" style={{height: '95%', overflowY: 'auto'}}>
                       <div id="t1" ref={myRef1} style={{opacity: obj === true ? 1 : 0}}>
                         <div className="status">
                             <h1>About</h1>
