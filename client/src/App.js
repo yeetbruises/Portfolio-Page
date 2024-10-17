@@ -52,7 +52,7 @@ function App() {
           </Helmet>
           <main>
         
-              <section className="glass" style={{height: '40em'}}>
+              <section className="glass" style={{height: '360px'}}>
                   <div className="dashboard">
                       <div className="user">
                           <img src="/images/profile.png" style={{borderRadius: '100%'}} />

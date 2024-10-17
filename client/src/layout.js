@@ -77,7 +77,7 @@ export default function resized() {
                 // UNDO EVERYTHING IN THE PREVIOUS SECTION OF THIS IF STATMENT //
 
                 document.querySelector('.glass').style.width = '83%';
-                document.querySelector('.glass').style.height = '20em';
+                document.querySelector('.glass').style.height = '360px';
                 
 
                 if (dashboard) {
