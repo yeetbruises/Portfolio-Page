@@ -51,6 +51,7 @@ function App() {
               <link rel="stylesheet" href="./style.css" />
           </Helmet>
           <main>
+        
               <section className="glass" style={{height: '40em'}}>
                   <div className="dashboard">
                       <div className="user">
@@ -229,6 +230,8 @@ function App() {
                               </div>
 
                           </div>   
+                          <br/>
+                          <img style={{alignContent: 'center'}} src='https://private-user-images.githubusercontent.com/61666396/373912144-3792f2d6-d813-498e-af81-96b8ccc214de.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjkxMzE4MzEsIm5iZiI6MTcyOTEzMTUzMSwicGF0aCI6Ii82MTY2NjM5Ni8zNzM5MTIxNDQtMzc5MmYyZDYtZDgxMy00OThlLWFmODEtOTZiOGNjYzIxNGRlLmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDE3VDAyMTg1MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTJhNjgxNzYzODE3MzE3NWRhYmQ3ZDBjODc1MWRmMzliZjdiYmIxMjM5NmExNGE1YzI0NzA2N2Q2NDI0NWI3NTYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.vuL5OpnSbtRyWIhf6CeDhiHeMZSWApA-SSz_MTZKLbE'/>
                       </div>
                   </div>
                   
