@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import { NavBar } from "./NavBar.js";
 import { useInView } from "react-intersection-observer";
 import { useRef, useEffect, useState } from "react";
+import resized from './layout.js';
 
 function App() {
 
@@ -31,10 +32,14 @@ function App() {
     )
   }, [])
 
+  resized();
+
   return (
       <div className='App'>
+          
           <Helmet>
               <meta charset="UTF-8" />
+              <script src="./layout.js"></script>
               <script src="./script.js"></script>
               <meta name="viewport" content="width=device-width, initial-scale=1" />
               <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -36,6 +36,7 @@ a {
 #slider-parent {
   position: relative;
   height: 25%;
+  min-height: 10em;
 }
 
 .slider{
@@ -229,8 +230,8 @@ main {
   flex-direction: column;
   justify-content: left;
   margin-top: 1.5rem;
-  margin-left: 5rem;
-  margin-right: 5rem;
+  margin-left: 5%;
+  margin-right: 5%;
   transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.5s;
   position: relative;
   z-index:3;
