@@ -111,14 +111,18 @@ h3 {
   opacity: 0.8;
 }
 
-main {
-  font-family: "Lato", sans-serif;
-  min-height: 100vh;
+.App {
   background: linear-gradient(
       to right top,
       #001f32,
       #112240 
   );
+  overflow: hidden;
+}
+
+main {
+  font-family: "Lato", sans-serif;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;

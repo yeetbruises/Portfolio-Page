@@ -33,6 +33,13 @@ export default function resized() {
                 document.querySelector('#slider-parent').style.position = 'fixed';
                 document.querySelector('#slider-parent').style.width = '100%';
 
+                if (document.querySelector(".user")) {
+                    document.querySelector(".user").style.display = 'flex';
+                    document.querySelector(".user").style.flexDirection = 'column';
+                    document.querySelector(".user").style.alignContent = 'center';
+                    document.querySelector(".user").style.flexWrap = 'wrap';
+                }
+
                 if (document.querySelector('#div0') && document.querySelector('.user')) {
                     // Append myDiv to containerDiv
                     document.querySelector('#div0').prepend(document.querySelector('.user'));
@@ -78,6 +85,14 @@ export default function resized() {
 
                 document.querySelector('.glass').style.width = '83%';
                 document.querySelector('.glass').style.height = '360px';
+
+                
+                if (document.querySelector(".user")) {
+                    document.querySelector(".user").style.display = 'inline-block';
+                    document.querySelector(".user").style.flexDirection = '';
+                    document.querySelector(".user").style.alignContent = '';
+                    document.querySelector(".user").style.flexWrap = 'nowrap';
+                }
                 
 
                 if (dashboard) {
