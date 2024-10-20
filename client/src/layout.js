@@ -29,9 +29,30 @@ export default function resized() {
                 document.querySelector('.glass').style.display = 'flex';
                 document.querySelector('.glass').style.flexDirection = 'column';
                 document.querySelector('.glass').style.width = `${window.innerWidth-30}px`;
-                document.querySelector('.glass').style.height = `${window.innerHeight-80}px`;
+                document.querySelector('.glass').style.height = `${window.innerHeight-20}px`;
                 document.querySelector('#slider-parent').style.position = 'fixed';
                 document.querySelector('#slider-parent').style.width = '100%';
+
+                // Getting navbar to mobile view
+                var slider = document.querySelector('.slider');
+                slider.style.width = '33%';
+                var bar = document.querySelector('#bar');
+                bar.style.height = '100%';
+                dashboard.style.maxHeight = '100px'
+                document.querySelector('#slider-parent').style.minHeight = '0em'; //10em
+                document.querySelector('#slider-parent').style.height = '100px';
+                if (document.querySelector('.links')){
+                    document.querySelector('.links').style.alignItems = 'center';
+                    document.querySelector('.links').style.flexDirection = 'row';
+                } 
+                document.querySelector('.bar').style.background = '#1d508f';
+                document.querySelector('.section').style.marginTop = '0rem';
+
+
+                if (document.querySelector("main")) {
+                    document.querySelector("main").style.alignItems = '';
+                }
+
 
                 if (document.querySelector(".user")) {
                     document.querySelector(".user").style.display = 'flex';
@@ -78,6 +99,7 @@ export default function resized() {
                     document.querySelector('.section').style.marginLeft = '1rem';
                     document.querySelector('.section').style.marginRight = '1rem';
                 }
+
             } else if (portrait_previously) {
                 /*-----*/
                 portrait_previously = false
@@ -85,6 +107,25 @@ export default function resized() {
 
                 document.querySelector('.glass').style.width = '83%';
                 document.querySelector('.glass').style.height = '360px';
+
+                // Nav menu
+                var slider = document.querySelector('.slider');
+                slider.style.width = '100%';
+                var bar = document.querySelector('#bar');
+                bar.style.height = '33%';
+                dashboard.style.maxHeight = ''
+                document.querySelector('#slider-parent').style.minHeight = '10em';
+                document.querySelector('#slider-parent').style.height = '25%';
+                if (document.querySelector('.links')){
+                    document.querySelector('.links').style.alignItems = '';
+                    document.querySelector('.links').style.flexDirection = 'column';
+                } 
+                document.querySelector('.bar').style.background = 'linear-gradient(to right, rgba(0, 251, 255,1), rgba(0, 251, 255,0))';
+                document.querySelector('.section').style.marginTop = '1.5rem';
+
+                if (document.querySelector("main")) {
+                    document.querySelector("main").style.alignItems = 'center';
+                }
 
                 
                 if (document.querySelector(".user")) {

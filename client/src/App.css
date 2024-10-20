@@ -85,6 +85,20 @@ a {
   transform: translateY(200%); 
 }
 
+@media screen and (orientation: portrait) {
+  .slider-anim-0 {
+    transform: translateX(0px); 
+  }
+  
+  .slider-anim-50 {
+    transform: translateX(100%); 
+  }
+  
+  .slider-anim-100 {
+    transform: translateX(200%); 
+  }
+}
+
 
 h1 {
   color: #ffffff;
@@ -201,6 +215,7 @@ main {
   flex-direction: column;
   height: 100%;
   justify-content: space-around;
+  align-items: center;
 }
 
 .link {
