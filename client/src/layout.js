@@ -12,6 +12,10 @@ export default function resized() {
 
         function updateLayout() {
             const dashboard = document.querySelector('.dashboard'); // Ensure this is your target element
+            if (document.querySelector("main")) {
+                document.querySelector("main").style.maxHeight = `${window.innerHeight}px`;
+            }
+
 
             // Check if the screen is in portrait mode
             if (isPortrait() && dashboard && document.querySelector('#slider-parent')) {
