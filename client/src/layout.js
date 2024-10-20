@@ -54,7 +54,7 @@ export default function resized() {
 
 
                 if (document.querySelector("main")) {
-                    document.querySelector("main").style.alignItems = '';
+                    document.querySelector("main").style.alignItems = 'baseline';
                 }
 
 
