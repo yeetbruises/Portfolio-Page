@@ -55,7 +55,7 @@ function App() {
               <section className="glass" style={{height: '360px'}}>
                   <div className="dashboard">
                       <div className="user">
-                          <img src="/images/profile.png" style={{borderRadius: '100%'}} />
+                          <img src="/images/profile.jpeg" style={{borderRadius: '100%'}} />
                           <h3>Vineet Saraf</h3>
                           <p>Software Engineer</p>
                       </div>
