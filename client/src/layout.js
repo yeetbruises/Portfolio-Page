@@ -14,6 +14,7 @@ export default function resized() {
             const dashboard = document.querySelector('.dashboard'); // Ensure this is your target element
             if (document.querySelector("main")) {
                 document.querySelector("main").style.maxHeight = `${window.innerHeight}px`;
+                document.querySelector("main").style.maxWidth = `${window.innerWidth}px`;
             }
 
 
