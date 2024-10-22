@@ -8,6 +8,7 @@
 html {
   scroll-behavior: smooth;
 }
+
 .card {
   border-radius: 0%; /* Set border radius to 0% */
   /* Add any other styles you need for the card */
@@ -33,6 +34,30 @@ a {
 }
 
 
+.tools {
+  display: flex;
+  align-items: stretch;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+  .tools img {
+    object-fit: contain;
+    width: auto;
+    height: 1.4em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: 0.1s;
+  }
+
+  .tools img:hover {
+    opacity: 0.4;
+    transform: scale(1.05);
+  }
+
+  .tools > :not(:first-child) {
+    padding-left: 5px;
+  }
+
+
 #slider-parent {
   position: relative;
   height: 25%;
@@ -55,49 +80,49 @@ a {
   margin-right: 0%;
 }
 
-.slider .bar{
-  width: 100%;
-  height: 33%;
-  background: linear-gradient(
-      to right,
-      rgba(0, 251, 255,1),
-      rgba(0, 251, 255,0)
-  );
-  border-radius: 5px;
-}
+  .slider .bar{
+    width: 100%;
+    height: 33%;
+    background: linear-gradient(
+        to right,
+        rgba(0, 251, 255,1),
+        rgba(0, 251, 255,0)
+    );
+    border-radius: 5px;
+  }
 
-/*Animations*/
-.slider .bar {
-  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0.3s;
-  -webkit-transition: all 300ms ease-in-out;
-  -moz-transition: all 300ms ease-in-out;
-}
+  /*Animations*/
+  .slider .bar {
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0.3s;
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+  }
 
-.slider-anim-0 {
-  transform: translateY(0px); 
-}
-
-.slider-anim-50 {
-  transform: translateY(100%); 
-}
-
-.slider-anim-100 {
-  transform: translateY(200%); 
-}
-
-@media screen and (orientation: portrait) {
   .slider-anim-0 {
-    transform: translateX(0px); 
+    transform: translateY(0px); 
   }
-  
+
   .slider-anim-50 {
-    transform: translateX(100%); 
+    transform: translateY(100%); 
   }
-  
+
   .slider-anim-100 {
-    transform: translateX(200%); 
+    transform: translateY(200%); 
   }
-}
+
+  @media screen and (orientation: portrait) {
+    .slider-anim-0 {
+      transform: translateX(0px); 
+    }
+    
+    .slider-anim-50 {
+      transform: translateX(100%); 
+    }
+    
+    .slider-anim-100 {
+      transform: translateX(200%); 
+    }
+  }
 
 
 h1 {
@@ -225,18 +250,18 @@ main {
   padding: 1rem 3.4rem;
 }
 
-.link h2{
-  padding: 0rem 2rem;
-  font-size: 1rem;
-  cursor: pointer;
-}
+  .link h2{
+    padding: 0rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
 
 
 
-.link h2:hover{
-  color: var(--accent);
-  transition: 0.5s;
-}
+  .link h2:hover{
+    color: var(--accent);
+    transition: 0.5s;
+  }
 
 #1, #2, #3 {
   overflow-y: auto;
@@ -306,25 +331,25 @@ main {
   padding-top: 8%;
 }
 
-.un:after {
-  content: '';
-  width: 0px;
-  height: 2px;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: var(--accent);
-  transition: 300ms;
-}
+  .un:after {
+    content: '';
+    width: 0px;
+    height: 2px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--accent);
+    transition: 300ms;
+  }
 
-.un:hover:after {
-  width: 100%;
-}
+  .un:hover:after {
+    width: 100%;
+  }
 
-.un:not(:hover):after {
-  right: 0;
-  left: auto;
-}
+  .un:not(:hover):after {
+    right: 0;
+    left: auto;
+  }
 
 #case {
   position: relative; 
