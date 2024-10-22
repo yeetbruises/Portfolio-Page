@@ -62,7 +62,7 @@ function App() {
                       <NavBar prop={classes} />
                       
                   </div>
-                  <div id="div0" className="section" style={{height: '95%', overflowY: 'auto'}}>
+                  <div id="div0" className="section" style={{height: '100%', overflowY: 'auto'}}>
                       <div id="t1" ref={myRef1} style={{opacity: obj === true ? 1 : 0}}>
                         <div className="status">
                             <h1>About</h1>

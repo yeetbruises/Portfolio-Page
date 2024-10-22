@@ -75,7 +75,7 @@ a {
           rgba(159, 138, 190, 0.3),
           rgba(159, 138, 190, 0)
       );
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   border-radius: 5px;
   margin-right: 0%;
 }
@@ -169,7 +169,7 @@ main {
 
 .glass {
   background: rgb(255, 255, 255);
-  min-height: 80vh;
+  min-height: 90vh;
   width: 83%;
   background: linear-gradient(
       to right bottom,
@@ -234,7 +234,7 @@ main {
 }
 .links{
   position: relative;
-  padding-top: 1.5rem;
+  padding-top: 0rem;
   padding-left: 0rem;
   width: 100%;
   display: flex;
@@ -274,7 +274,6 @@ main {
   display: inline-block;
   flex-direction: column;
   justify-content: left;
-  margin-top: 1.5rem;
   margin-left: 5%;
   margin-right: 5%;
   transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.5s;
@@ -282,6 +281,13 @@ main {
   z-index:3;
   overflow-y: auto;
   height: 35rem;
+  -webkit-mask-image: -webkit-gradient(
+    linear, left top, left bottom, 
+    color-stop(0%, rgba(0, 0, 0, 0)), 
+    color-stop(2%, rgba(0, 0, 0, 1)), 
+    color-stop(98%, rgba(0, 0, 0, 1)), 
+    color-stop(100%, rgba(0, 0, 0, 0)) 
+  )
 }
 
 .visible {
