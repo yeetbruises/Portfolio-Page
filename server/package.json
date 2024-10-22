@@ -7,7 +7,6 @@
     "start": "node server",
     "dev": "nodemon server" 
   },
-
   "author": "vs",
   "license": "ISC",
   "dependencies": {
