@@ -256,8 +256,6 @@ main {
     cursor: pointer;
   }
 
-
-
   .link h2:hover{
     color: var(--accent);
     transition: 0.5s;
@@ -287,7 +285,7 @@ main {
     color-stop(2%, rgba(0, 0, 0, 1)), 
     color-stop(98%, rgba(0, 0, 0, 1)), 
     color-stop(100%, rgba(0, 0, 0, 0)) 
-  )
+  );
 }
 
 .visible {
@@ -308,7 +306,7 @@ main {
 }
 
 .showcase {
-  width: 100%
+  width: 100%;
 }
 
   .showcase img {

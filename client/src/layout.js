@@ -43,7 +43,7 @@ export default function resized() {
             slider.style.width = '33%';
             var bar = document.querySelector('#bar');
             bar.style.height = '100%';
-            dashboard.style.maxHeight = '100px'
+            dashboard.style.maxHeight = '100px';
             document.querySelector('#slider-parent').style.minHeight = '0em'; //10em
             document.querySelector('#slider-parent').style.height = '100px';
             if (document.querySelector('.links')){
@@ -77,7 +77,7 @@ export default function resized() {
                     hrElement.style.margin = '0.5em 0px';
                     document.querySelector('#div0').insertBefore(
                         hrElement, document.querySelector('#div0').children[1]
-                    )                    
+                    );                    
                 }
 
             }
@@ -118,7 +118,7 @@ export default function resized() {
             slider.style.width = '100%';
             var bar = document.querySelector('#bar');
             bar.style.height = '33%';
-            dashboard.style.maxHeight = ''
+            dashboard.style.maxHeight = '';
             document.querySelector('#slider-parent').style.minHeight = '10em';
             document.querySelector('#slider-parent').style.height = '25%';
             if (document.querySelector('.links')){
