@@ -73,9 +73,9 @@ function App() {
                                     <h2>Vineet Saraf</h2>
                                     <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                     <p>
-                                        My name is Vineet Saraf, and I'm a computer science student based in South Carolina. 
-                                        As a senior, I am currently pursuing a master's degree in computer science. 
-                                        I have a passion for technology and innovation, which drives my academic and personal projects.
+                                        Hello! My name is Vineet Saraf and I'm a Senior Computer Science student based in South Carolina.
+                                        I am currently pursuing a master's degree in computer science. This site showcases some of my 
+                                        work. I have a passion for full-stack web development, creative data visuals, and AI. 
                                     </p>
                                     <br/>
                                     <a href='https://www.linkedin.com/in/vineet-saraf'>
@@ -118,6 +118,12 @@ function App() {
                                         <img src="/images/hurricane.gif" alt="Hurricane Helene Power Outage Visual" />
                                     </div>
                                     <p><strong>Date:</strong> 10/05/2024</p>
+                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
+                                    <div class='tools'>
+                                        <img src="/images/badges/python.svg" />
+                                        <img src="/images/badges/selenium.svg" />
+                                        <img src="/images/badges/qgis.svg" />
+                                    </div>
                                 </div>
 
                               </div>
@@ -139,6 +145,14 @@ function App() {
                                           <img src="/images/gg.png" alt="Geoguessr on Discord"></img>
                                       </div>
                                       <p><strong>Date:</strong> 8/20/2023</p>
+                                      <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
+                                      <div class='tools'>
+                                        <img src="/images/badges/discord.svg" />
+                                        <img src="/images/badges/python.svg" />
+                                        <img src="/images/badges/googlecloud.svg" />
+                                        <img src="/images/badges/qgis.svg" />
+                                        <img src="/images/badges/sqllite.svg" />
+                                    </div>
                                   </div>
                               </div>
 
@@ -163,6 +177,11 @@ function App() {
                                       <img src="/images/graph2.png" alt="Training a Two Arm Actuator" />
                                       <img src="/images/graph.png" alt="Training a Two Arm Actuator" />
                                       <p><strong>Date:</strong> 12/14/2023</p>
+                                      <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
+                                      <div class='tools'>
+                                          <img src="/images/badges/gym.png" />
+                                          <img src="/images/badges/python.svg" />
+                                      </div>
                                   </div>
                               </div>
 
@@ -172,6 +191,7 @@ function App() {
                                       <h2>Discord Chat JSON to CSV Converter</h2>
                                       <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                       <p>This is a JSON to CSV converter that allows exported Discord chat data to easily be converted into a more readable format for data visualization purposes.</p>
+                                      <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                       <p><strong>Date:</strong> 1/27/2023</p>
                                   </div>
                               </div>
