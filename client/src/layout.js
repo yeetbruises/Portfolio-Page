@@ -126,7 +126,7 @@ export default function resized() {
                 document.querySelector('.links').style.flexDirection = 'column';
             } 
             document.querySelector('.bar').style.background = 'linear-gradient(to right, rgba(0, 251, 255,1), rgba(0, 251, 255,0))';
-            document.querySelector('.section').style.marginTop = '1.5rem';
+            //document.querySelector('.section').style.marginTop = '1.5rem';
 
             if (document.querySelector("main")) {
                 document.querySelector("main").style.alignItems = 'center';
@@ -159,9 +159,9 @@ export default function resized() {
             }
 
             if (document.querySelector('.links') && document.querySelector('.slider')) {
-                document.querySelector('.links').style.paddingTop = '1.5rem';
+                document.querySelector('.links').style.paddingTop = '0rem';
                 document.querySelector('.slider').style.paddingTop = '';
-                document.querySelector('.slider').style.marginTop = '1.5rem';
+                document.querySelector('.slider').style.marginTop = '0.5rem';
             }
 
             if (document.querySelector('.un')) {
