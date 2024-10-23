@@ -2,18 +2,9 @@
 <html lang="en">
   <head>
 
-    <title>Redirecting...</title>
-
     <script>
-      // Define the target URL
-      const targetUrl = "https://coastalvinny.dev";
-
-      // Check if the current domain is different from the target domain
-      if (window.location.hostname !== targetUrl) {
-          // Redirect after 5 seconds if the current domain is different
-          setTimeout(function(){
-              window.location.href = targetUrl;
-          }, 100); // 5000 milliseconds = 5 seconds
+      if (window.location.hostname === "www.coastalvinny.dev") {
+        window.location.replace("https://coastalvinny.dev");
       }
     </script>
 
