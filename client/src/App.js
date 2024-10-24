@@ -64,9 +64,6 @@ function App() {
                   </div>
                   <div id="div0" className="section" style={{height: '100%', overflowY: 'auto'}}>
                       <div id="t1" ref={myRef1} style={{opacity: obj === true ? 1 : 0}}>
-                        <div className="status">
-                            <h1>About</h1>
-                        </div>
                         <div className="cards">
                             <div className="card">
                                 <div className="card-info">
