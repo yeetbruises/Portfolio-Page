@@ -54,7 +54,7 @@ a {
   }
 
   .tools > :not(:first-child) {
-    padding-left: 5px;
+    margin-left: 5px;
   }
 
 
@@ -134,7 +134,7 @@ h1 {
 
 img {
   width: 45%;
-  border-radius: 0%;
+  border-radius: 5px;
 }
 
 h2,
@@ -359,3 +359,4 @@ main {
   position: relative; 
   display: inline-flex;
 }
+
