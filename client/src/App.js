@@ -128,7 +128,7 @@ return (
                                 <div>
                                     <div className="card-info" style={{width:"100%"}}>
                                         <div style={{ display: 'flex'}}>
-                                            <img style={{width: "5rem", height: "fit-content"}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Georgia_Tech_Yellow_Jackets_logo.svg/500px-Georgia_Tech_Yellow_Jackets_logo.svg.png?20180422004702" alt="Georgia Tech Logo"/>
+                                            <img style={{width: "5rem", height: "min-content"}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Georgia_Tech_Yellow_Jackets_logo.svg/500px-Georgia_Tech_Yellow_Jackets_logo.svg.png?20180422004702" alt="Georgia Tech Logo"/>
                                             <div style={{paddingLeft:"2%", marginTop:"auto", marginBottom:"auto"}}>
                                                 <h2 className={`${theme}`}>Georgia Institute of Technology</h2>
                                                 <p style={{color:"white"}}>Masters of Science in Computer Science</p>
