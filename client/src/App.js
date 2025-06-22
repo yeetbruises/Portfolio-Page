@@ -134,14 +134,12 @@ return (
                                                 <p style={{color:"white"}}>Masters of Science in Computer Science</p>
                                             </div>
                                         </div>
-                                        <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                         <p className={`${theme}`}></p>
                                         <p><b>GPA: x.xx</b></p>
                                         <p>Incoming Masters student at Georgia Tech for Computer Science!</p>
                                         <br/>
                                         <div class="showcase">
                                         </div>
-                                        <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                     </div>
                                 </div>
                             </HoverEffect>
@@ -156,7 +154,6 @@ return (
                                                 <p style={{color:"white"}}>Bachelor of Science in Computer Science, Mathematics Minor </p>
                                             </div>
                                         </div>
-                                        <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                         <p className={`${theme}`}></p>
                                         <p><b>GPA: 3.55</b> — (1x) President’s List, (4x) Dean’s List</p>
                                         <p><b>Academic Honors:</b> UPE–Upsilon Pi Epsilon | Palmetto Fellows Scholarship, SC Life Scholarship</p>
@@ -165,15 +162,72 @@ return (
                                         <br/>
                                         <div class="showcase">
                                         </div>
-                                        <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                     </div>
                                 </div>
                             </HoverEffect>
                         </div>
                     </div>
-
-
                     <div id="t3" ref={myRef3}>
+                        <div className="status">
+                            <h1 className={`${theme}`}>Experience</h1>
+                        </div>
+                        <p className={`${theme}`} id="3"></p>
+                        <div className="cards">
+                            {/* LPL Financial */}
+                            <HoverEffect theme={theme}>
+                                <div className="card-info">
+                                    <div style={{textAlign: 'center'}}>
+                                        <img src="/images/LPL.png" alt="LPL Financial Logo" style={{ width: '45%' }} />
+                                    </div>
+                                    <h2 className={`${theme}`}>Software Engineering Intern</h2>
+                                    <p className={`${theme}`}>June 2025 - Present</p>
+                                    <p className={`${theme}`}>I am an incoming summer intern at LPL Financial.</p>
+                                </div>
+                            </HoverEffect>
+
+                            {/* Capstone */}
+                            <HoverEffect theme={theme}>
+                                <div className="card-info">
+                                    <div style={{textAlign: 'center'}}>
+                                        <img src="/images/arc.png" alt="Arccos Golf Logo" style={{ width: '45%' }} />
+                                    </div>
+                                    <h2 className={`${theme}`}>Arccos Golf - University Senior Design Capstone Program</h2>
+                                    <p className={`${theme}`}>August 2024 - December 2024</p>
+                                    <p className={`${theme}`}>As part of the university senior design capstone program, I am creating a custom AI segmentation model from the ground up. This project leverages machine learning to optimize map feature segmentation, aiming to improve user experience by filtering out inaccurate data from the Arccos Golf app. My work involves processing extensive USGS datasets in Python and training deep learning AI models to effectively create segments in GIS software.</p>
+                                </div>
+                            </HoverEffect>
+
+                            {/* JR Automation Experience Card */}
+                            <HoverEffect theme={theme}>
+
+                                <div className="card-info">
+                                    <div style={{textAlign: 'center'}}>
+                                        <img src="/images/jrautologo.png" alt="JR Automation"/>
+                                    </div>
+                                    <h2 className={`${theme}`}>Software Engineering Intern</h2>
+                                    <p className={`${theme}`}>Summer 2023 and Summer 2024 (May to August)</p>
+                                    <p className={`${theme}`}>During my internship at JR Automation, I gained practical experience in software engineering. I created a full-stack web application using C# frameworks to fetch and display data, utilizing various JavaScript libraries. I designed and developed APIs and wrote LINQ queries to navigate SQL databases in C#. My role involved managing tasks and creating issues on DevOps, where I applied Agile methodologies to efficiently complete work assignments.</p>
+                                    <br/>
+                                    <p className={`${theme}`}>I also troubleshot an internal employee data management system in C# to prevent data loss. Throughout the internship, I focused on developing a responsive front-end using CSS flexbox, ensuring optimal performance on different devices. I integrated DataTables.js for dynamic tables and Chart.js for visual data representations. JavaScript played a significant role in handling real-time data updates, making the user experience more interactive. By the end of the summer, I successfully refined the project into a fully functional product through Agile iterations and the usage of Azure DevOps.</p>
+                                </div>
+                            </HoverEffect>
+
+                            {/* Creative Inquiry Experience Card */}
+                            <HoverEffect theme={theme}>                             
+                                <div className="card-info">
+                                    <div style={{textAlign: 'center'}}>
+                                        <img src="/images/creativeinquirylogo.png" alt="Creative Inquiry Program Logo" className="card-logo" />
+                                    </div>
+                                    <h2 className={`${theme}`}>Undergraduate Researcher with Watt AI</h2>
+                                    <p className={`${theme}`}>August 2024 - May 2025</p>
+                                    <p className={`${theme}`}>As a member of a collaborative team with Dr. Carl Ehrett, I am involved in training a large language model (LLM) to analyze social media posts and extract frames. We utilize LabelBox for the labeling process and Trello to manage our tasks, which includes providing weekly data analyses supported by Pandas and Matplotlib. This project aims to fine-tune an LLM for the automatic extraction of frames from social media content, specifically leveraging data from Twitter and YouTube. The model's performance is evaluated by comparing its outputs against human-labeled frames, ultimately striving to create AI-powered tools for enhanced frame extraction and analysis in social media contexts.</p>
+                                </div>
+                            </HoverEffect>
+
+                        </div>   
+                    </div>
+
+                    <div id="t4" ref={myRef4}>
                         <div className="status">
                             <h1 className={`${theme}`}>Projects</h1>
                         </div>
@@ -181,7 +235,6 @@ return (
                             <HoverEffect theme={theme}>
                                 <div className="card-info">
                                     <h2 className={`${theme}`} >Hurricane Helene Power Outage Visual</h2>
-                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                     <p className={`${theme}`}>
                                         This project was developed in Python using various packages like 
                                         Selenium, GeoPandas, and Shapely. I completed it over the span of 24 hours. 
@@ -202,7 +255,6 @@ return (
                                     <div class="showcase">
                                         <img src="/images/hurricane.gif" alt="Hurricane Helene Power Outage Visual" />
                                     </div>
-                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                     <div class='tools'>
                                         <img src="/images/badges/python.svg" />
                                         <img src="/images/badges/selenium.svg" />
@@ -216,7 +268,6 @@ return (
                             <HoverEffect theme={theme}>
                                 <div className="card-info">
                                     <h2 className={`${theme}`}>Geoguessr on Discord</h2>
-                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                     <p className={`${theme}`}>
                                         Developed a multiplayer game in Python using the Discord.py library and the Google 
                                         Streetview API. This project employs the MVC design pattern and effective API design. 
@@ -225,6 +276,9 @@ return (
                                         in QGIS software, which were used to fine-tune potential player locations within the game.
                                     </p>
                                     <br/>
+                                    <p>
+                                        Coming soon, I will be adding a live demo of the game to this site!
+                                    </p>
                                     <p className={`${theme}`}>
                                     <a href="https://github.com/yeetbruises/GeoGuessrImplementation"  target="_blank"> 
                                         Click for Repo  
@@ -234,7 +288,6 @@ return (
                                     <div class="showcase">
                                         <img src="/images/gg.png" alt="Geoguessr on Discord"></img>
                                     </div>
-                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                     <div class='tools'>
                                         <img src="/images/badges/discord.svg" />
                                         <img src="/images/badges/python.svg" />
@@ -249,7 +302,6 @@ return (
                             <HoverEffect theme={theme}>
                                 <div className="card-info">
                                     <h2 className={`${theme}`}>Training a Two Arm Actuator Using Reinforcement Learning</h2>
-                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                     <p className={`${theme}`}>
                                         The purpose of this project is to recreate a model seen in the paper "Actuator 
                                         Trajectory Planning for UAVs with Overhead Manipulator using Reinforcement Learning," 
@@ -273,7 +325,6 @@ return (
                                         <img src="/images/graph2.png" alt="Training a Two Arm Actuator" />
                                         <img src="/images/graph.png" alt="Training a Two Arm Actuator" />
                                     </div>
-                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                     <div class='tools'>
                                         <img src="/images/badges/gym.png" />
                                         <img src="/images/badges/python.svg" />
@@ -285,83 +336,15 @@ return (
                             <HoverEffect theme={theme}>
                                 <div className="card-info">
                                     <h2 className={`${theme}`}>Discord Chat JSON to CSV Converter</h2>
-                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                     <p className={`${theme}`}>This is a JSON to CSV converter that allows exported Discord chat data to easily be converted into a more readable format for data visualization purposes.</p>
-                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                 </div>
                             </HoverEffect>
                         </div>
                     </div>  
-                    <div id="t4" ref={myRef4}>
-                        <div className="status">
-                            <h1 className={`${theme}`}>Experience</h1>
-                        </div>
-                        <p className={`${theme}`} id="3"></p>
-                        <div className="cards">
-                            {/* LPL Financial */}
-                            <HoverEffect theme={theme}>
-                                <div className="card-info">
-                                    <div style={{textAlign: 'center'}}>
-                                        <img src="/images/LPL.png" alt="LPL Financial Logo" style={{ width: '45%' }} />
-                                    </div>
-                                    <h2 className={`${theme}`}>Software Engineering Intern</h2>
-                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p className={`${theme}`}>June 2025 - Present</p>
-                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p className={`${theme}`}>I am an incoming summer intern at LPL Financial.</p>
-                                </div>
-                            </HoverEffect>
-
-                            {/* Capstone */}
-                            <HoverEffect theme={theme}>
-                                <div className="card-info">
-                                    <div style={{textAlign: 'center'}}>
-                                        <img src="/images/arc.png" alt="Arccos Golf Logo" style={{ width: '45%' }} />
-                                    </div>
-                                    <h2 className={`${theme}`}>Arccos Golf - University Senior Design Capstone Program</h2>
-                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p className={`${theme}`}>August 2024 - December 2024</p>
-                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p className={`${theme}`}>As part of the university senior design capstone program, I am creating a custom AI segmentation model from the ground up. This project leverages machine learning to optimize map feature segmentation, aiming to improve user experience by filtering out inaccurate data from the Arccos Golf app. My work involves processing extensive USGS datasets in Python and training deep learning AI models to effectively create segments in GIS software.</p>
-                                </div>
-                            </HoverEffect>
-
-                            {/* JR Automation Experience Card */}
-                            <HoverEffect theme={theme}>
-
-                                <div className="card-info">
-                                    <div style={{textAlign: 'center'}}>
-                                        <img src="/images/jrautologo.png" alt="JR Automation"/>
-                                    </div>
-                                    <h2 className={`${theme}`}>Software Engineering Intern</h2>
-                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p className={`${theme}`}>Summer 2023 and Summer 2024 (May to August)</p>
-                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p className={`${theme}`}>During my internship at JR Automation, I gained practical experience in software engineering. I created a full-stack web application using C# frameworks to fetch and display data, utilizing various JavaScript libraries. I designed and developed APIs and wrote LINQ queries to navigate SQL databases in C#. My role involved managing tasks and creating issues on DevOps, where I applied Agile methodologies to efficiently complete work assignments.</p>
-                                    <br/>
-                                    <p className={`${theme}`}>I also troubleshot an internal employee data management system in C# to prevent data loss. Throughout the internship, I focused on developing a responsive front-end using CSS flexbox, ensuring optimal performance on different devices. I integrated DataTables.js for dynamic tables and Chart.js for visual data representations. JavaScript played a significant role in handling real-time data updates, making the user experience more interactive. By the end of the summer, I successfully refined the project into a fully functional product through Agile iterations and the usage of Azure DevOps.</p>
-                                </div>
-                            </HoverEffect>
-
-                            {/* Creative Inquiry Experience Card */}
-                            <HoverEffect theme={theme}>                             
-                                <div className="card-info">
-                                    <div style={{textAlign: 'center'}}>
-                                        <img src="/images/creativeinquirylogo.png" alt="Creative Inquiry Program Logo" className="card-logo" />
-                                    </div>
-                                    <h2 className={`${theme}`}>Undergraduate Researcher with Watt AI</h2>
-                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p className={`${theme}`}>August 2024 - May 2025</p>
-                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p className={`${theme}`}>As a member of a collaborative team with Dr. Carl Ehrett, I am involved in training a large language model (LLM) to analyze social media posts and extract frames. We utilize LabelBox for the labeling process and Trello to manage our tasks, which includes providing weekly data analyses supported by Pandas and Matplotlib. This project aims to fine-tune an LLM for the automatic extraction of frames from social media content, specifically leveraging data from Twitter and YouTube. The model's performance is evaluated by comparing its outputs against human-labeled frames, ultimately striving to create AI-powered tools for enhanced frame extraction and analysis in social media contexts.</p>
-                                </div>
-                            </HoverEffect>
-
-                        </div>   
-                        <br/>
-                        <img src='./images/pacman.gif'/>
-                        <img align="right" style={{marginRight: "auto", display:"block", width:"8em"}} src="https://visit-counter.vercel.app/counter.png?page=&s=20&c=00ff00&bg=00000000&no=2&ff=alien&tb=Visits%3A+&ta=" /> 
-                    </div>
+                    <br/>
+                    <img src='./images/pacman.gif'/>
+                    <img align="right" style={{marginRight: "auto", display:"block", width:"8em"}} src="https://visit-counter.vercel.app/counter.png?page=&s=20&c=00ff00&bg=00000000&no=2&ff=alien&tb=Visits%3A+&ta=" /> 
+                    
                 </div>
                 
             </section>
