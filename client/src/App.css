@@ -287,6 +287,10 @@ main {
   transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0.5s;
 }
 
+.status h1 {
+  padding-left: 1rem;
+}
+
 .section {
   flex: 2;
   display: inline-block;
