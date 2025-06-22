@@ -96,7 +96,7 @@ export default function HoverEffect({
                         position: "absolute",
                         top: 0,
                         left: 0,
-                        height: "4px",
+                        height: "5px",
                         backgroundColor: custom_color,
                         borderTopLeftRadius: "12px",
                         borderTopRightRadius: "12px",
