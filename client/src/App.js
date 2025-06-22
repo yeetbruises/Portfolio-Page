@@ -150,7 +150,7 @@ return (
                                 <div>
                                     <div className="card-info">
                                         <div style={{ display: 'flex'}}>
-                                            <img style={{width: "5rem", height: "fit-content"}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Clemson_Tigers_logo.svg/500px-Clemson_Tigers_logo.svg.png" alt="Georgia Tech Logo"/>
+                                            <img style={{width: "5rem", height: "min-content"}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Clemson_Tigers_logo.svg/500px-Clemson_Tigers_logo.svg.png" alt="Georgia Tech Logo"/>
                                             <div style={{paddingLeft:"2%", marginTop:"auto", marginBottom:"auto"}}>
                                                 <h2 className={`${theme}`}>Clemson University</h2>
                                                 <p style={{color:"white"}}>Bachelor of Science in Computer Science, Mathematics Minor </p>
