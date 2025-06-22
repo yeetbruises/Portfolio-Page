@@ -10,11 +10,15 @@ export default function HoverEffect({
 }) {
     var URL_name = "";
 
+    var custom_color = "";
+
     if (id == "eduCard") {
         URL_name = "https://i.imgur.com/dOt7YBJ.jpeg";
+        custom_color = "#F56600";   
     }
     else if (id == "msCard") {
         URL_name = "https://i.imgur.com/kn1UNUe.png";
+        custom_color = "#B3A369";
     }
 
     const [hovered, setHovered] = useState(false);
@@ -72,7 +76,7 @@ export default function HoverEffect({
                 whileHover={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 style={{
-                    boxShadow: hovered ? "0 0 20px 4px rgba(0, 150, 255, 0.7)" : "none",
+                    boxShadow: hovered ? "0 0 20px 4px rgba(0, 150, 255, 0.5)" : "none",
                     transition: "background 0.4s ease-in-out, box-shadow 0.3s ease",
                     position: "relative",
                     borderRadius: "12px",
@@ -93,7 +97,7 @@ export default function HoverEffect({
                         top: 0,
                         left: 0,
                         height: "4px",
-                        backgroundColor: "#00f0ff",
+                        backgroundColor: custom_color,
                         borderTopLeftRadius: "12px",
                         borderTopRightRadius: "12px",
                     }}
