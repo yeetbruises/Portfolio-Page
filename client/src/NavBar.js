@@ -15,12 +15,16 @@ export function NavBar({ prop }) {
                     <h2 id="label1" className="un"><a href="#t1" style={{fontSize: '20px'}}>About</a></h2> 
                 </div>
                 <div style={{width:'100%'}}>
-                    <h2 id="label2" className="un"><a href="#t2" style={{fontSize: '20px'}}>Projects</a></h2> 
+                    <h2 id="label2" className="un"><a href="#t2" style={{fontSize: '20px'}}>Education</a></h2> 
                 </div>
                 <div style={{width:'100%'}}>
-                    <h2 id="label3" className="un"><a href="#t3" style={{fontSize: '20px'}}>Experience</a></h2> 
+                    <h2 id="label3" className="un"><a href="#t3" style={{fontSize: '20px'}}>Projects</a></h2> 
+                </div>
+                <div style={{width:'100%'}}>
+                    <h2 id="label4" className="un"><a href="#t4" style={{fontSize: '20px'}}>Experience</a></h2> 
                 </div>
             </div>
         </div>
     );
 }
+

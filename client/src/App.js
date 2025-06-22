@@ -5,20 +5,34 @@ import { NavBar } from "./NavBar.js";
 import { useInView } from "react-intersection-observer";
 import { useRef, useEffect, useState } from "react";
 import resized from './layout.js';
+import HoverEffect from "./HoverEffect";
+import { motion } from "framer-motion";
+
+
 
 function App() {
+    const [hovered, setHovered] = useState(false);
 
 const { ref: myRef1, inView: obj, entry} = useInView();
 const { ref: myRef2, inView: obj2, entry2} = useInView();
 const { ref: myRef3, inView: obj3, entry3} = useInView();
+const { ref: myRef4, inView: obj4, entry4} = useInView();
 
 var classes = obj === true 
         ? "slider-anim-0" 
         : (obj2 === true 
         ? "slider-anim-50" 
         : (obj3 === true 
-            ? "slider-anim-100" 
-            : ""));
+        ? "slider-anim-100" 
+        : (obj4 === true 
+        ? "slider-anim-150"
+        : "")));
+
+const [theme, setTheme] = useState('dark');
+
+const toggleTheme = () => {
+    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+};
 
 const [backendData, setBackendData] = useState([{}])
 
@@ -32,10 +46,21 @@ useEffect(() => {
     )
 }, [])
 
+const boxStyle = {
+    background: `linear-gradient(to right top, rgba(0, 63, 122, 0.8), rgba(0, 0, 0, 0.5))`
+}
+
 resized();
 
+
+// inspo: https://www.pranavkonjeti.com/
+
+/*<button onClick={toggleTheme}>
+    Switch to {theme === 'light' ? 'Dark' : 'Light'} Mode
+</button>*/
+
 return (
-    <div className='App'>
+    <div className={`App ${theme}`}>
         
         <Helmet>
             <meta charset="UTF-8" />
@@ -51,55 +76,113 @@ return (
             <link rel="stylesheet" href="./style.css" />
         </Helmet>
         <main>
-            <section className="glass" style={{height: '360px'}}>
-                <div className="dashboard">
+            <section className={`glass ${theme}`} style={{border: '0.2px solid skyblue', height: '360px'}}>
+                <div className={`dashboard ${theme}`}>
                     <div className="user">
-                        <img src="/images/profile.jpeg" style={{borderRadius: '100%'}} />
-                        <h3>Vineet Saraf</h3>
-                        <p>Software Engineer</p>
+                        <img src="images/favicon.png" />
                     </div>
                     <NavBar prop={classes} />
                     
                 </div>
-                <div id="div0" className="section" style={{height: '100%', overflowY: 'auto'}}>
+                <div id="div0" className="section" style={{ height: '100%', overflowY: 'auto'}}>
                     <div id="t1" ref={myRef1} style={{opacity: obj === true ? 1 : 0}}>
-                        <div className="cards">
-                            <div className="card">
-                                <div className="card-info">
-                                    <h2>Vineet Saraf</h2>
-                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p>
-                                        Hello! My name is Vineet Saraf and I'm a Senior Computer Science student based in South Carolina.
-                                        I am currently pursuing a master's degree in computer science. This site showcases some of my 
+                        <div className="cards" style={{alignItems: 'center', display: 'flex', justifyContent: 'center'}}>
+                            
+                            <HoverEffect theme={theme} id="intoCard">
+                                <div className='intro' style={{ display: 'inline-flex', margin: 'auto' }}>
+                                    <img style={{alignSelf: "center"}} className='rotate-2' src="https://media.discordapp.net/attachments/782728868179607603/1386217225488437311/IMG_4549.jpg?ex=6858e6e5&is=68579565&hm=d6f7a219d7e096754e1b8e4976a4bf67b6cbc9b80c6051f59a54ddf0f3b56d35&=&format=webp&width=1176&height=1570" />
+                                    <div id='nameDiv' style={{ margin: 'auto', marginLeft: '3em' }}>
+                                        <h1 className={`${theme}`} style={{ paddingBottom: '10px' }}>Vineet Saraf</h1>
+                                        <p className={`${theme}`}>
+                                            Hello! My name is Vineet Saraf and I'm an interning software engineer at LPL Financial. 
+                                            I graduated from Clemson University very recently and I am currently pursuing a Masters degree in computer science. 
+                                        </p>
+                                        <br/>
+                                        <p>
+                                        This site showcases some of my 
                                         work. I have a passion for full-stack web development, creative data visuals, and AI. 
-                                    </p>
-                                    <br/>
-                                    <a href='https://www.linkedin.com/in/vineet-saraf'>
-                                        <img style={{width: '100px'}} src="https://camo.githubusercontent.com/8c0692475a5bfc1d9e7361074bdb648e567cae7b5b40ffd32adae31180b0d7b6/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c696e6b6564496e2d3030373742353f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e6b6564696e266c6f676f436f6c6f723d7768697465"/>
-                                    </a>
-                                    <a href='https://github.com/yeetbruises'>
-                                        <img style={{paddingLeft: '10px', width: '100px'}} src="https://camo.githubusercontent.com/17a3cfebe6cf2dcf7b339b7b008adb9a55ddc15aec622a27a2a66b207e1e357a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4769744875622d3130303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d676974687562266c6f676f436f6c6f723d7768697465"/>
-                                    </a>
-                                    <br />
-                                    <br />
-                                    <div class="showcase">
-                                        <img src="/images/banner2.png"></img>
+                                        </p>
+                                        
+                                        <div className='tools' style={{ marginTop: '10px' }}>
+                                            <a href='https://www.linkedin.com/in/vineet-saraf'>
+                                                <img src="https://camo.githubusercontent.com/8c0692475a5bfc1d9e7361074bdb648e567cae7b5b40ffd32adae31180b0d7b6/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c696e6b6564496e2d3030373742353f7374796c653d666f722d7468652d6261646765266c6f676f3d6c696e6b6564696e266c6f676f436f6c6f723d7768697465" />
+                                            </a>
+                                            <a href='https://github.com/yeetbruises'>
+                                                <img src="https://camo.githubusercontent.com/17a3cfebe6cf2dcf7b339b7b008adb9a55ddc15aec622a27a2a66b207e1e357a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4769744875622d3130303030303f7374796c653d666f722d7468652d6261646765266c6f676f3d676974687562266c6f676f436f6c6f723d7768697465" />
+                                            </a>
+                                        </div>
                                     </div>
-                                    
                                 </div>
-                            </div>
+                            </HoverEffect>
+
+
                         </div>
                     </div>
+                    
                     <div id="t2" ref={myRef2}>
                         <div className="status">
-                            <h1>Projects</h1>
+                            <h1 className={`${theme}`}>Education</h1>
                         </div>
                         <div className="cards">
-                            <div className="card">
+                            <HoverEffect theme={theme} id="msCard">
+                                <div>
+                                    <div className="card-info" style={{width:"100%"}}>
+                                        <div style={{ display: 'flex'}}>
+                                            <img style={{width: "5rem", height: "fit-content"}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Georgia_Tech_Yellow_Jackets_logo.svg/500px-Georgia_Tech_Yellow_Jackets_logo.svg.png?20180422004702" alt="Georgia Tech Logo"/>
+                                            <div style={{paddingLeft:"2%", marginTop:"auto", marginBottom:"auto"}}>
+                                                <h2 className={`${theme}`}>Georgia Institute of Technology</h2>
+                                                <p style={{color:"white"}}>Masters of Science in Computer Science</p>
+                                            </div>
+                                        </div>
+                                        <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
+                                        <p className={`${theme}`}></p>
+                                        <p><b>GPA: x.xx</b></p>
+                                        <p>Incoming Masters student at Georgia Tech for Computer Science!</p>
+                                        <br/>
+                                        <div class="showcase">
+                                        </div>
+                                        <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
+                                    </div>
+                                </div>
+                            </HoverEffect>
+                            <HoverEffect theme={theme} id="eduCard">
+
+                                <div>
+                                    <div className="card-info">
+                                        <div style={{ display: 'flex'}}>
+                                            <img style={{width: "5rem", height: "fit-content"}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Clemson_Tigers_logo.svg/500px-Clemson_Tigers_logo.svg.png" alt="Georgia Tech Logo"/>
+                                            <div style={{paddingLeft:"2%", marginTop:"auto", marginBottom:"auto"}}>
+                                                <h2 className={`${theme}`}>Clemson University</h2>
+                                                <p style={{color:"white"}}>Bachelor of Science in Computer Science, Mathematics Minor </p>
+                                            </div>
+                                        </div>
+                                        <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
+                                        <p className={`${theme}`}></p>
+                                        <p><b>GPA: 3.55</b> — (1x) President’s List, (4x) Dean’s List</p>
+                                        <p><b>Academic Honors:</b> UPE–Upsilon Pi Epsilon | Palmetto Fellows Scholarship, SC Life Scholarship</p>
+                                        <p><b>Relevant Coursework:</b> Reinforcement Learning, Linear Algebra, Machine Learning, Data Science, Networking, Software
+                                        Engineering, Databases, Data Structures, Computer Architecture, Operating Systems, Differential Equations</p>
+                                        <br/>
+                                        <div class="showcase">
+                                        </div>
+                                        <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
+                                    </div>
+                                </div>
+                            </HoverEffect>
+                        </div>
+                    </div>
+
+
+                    <div id="t3" ref={myRef3}>
+                        <div className="status">
+                            <h1 className={`${theme}`}>Projects</h1>
+                        </div>
+                        <div className="cards">
+                            <HoverEffect theme={theme}>
                                 <div className="card-info">
-                                    <h2>Hurricane Helene Power Outage Visual</h2>
+                                    <h2 className={`${theme}`} >Hurricane Helene Power Outage Visual</h2>
                                     <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p>
+                                    <p className={`${theme}`}>
                                         This project was developed in Python using various packages like 
                                         Selenium, GeoPandas, and Shapely. I completed it over the span of 24 hours. 
                                         It started when I came across an interesting data source on USAToday's 
@@ -110,10 +193,15 @@ return (
                                         automated system for data collection and visualization.
                                     </p>
                                     <br/>
+                                    <p className={`${theme}`}>
+                                    <a href="https://github.com/yeetbruises/Hurricane-Helene-Power-Outage-Visual/tree/main"  target="_blank"> 
+                                        Click for Repo  
+                                    </a>
+                                    </p>
+                                    <br/>
                                     <div class="showcase">
                                         <img src="/images/hurricane.gif" alt="Hurricane Helene Power Outage Visual" />
                                     </div>
-                                    <p><strong>Date:</strong> 10/05/2024</p>
                                     <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                     <div class='tools'>
                                         <img src="/images/badges/python.svg" />
@@ -122,14 +210,14 @@ return (
                                     </div>
                                 </div>
 
-                            </div>
+                            </HoverEffect>
 
                             {/* Geoguessr on Discord */}
-                            <div className="card">
+                            <HoverEffect theme={theme}>
                                 <div className="card-info">
-                                    <h2>Geoguessr on Discord</h2>
+                                    <h2 className={`${theme}`}>Geoguessr on Discord</h2>
                                     <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p>
+                                    <p className={`${theme}`}>
                                         Developed a multiplayer game in Python using the Discord.py library and the Google 
                                         Streetview API. This project employs the MVC design pattern and effective API design. 
                                         I successfully published the game and had it merged into an existing Discord bot that 
@@ -137,10 +225,15 @@ return (
                                         in QGIS software, which were used to fine-tune potential player locations within the game.
                                     </p>
                                     <br/>
+                                    <p className={`${theme}`}>
+                                    <a href="https://github.com/yeetbruises/GeoGuessrImplementation"  target="_blank"> 
+                                        Click for Repo  
+                                    </a>
+                                    </p>
+                                    <br/>
                                     <div class="showcase">
                                         <img src="/images/gg.png" alt="Geoguessr on Discord"></img>
                                     </div>
-                                    <p><strong>Date:</strong> 8/20/2023</p>
                                     <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                     <div class='tools'>
                                         <img src="/images/badges/discord.svg" />
@@ -150,14 +243,14 @@ return (
                                         <img src="/images/badges/sqllite.svg" />
                                     </div>
                                 </div>
-                            </div>
+                            </HoverEffect>
 
                             {/* Training a Two Arm Actuator Using Reinforcement Learning */}
-                            <div className="card">
+                            <HoverEffect theme={theme}>
                                 <div className="card-info">
-                                    <h2>Training a Two Arm Actuator Using Reinforcement Learning</h2>
+                                    <h2 className={`${theme}`}>Training a Two Arm Actuator Using Reinforcement Learning</h2>
                                     <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p>
+                                    <p className={`${theme}`}>
                                         The purpose of this project is to recreate a model seen in the paper "Actuator 
                                         Trajectory Planning for UAVs with Overhead Manipulator using Reinforcement Learning," 
                                         authored by Hazim Alzorgan, Abolfazl Razi, and Ata Jahangir Moshayed. The paper describes 
@@ -170,93 +263,113 @@ return (
                                         the original research.
                                     </p>
                                     <br/>
-                                    <img src="/images/graph2.png" alt="Training a Two Arm Actuator" />
-                                    <img src="/images/graph.png" alt="Training a Two Arm Actuator" />
-                                    <p><strong>Date:</strong> 12/14/2023</p>
+                                    <p className={`${theme}`}>
+                                    <a href="https://github.com/yeetbruises/Two-Arm-Actuator-AI-RL-Sim"  target="_blank"> 
+                                        Click for Repo  
+                                    </a>
+                                    </p>
+                                    <br/>
+                                    <div class="showcase">
+                                        <img src="/images/graph2.png" alt="Training a Two Arm Actuator" />
+                                        <img src="/images/graph.png" alt="Training a Two Arm Actuator" />
+                                    </div>
                                     <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
                                     <div class='tools'>
                                         <img src="/images/badges/gym.png" />
                                         <img src="/images/badges/python.svg" />
                                     </div>
                                 </div>
-                            </div>
+                            </HoverEffect>
 
                             {/* Json to CSV project*/}
-                            <div className="card">
+                            <HoverEffect theme={theme}>
                                 <div className="card-info">
-                                    <h2>Discord Chat JSON to CSV Converter</h2>
+                                    <h2 className={`${theme}`}>Discord Chat JSON to CSV Converter</h2>
                                     <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p>This is a JSON to CSV converter that allows exported Discord chat data to easily be converted into a more readable format for data visualization purposes.</p>
+                                    <p className={`${theme}`}>This is a JSON to CSV converter that allows exported Discord chat data to easily be converted into a more readable format for data visualization purposes.</p>
                                     <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p><strong>Date:</strong> 1/27/2023</p>
                                 </div>
-                            </div>
+                            </HoverEffect>
                         </div>
                     </div>  
-                    <div id="t3" ref={myRef3}>
+                    <div id="t4" ref={myRef4}>
                         <div className="status">
-                            <h1>Experience</h1>
+                            <h1 className={`${theme}`}>Experience</h1>
                         </div>
-                        <p id="3"></p>
+                        <p className={`${theme}`} id="3"></p>
                         <div className="cards">
+                            {/* LPL Financial */}
+                            <HoverEffect theme={theme}>
+                                <div className="card-info">
+                                    <div style={{textAlign: 'center'}}>
+                                        <img src="/images/LPL.png" alt="LPL Financial Logo" style={{ width: '45%' }} />
+                                    </div>
+                                    <h2 className={`${theme}`}>Software Engineering Intern</h2>
+                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
+                                    <p className={`${theme}`}>June 2025 - Present</p>
+                                    <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
+                                    <p className={`${theme}`}>I am an incoming summer intern at LPL Financial.</p>
+                                </div>
+                            </HoverEffect>
 
                             {/* Capstone */}
-                            <div className="card">
+                            <HoverEffect theme={theme}>
                                 <div className="card-info">
                                     <div style={{textAlign: 'center'}}>
                                         <img src="/images/arc.png" alt="Arccos Golf Logo" style={{ width: '45%' }} />
                                     </div>
-                                    <h2>Arccos Golf - University Senior Design Capstone Program</h2>
+                                    <h2 className={`${theme}`}>Arccos Golf - University Senior Design Capstone Program</h2>
                                     <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p>August 2024 - Present</p>
+                                    <p className={`${theme}`}>August 2024 - December 2024</p>
                                     <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p>As part of the university senior design capstone program, I am creating a custom AI segmentation model from the ground up. This project leverages machine learning to optimize map feature segmentation, aiming to improve user experience by filtering out inaccurate data from the Arccos Golf app. My work involves processing extensive USGS datasets in Python and training deep learning AI models to effectively create segments in GIS software.</p>
+                                    <p className={`${theme}`}>As part of the university senior design capstone program, I am creating a custom AI segmentation model from the ground up. This project leverages machine learning to optimize map feature segmentation, aiming to improve user experience by filtering out inaccurate data from the Arccos Golf app. My work involves processing extensive USGS datasets in Python and training deep learning AI models to effectively create segments in GIS software.</p>
                                 </div>
-                            </div>
+                            </HoverEffect>
 
                             {/* JR Automation Experience Card */}
-                            <div className="card">
+                            <HoverEffect theme={theme}>
 
                                 <div className="card-info">
                                     <div style={{textAlign: 'center'}}>
                                         <img src="/images/jrautologo.png" alt="JR Automation"/>
                                     </div>
-                                    <h2>Software Engineering Intern</h2>
+                                    <h2 className={`${theme}`}>Software Engineering Intern</h2>
                                     <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p>Summer 2023 and Summer 2024 (May to August)</p>
+                                    <p className={`${theme}`}>Summer 2023 and Summer 2024 (May to August)</p>
                                     <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p>During my internship at JR Automation, I gained practical experience in software engineering. I created a full-stack web application using C# frameworks to fetch and display data, utilizing various JavaScript libraries. I designed and developed APIs and wrote LINQ queries to navigate SQL databases in C#. My role involved managing tasks and creating issues on DevOps, where I applied Agile methodologies to efficiently complete work assignments.</p>
+                                    <p className={`${theme}`}>During my internship at JR Automation, I gained practical experience in software engineering. I created a full-stack web application using C# frameworks to fetch and display data, utilizing various JavaScript libraries. I designed and developed APIs and wrote LINQ queries to navigate SQL databases in C#. My role involved managing tasks and creating issues on DevOps, where I applied Agile methodologies to efficiently complete work assignments.</p>
                                     <br/>
-                                    <p>I also troubleshot an internal employee data management system in C# to prevent data loss. Throughout the internship, I focused on developing a responsive front-end using CSS flexbox, ensuring optimal performance on different devices. I integrated DataTables.js for dynamic tables and Chart.js for visual data representations. JavaScript played a significant role in handling real-time data updates, making the user experience more interactive. By the end of the summer, I successfully refined the project into a fully functional product through Agile iterations and the usage of Azure DevOps.</p>
+                                    <p className={`${theme}`}>I also troubleshot an internal employee data management system in C# to prevent data loss. Throughout the internship, I focused on developing a responsive front-end using CSS flexbox, ensuring optimal performance on different devices. I integrated DataTables.js for dynamic tables and Chart.js for visual data representations. JavaScript played a significant role in handling real-time data updates, making the user experience more interactive. By the end of the summer, I successfully refined the project into a fully functional product through Agile iterations and the usage of Azure DevOps.</p>
                                 </div>
-                            </div>
+                            </HoverEffect>
 
                             {/* Creative Inquiry Experience Card */}
-                            <div className="card">                                  
+                            <HoverEffect theme={theme}>                             
                                 <div className="card-info">
                                     <div style={{textAlign: 'center'}}>
                                         <img src="/images/creativeinquirylogo.png" alt="Creative Inquiry Program Logo" className="card-logo" />
                                     </div>
-                                    <h2>Undergraduate Researcher with Watt AI</h2>
+                                    <h2 className={`${theme}`}>Undergraduate Researcher with Watt AI</h2>
                                     <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p>August 2024 - Present</p>
+                                    <p className={`${theme}`}>August 2024 - May 2025</p>
                                     <hr style={{ border: '1px solid white', margin: '0.5em 0' }} />
-                                    <p>As a member of a collaborative team with Dr. Carl Ehrett, I am involved in training a large language model (LLM) to analyze social media posts and extract frames. We utilize LabelBox for the labeling process and Trello to manage our tasks, which includes providing weekly data analyses supported by Pandas and Matplotlib. This project aims to fine-tune an LLM for the automatic extraction of frames from social media content, specifically leveraging data from Twitter and YouTube. The model's performance is evaluated by comparing its outputs against human-labeled frames, ultimately striving to create AI-powered tools for enhanced frame extraction and analysis in social media contexts.</p>
+                                    <p className={`${theme}`}>As a member of a collaborative team with Dr. Carl Ehrett, I am involved in training a large language model (LLM) to analyze social media posts and extract frames. We utilize LabelBox for the labeling process and Trello to manage our tasks, which includes providing weekly data analyses supported by Pandas and Matplotlib. This project aims to fine-tune an LLM for the automatic extraction of frames from social media content, specifically leveraging data from Twitter and YouTube. The model's performance is evaluated by comparing its outputs against human-labeled frames, ultimately striving to create AI-powered tools for enhanced frame extraction and analysis in social media contexts.</p>
                                 </div>
-                            </div>
+                            </HoverEffect>
 
                         </div>   
                         <br/>
                         <img src='./images/pacman.gif'/>
+                        <img align="right" style={{marginRight: "auto", display:"block", width:"8em"}} src="https://visit-counter.vercel.app/counter.png?page=&s=20&c=00ff00&bg=00000000&no=2&ff=alien&tb=Visits%3A+&ta=" /> 
                     </div>
                 </div>
                 
             </section>
         </main>
 
-        <div className="circle1"></div>
+        <div className={`circle1 ${theme}`}></div>
 
-        <div className="circle2"></div>
+        <div className={`circle2 ${theme}`}></div>
     </div>
 )
 }

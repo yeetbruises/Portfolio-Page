@@ -1,6 +1,9 @@
 let count = 0
 let portrait_previously = false
 
+//rgb(144 202 249)
+//
+
 export default function resized() {
     
     function isPortrait() {
@@ -20,9 +23,14 @@ export default function resized() {
 
         // Check if the screen is in portrait mode
         if (isPortrait() && dashboard && document.querySelector('#slider-parent')) {
+            // MOBILE VIEW 
+
             portrait_previously = true;
             //console.log("it is portrait");
             // Apply CSS styles for portrait mode
+            document.querySelectorAll('.showcase').forEach(element => {
+                element.style.width = '100%';
+            });
             dashboard.style.display = 'flex';
             dashboard.style.position = 'relative';
             dashboard.style.top = '0';
@@ -30,6 +38,17 @@ export default function resized() {
             dashboard.style.flexDirection = 'row';
             dashboard.style.paddingTop = '0px';
             dashboard.style.flex = '0.8 1';
+
+            // make profile pic go on top
+            if (document.querySelector('.intro')){
+                document.querySelector('.intro').style.flexDirection = "column";
+            }
+
+            // Changing introduction slide
+            if (document.querySelector('#introcard')) {
+                document.querySelector('#introcard').style.height = '';
+                document.querySelector('#introcard').style.width = '';
+            }
 
             document.querySelector('.glass').style.display = 'flex';
             document.querySelector('.glass').style.flexDirection = 'column';
@@ -40,7 +59,7 @@ export default function resized() {
 
             // Getting navbar to mobile view
             var slider = document.querySelector('.slider');
-            slider.style.width = '33%';
+            slider.style.width = '25%';
             var bar = document.querySelector('#bar');
             bar.style.height = '100%';
             dashboard.style.maxHeight = '100px';
@@ -58,29 +77,7 @@ export default function resized() {
                 document.querySelector("main").style.alignItems = 'baseline';
             }
 
-
-            if (document.querySelector(".user")) {
-                document.querySelector(".user").style.display = 'flex';
-                document.querySelector(".user").style.flexDirection = 'column';
-                document.querySelector(".user").style.alignContent = 'center';
-                document.querySelector(".user").style.flexWrap = 'wrap';
-            }
-
-            if (document.querySelector('#div0') && document.querySelector('.user')) {
-                // Append myDiv to containerDiv
-                document.querySelector('#div0').prepend(document.querySelector('.user'));
-                
-                if (!document.querySelector(".hr1")) {
-                    const hrElement = document.createElement('hr');
-                    hrElement.className = "hr1";
-                    hrElement.style.border = '1px solid white';
-                    hrElement.style.margin = '0.5em 0px';
-                    document.querySelector('#div0').insertBefore(
-                        hrElement, document.querySelector('#div0').children[1]
-                    );                    
-                }
-
-            }
+            
             if (document.querySelector('.links') && document.querySelector('.slider')) {
                 document.querySelector('.links').style.paddingTop = '0rem';
                 document.querySelector('.slider').style.paddingTop = '0rem';
@@ -101,14 +98,41 @@ export default function resized() {
             }
 
             if (document.querySelector('.section')) {
-                document.querySelector('.section').style.marginLeft = '1rem';
-                document.querySelector('.section').style.marginRight = '1rem';
+                document.querySelector('.section').style.marginLeft = '0rem';
+                document.querySelector('.section').style.marginRight = '0rem';
+            }
+            if (document.querySelector('.section')) {
+                document.querySelector('.section').style.paddingLeft = '1%';
+                document.querySelector('.section').style.paddingRight = '1%';
+            }
+
+            document.querySelectorAll('.user').forEach(element => {
+                element.style.visibility = 'hidden';
+            });
+
+        
+            if (document.querySelector('#nameDiv')) {
+                document.querySelector('#nameDiv').style.margin = '0rem';
+                document.querySelector('#nameDiv').style.marginLeft = '0rem';
             }
 
         } else if (portrait_previously) {
+            // LANDSCAPE VIEW
             /*-----*/
             portrait_previously = false
             // UNDO EVERYTHING IN THE PREVIOUS SECTION OF THIS IF STATMENT //
+            document.querySelectorAll('.showcase').forEach(element => {
+                element.style.width = '75%';
+            });
+
+            document.querySelectorAll('.user').forEach(element => {
+                element.style.visibility = 'visible';
+            });
+
+            // make profile pic go on top
+            if (document.querySelector('.intro')){
+                document.querySelector('.intro').style.flexDirection = "row";
+            }
 
             document.querySelector('.glass').style.width = '83%';
             document.querySelector('.glass').style.height = '360px';
@@ -117,10 +141,10 @@ export default function resized() {
             var slider = document.querySelector('.slider');
             slider.style.width = '100%';
             var bar = document.querySelector('#bar');
-            bar.style.height = '33%';
+            bar.style.height = '25%';
             dashboard.style.maxHeight = '';
             document.querySelector('#slider-parent').style.minHeight = '10em';
-            document.querySelector('#slider-parent').style.height = '25%';
+            document.querySelector('#slider-parent').style.height = '';
             if (document.querySelector('.links')){
                 document.querySelector('.links').style.alignItems = '';
                 document.querySelector('.links').style.flexDirection = 'column';
@@ -128,16 +152,24 @@ export default function resized() {
             document.querySelector('.bar').style.background = 'linear-gradient(to right, rgba(0, 251, 255,1), rgba(0, 251, 255,0))';
             //document.querySelector('.section').style.marginTop = '1.5rem';
 
+            // Changing introduction slide
+            if (document.querySelector('#introcard')) {
+                document.querySelector('#introcard').style.maxHeight = '';
+                document.querySelector('#introcard').style.maxWidth = '';
+            }
+
             if (document.querySelector("main")) {
                 document.querySelector("main").style.alignItems = 'center';
             }
 
+
+            if (document.querySelector('.card-info')) {
+                document.querySelector('.card-info').style.margin = 'auto';
+            }
             
-            if (document.querySelector(".user")) {
-                document.querySelector(".user").style.display = 'inline-block';
-                document.querySelector(".user").style.flexDirection = '';
-                document.querySelector(".user").style.alignContent = '';
-                document.querySelector(".user").style.flexWrap = 'nowrap';
+            if (document.querySelector('#nameDiv')) {
+                document.querySelector('#nameDiv').style.margin = 'auto';
+                document.querySelector('#nameDiv').style.marginLeft = '3em';
             }
             
 
@@ -175,22 +207,24 @@ export default function resized() {
                 document.querySelector('.section').style.marginLeft = '5%';
                 document.querySelector('.section').style.marginRight = '5%';
             }
-
-
-            if (document.querySelector('#div0') && document.querySelector('.user') && document.querySelector('#div0').children[1]) {
-
-                document.querySelector('#div0').children[1].remove(); //remove horizontal line
-
-                document.querySelector('.dashboard').prepend(document.querySelector('.user'));
-
+            if (document.querySelector('.section')) {
+                document.querySelector('.section').style.paddingLeft = '5%';
+                document.querySelector('.section').style.paddingRight = '5%';
             }
 
+
+            
             if (document.querySelectorAll('.status')) {
                 var x = document.querySelectorAll('.status');
                 x.forEach( y => {
                     y.firstChild.style.fontSize = '3rem';
                     y.firstChild.style.fontWeight = '600';
                 })
+            }
+
+            if (document.querySelector('#nameDiv')) {
+                document.querySelector('#nameDiv').style.margin = 'auto';
+                document.querySelector('#nameDiv').style.marginLeft = '3em';
             }
 
             /*------*/
