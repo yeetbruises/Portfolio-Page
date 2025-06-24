@@ -93,7 +93,7 @@ return (
                 <div id="div0" className="section" style={{ height: '100%', overflowY: 'auto'}}>
                     <div id="t1" ref={myRef1} style={{opacity: obj === true ? 1 : 0}}>
                         <div className="cards" style={{alignItems: 'center', display: 'flex', justifyContent: 'center'}}>
-                            <div className={`fade-div ${visible ? 'visible' : ''}`}>
+
                             <HoverEffect theme={theme} id="intoCard">
                                 <div className='intro' style={{ display: 'inline-flex', margin: 'auto' }}>
                                     <img style={{alignSelf: "center"}} className='rotate-2' src="images/IMG_4549.webp" />
@@ -120,7 +120,6 @@ return (
                                     </div>
                                 </div>
                             </HoverEffect>
-                            </div>
 
                         </div>
                     </div>
