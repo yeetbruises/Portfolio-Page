@@ -20,7 +20,6 @@ export default function resized() {
             //document.querySelector("main").style.maxWidth = `${window.innerWidth}px`;
         }
 
-
         // Check if the screen is in portrait mode
         if (isPortrait() && dashboard && document.querySelector('#slider-parent')) {
             // MOBILE VIEW 
@@ -121,12 +120,6 @@ export default function resized() {
             /*-----*/
             portrait_previously = false
             // UNDO EVERYTHING IN THE PREVIOUS SECTION OF THIS IF STATMENT //
-            if (document.querySelector("main")) {
-                document.querySelector("main").style.maxHeight = "100%";
-                //document.querySelector("main").style.maxWidth = `${window.innerWidth}px`;
-            }
-
-
             document.querySelectorAll('.showcase').forEach(element => {
                 element.style.width = '75%';
             });

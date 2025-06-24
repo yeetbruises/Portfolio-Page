@@ -90,7 +90,7 @@ return (
                             
                             <HoverEffect theme={theme} id="intoCard">
                                 <div className='intro' style={{ display: 'inline-flex', margin: 'auto' }}>
-                                    <img style={{alignSelf: "center"}} className='rotate-2' src="https://media.discordapp.net/attachments/782728868179607603/1386217225488437311/IMG_4549.jpg?ex=6858e6e5&is=68579565&hm=d6f7a219d7e096754e1b8e4976a4bf67b6cbc9b80c6051f59a54ddf0f3b56d35&=&format=webp&width=1176&height=1570" />
+                                    <img style={{alignSelf: "center"}} className='rotate-2' src="images/IMG_4549.webp" />
                                     <div id='nameDiv' style={{ margin: 'auto', marginLeft: '3em' }}>
                                         <h1 className={`${theme}`} style={{ paddingBottom: '10px' }}>Vineet Saraf</h1>
                                         <p className={`${theme}`}>
@@ -128,7 +128,7 @@ return (
                                 <div>
                                     <div className="card-info" style={{width:"100%"}}>
                                         <div style={{ display: 'flex'}}>
-                                            <img style={{width: "5rem", height: "min-content"}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Georgia_Tech_Yellow_Jackets_logo.svg/500px-Georgia_Tech_Yellow_Jackets_logo.svg.png?20180422004702" alt="Georgia Tech Logo"/>
+                                            <img style={{width: "5rem", height: "min-content"}} src="images/gt.png" alt="Georgia Tech Logo"/>
                                             <div style={{paddingLeft:"2%", marginTop:"auto", marginBottom:"auto"}}>
                                                 <h2 className={`${theme}`}>Georgia Institute of Technology</h2>
                                                 <p style={{color:"white"}}>Masters of Science in Computer Science</p>
@@ -148,7 +148,7 @@ return (
                                 <div>
                                     <div className="card-info">
                                         <div style={{ display: 'flex'}}>
-                                            <img style={{width: "5rem", height: "min-content"}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Clemson_Tigers_logo.svg/500px-Clemson_Tigers_logo.svg.png" alt="Georgia Tech Logo"/>
+                                            <img style={{width: "5rem", height: "min-content"}} src="images/clem.png" alt="Georgia Tech Logo"/>
                                             <div style={{paddingLeft:"2%", marginTop:"auto", marginBottom:"auto"}}>
                                                 <h2 className={`${theme}`}>Clemson University</h2>
                                                 <p style={{color:"white"}}>Bachelor of Science in Computer Science, Mathematics Minor </p>
@@ -343,6 +343,7 @@ return (
                     </div>  
                     <br/>
                     <img src='./images/pacman.gif'/>
+                    <small style={{color:"white"}}>  ver. 2:00 pm</small>
                     <img align="right" style={{marginRight: "auto", display:"block", width:"8em"}} src="https://visit-counter.vercel.app/counter.png?page=&s=20&c=00ff00&bg=00000000&no=2&ff=alien&tb=Visits%3A+&ta=" /> 
                     
                 </div>
