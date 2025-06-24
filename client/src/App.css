@@ -167,6 +167,20 @@ h3 {
   background-color: #0a0a0a;
 }
 
+.fade-div {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 
+    opacity 4s cubic-bezier(0,0.77,0.43,1.04),
+    transform 4s cubic-bezier(0,0.77,0.43,1.04);
+}
+
+.fade-div.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 main {
   font-family: "Lato", sans-serif;
   min-height: 100vh;
