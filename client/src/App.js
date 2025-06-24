@@ -343,7 +343,7 @@ return (
                     </div>  
                     <br/>
                     <img src='./images/pacman.gif'/>
-                    <small style={{color:"white"}}>  ver. 2:00 pm</small>
+                    
                     <img align="right" style={{marginRight: "auto", display:"block", width:"8em"}} src="https://visit-counter.vercel.app/counter.png?page=&s=20&c=00ff00&bg=00000000&no=2&ff=alien&tb=Visits%3A+&ta=" /> 
                     
                 </div>
