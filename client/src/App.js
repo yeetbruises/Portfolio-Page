@@ -126,7 +126,7 @@ return (
                     
                     <div id="t2" ref={myRef2}>
                         <div className="status">
-                            <h1 className={`${theme}`}>Education</h1>
+                            <h1 className={`${theme}`}>School</h1>
                         </div>
                         <div className="cards">
                             <HoverEffect theme={theme} id="msCard">
@@ -174,7 +174,7 @@ return (
                     </div>
                     <div id="t3" ref={myRef3}>
                         <div className="status">
-                            <h1 className={`${theme}`}>Experience</h1>
+                            <h1 className={`${theme}`}>Work</h1>
                         </div>
                         <p className={`${theme}`} id="3"></p>
                         <div className="cards">
