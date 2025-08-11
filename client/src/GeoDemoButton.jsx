@@ -176,6 +176,7 @@ export default function GeoDemoButton({
           onClose={() => {
             setStage("idle");
             setInitialSession(null);
+            setScore(0);
           }}
         />
       )}
@@ -292,6 +293,9 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
 
       setResult(res);
 
+      const pts = Number(res?.points) || 0;
+      setScore((s) => s + pts);
+
       // After showing result, get a fresh Turnstile token and THEN call /start
       setTimeout(async () => {
         try {
@@ -319,7 +323,7 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
         <div className="geo-meta">
           <span className="geo-pill">Web Demo</span>
           <span className="geo-pill">Moves: {session ? session.movesLeft : "—"}</span>
-          <span className="geo-pill">Points: {score} </span>
+          <span className="geo-pill">Score: {score} </span>
           {busy && <span className="geo-pill">Working…</span>}
         </div>
 
@@ -344,14 +348,13 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
 
         <div className="geo-res" aria-live="polite">
           {result && (
-            <span className={`geo-pill ${result.result === "correct" ? "geo-ok" : "geo-bad"}`}>
-              {result.result === "correct" ? "Correct!" : "Wrong :("}
-            </span>
+            <>
+              <span className={`geo-pill ${result.result === "correct" ? "geo-ok" : "geo-bad"}`}>
+                {result.result === "correct" ? "Correct!" : "Wrong :("}
+              </span>
+              &nbsp; Answer: {result.revealLabel} · +{result.points} pts
+            </>
           )}
-          {{
-            setScore: score + (result?.points || 0)
-          }}
-          {result && <> &nbsp; Answer: {result.revealLabel} · +{result.points} pts</>}
           {error && <div style={{ marginTop: 6 }}>{error}</div>}
         </div>
       </div>
