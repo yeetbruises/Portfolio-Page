@@ -128,7 +128,7 @@ function TurnstileGate({ siteKey, onVerified, invisible = false }) {
     <div style={{ display: "grid", gap: 10, placeItems: "center" }}>
       <div ref={mountRef} className="cf-turnstile" id="ts-widget" />
       {!invisible && (
-        <button onClick={manualBegin} disabled={loading}>
+        <button style={{display: "none"}} onClick={manualBegin} disabled={loading}>
           {loading ? "Verifying..." : "Continue"}
         </button>
       )}
