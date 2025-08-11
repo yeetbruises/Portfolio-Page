@@ -76,6 +76,9 @@ export default function resized() {
                 document.querySelector("main").style.alignItems = 'baseline';
             }
 
+            if (document.querySelector(".timeline-container")) {
+                document.querySelector(".timeline-container").style.paddingLeft = '0px';
+            }
             
             if (document.querySelector('.links') && document.querySelector('.slider')) {
                 document.querySelector('.links').style.paddingTop = '0rem';
@@ -96,6 +99,20 @@ export default function resized() {
                 })
             }
 
+            if (document.querySelector('#phonepacman')) {
+                document.querySelector('#phonepacman').style.display = 'block';
+                document.querySelector('#phonepacman').style.width = '95%';
+            }
+
+            if (document.querySelector('#widepacman')) {
+                document.querySelector('#widepacman').style.display = 'none';
+            }
+
+            if (document.querySelector('.contact-container')) {
+                document.querySelector('.contact-container').style.display = 'contents';
+            }
+
+
             if (document.querySelector('.section')) {
                 document.querySelector('.section').style.marginLeft = '0rem';
                 document.querySelector('.section').style.marginRight = '0rem';
@@ -115,14 +132,87 @@ export default function resized() {
                 document.querySelector('#nameDiv').style.marginLeft = '0rem';
             }
 
+            if (document.querySelector('#div0')) {
+                document.querySelector('#div0').style.zoom = '0.6';
+            }
+
+            if (document.querySelector('#nonintro')) {
+                document.querySelector('#nonintro').style.width = '100%';
+            }
+
+            if (document.querySelector(".cards .fade-section")) {
+                document.querySelector(".cards .fade-section").style.width = '100%';
+            }
+
+
+            document.querySelectorAll('.card-info .work').forEach(element => {
+                element.style.display = 'block';
+            });
+
+            document.querySelectorAll('p').forEach(element => {
+                element.style.fontSize = '20px';
+            });
+
+            document.querySelectorAll('#workedDates').forEach(element => {
+                element.style.zoom = '0.8';
+            });
+
+            if (document.querySelector('#contactSection')) {
+                document.querySelector('#contactSection').style.padding = '2rem';
+            }
+
+            /* TIMELINE VISIBILITY */
+            if (document.querySelector('.timeline-container') && document.querySelector('.timeline-line')){
+                document.querySelectorAll('.timeline-container').forEach(element => {
+                    element.style.display = 'block';
+                });
+                document.querySelectorAll('.timeline-line').forEach(element => {
+                    element.style.visibility = 'hidden';
+                });
+                if (document.querySelector('.section')) {
+                    document.querySelector('.section').style.marginLeft = '0rem';
+                    document.querySelector('.section').style.paddingRight = '0rem';
+                }
+            }
+
+            // Project Grid/Not Grid
+            if (document.querySelector('#t4 .cards')) {
+                const el = document.querySelector('#t4 .cards');
+                el.style.display = 'inherit';
+            }
+
         } else if (portrait_previously) {
             // LANDSCAPE VIEW
             /*-----*/
             portrait_previously = false
             // UNDO EVERYTHING IN THE PREVIOUS SECTION OF THIS IF STATMENT //
-            document.querySelectorAll('.showcase').forEach(element => {
-                element.style.width = '75%';
-            });
+            
+
+            // Project Grid/Not Grid
+            if (document.querySelector('#t4 .cards')) {
+                const el = document.querySelector('#t4 .cards');
+                el.style.display = 'grid';
+            }
+
+            /* TIMELINE VISIBILITY */
+            if (document.querySelector('.timeline-container') && document.querySelector('.timeline-line')){
+                document.querySelectorAll('.timeline-container').forEach(element => {
+                    element.style.display = 'grid';
+                });
+                document.querySelectorAll('.timeline-line').forEach(element => {
+                    element.style.visibility = 'visible';
+                });
+                if (document.querySelector('.section')) {
+                    document.querySelector('.section').style.marginLeft = '0rem';
+
+                    document.querySelector('.section').style.paddingLeft = '0rem';
+                    document.querySelector('.section').style.paddingRight = '0rem';
+                }
+            }
+
+            if (document.querySelector('#contactSection')) {
+                document.querySelector('#contactSection').style.padding = '0rem';
+            }
 
             document.querySelectorAll('.user').forEach(element => {
                 element.style.visibility = 'visible';
@@ -161,16 +251,35 @@ export default function resized() {
                 document.querySelector("main").style.alignItems = 'center';
             }
 
+            document.querySelectorAll('.card-info .work').forEach(element => {
+                element.style.display = 'flex';
+            });
+
+            document.querySelectorAll('p').forEach(element => {
+                element.style.fontSize = '15px';
+            });
 
             if (document.querySelector('.card-info')) {
                 document.querySelector('.card-info').style.margin = 'auto';
             }
-            
+
             if (document.querySelector('#nameDiv')) {
                 document.querySelector('#nameDiv').style.margin = 'auto';
                 document.querySelector('#nameDiv').style.marginLeft = '3em';
             }
+
+            if (document.querySelector(".timeline-container")) {
+                document.querySelector(".timeline-container").style.paddingLeft = '50px';
+            }
             
+
+            if (document.querySelector(".cards .fade-section")) {
+                document.querySelector(".cards .fade-section").style.width = '90%';
+            }
+
+            if (document.querySelector('.contact-container')) {
+                document.querySelector('.contact-container').style.display = 'flex';
+            }
 
             if (dashboard) {
                 dashboard.style.display = 'inline-block';
@@ -179,7 +288,7 @@ export default function resized() {
                 dashboard.style.zIndex = '';
                 dashboard.style.flexDirection = 'column';
                 dashboard.style.paddingTop = '3rem';
-                dashboard.style.flex = '0.5 1';
+                dashboard.style.flex = '0.35 1';
             }
 
             if (document.querySelector('.glass') && document.querySelector('#slider-parent')) {
@@ -201,15 +310,22 @@ export default function resized() {
                     y.style.paddingTop = '8%';
                 })
             }
+            if (document.querySelector('#phonepacman')) {
+                document.querySelector('#phonepacman').style.display = 'none';
+                document.querySelector('#phonepacman').style.width = '95%';
+            }
+            if (document.querySelector('#widepacman')) {
+                document.querySelector('#widepacman').style.display = 'block';
+            }
 
-            if (document.querySelector('.section')) {
+            /*if (document.querySelector('.section')) {
                 document.querySelector('.section').style.marginLeft = '5%';
                 document.querySelector('.section').style.marginRight = '5%';
             }
             if (document.querySelector('.section')) {
                 document.querySelector('.section').style.paddingLeft = '5%';
                 document.querySelector('.section').style.paddingRight = '5%';
-            }
+            }*/
 
 
             
@@ -226,6 +342,21 @@ export default function resized() {
                 document.querySelector('#nameDiv').style.marginLeft = '3em';
             }
 
+            if (document.querySelector('#nonintro')) {
+                document.querySelector('#nonintro').style.width = '75%';
+            }
+
+            if (document.querySelector('#div0')) {
+                document.querySelector('#div0').style.zoom = '1';
+            }
+
+            document.querySelectorAll('p').forEach(element => {
+                element.style.fontSize = '15px';
+            });
+
+            document.querySelectorAll('#workedDates').forEach(element => {
+                element.style.zoom = '1';
+            });
             /*------*/
 
         } 
