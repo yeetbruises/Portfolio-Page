@@ -189,6 +189,7 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [result, setResult] = useState(null);
+  const [score, setScore] = useState(0);
   const cardRef = useRef(null);
   const tsRef = useRef(null); // For invisible Turnstile
 
@@ -316,8 +317,9 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
         <button className="geo-close" onClick={onClose} title="Close">✕</button>
         <h3 className="geo-h">Geo Bot — Live Demo</h3>
         <div className="geo-meta">
-          <span className="geo-pill">Moves: {session ? session.movesLeft : "—"}</span>
           <span className="geo-pill">Web Demo</span>
+          <span className="geo-pill">Moves: {session ? session.movesLeft : "—"}</span>
+          <span className="geo-pill">Points: {score} </span>
           {busy && <span className="geo-pill">Working…</span>}
         </div>
 
@@ -346,6 +348,9 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
               {result.result === "correct" ? "Correct!" : "Wrong :("}
             </span>
           )}
+          {{
+            setScore: score + (result?.points || 0)
+          }}
           {result && <> &nbsp; Answer: {result.revealLabel} · +{result.points} pts</>}
           {error && <div style={{ marginTop: 6 }}>{error}</div>}
         </div>
