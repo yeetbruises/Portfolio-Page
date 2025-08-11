@@ -191,6 +191,7 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
   const [error, setError] = useState("");
   const [result, setResult] = useState(null);
   const cardRef = useRef(null);
+  const tsRef = useRef(null); // For invisible Turnstile
 
   // Resolve image base from API host (images served by your API subdomain)
   const { imageBase } = useMemo(() => {
@@ -246,8 +247,7 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
 
   const stripToDataUrl = s => (s || "").replace(/^[\s\S]*?(?=data:)/, "");
 
-  // ====== Your requested functions (kept as-is, with minor safety tweaks) ======
-  async function startGame() {
+  async function startGame(token=null) {
     setBusy(true);
     setResult(null);
     setError("");
