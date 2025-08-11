@@ -86,7 +86,7 @@ function TurnstileGate({ siteKey, onVerified, invisible = false }) {
       // Render Turnstile
       widgetIdRef.current = window.turnstile.render(mountRef.current, {
         sitekey: siteKey,
-        size: invisible ? "invisible" : "normal",
+        size: invisible ? "normal" : "normal",
         callback: handleToken,               // <-- auto-begin here
         "expired-callback": () => {
           startedRef.current = false;        // allow new begin
