@@ -65,7 +65,10 @@ function TurnstileGate({ siteKey, onVerified }) {
     mount();
     return () => {
       if (window.turnstile && widgetIdRef.current) {
-        try { window.turnstile.remove(widgetIdRef.current); } catch {}
+        try { 
+          window.turnstile.remove(widgetIdRef.current);
+          begin();
+        } catch {}
       }
     };
   }, [siteKey]);
@@ -89,9 +92,6 @@ function TurnstileGate({ siteKey, onVerified }) {
   return (
     <div style={{ display: "grid", gap: 10, placeItems: "center" }}>
       <div ref={mountRef} className="cf-turnstile" id="ts-widget" />
-      <button onClick={begin} disabled={loading}>
-        {loading ? "Verifying..." : "Continue"}
-      </button>
       {err && <div style={{ color: "crimson", fontSize: 13 }}>{err}</div>}
     </div>
   );
