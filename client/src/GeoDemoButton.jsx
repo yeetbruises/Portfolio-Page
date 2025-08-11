@@ -138,19 +138,12 @@ function TurnstileGate({ siteKey, onVerified, invisible = false }) {
   );
 }
 
-function readSiteKey() {
-  const cra  = typeof process !== "undefined" && process.env?.TURNSTILE_SITE_KEY;
-  return cra;
-}
-
 export default function GeoDemoButton({
   label = "🎮 Try the Demo!",
-  siteKey = "",
+  siteKey = "0x4AAAAAABqY_gwKPS6vDh26",
 }) {
   const [stage, setStage] = useState("idle"); // 'idle' | 'gate' | 'open'
   const [initialSession, setInitialSession] = useState(null);
-
-  siteKey = readSiteKey();
 
   return (
     <>
