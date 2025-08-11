@@ -289,14 +289,6 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
         userId: "guest",
       });
 
-      if (!res.ok) {
-        // If the body is HTML (like a default 500 page), replace with a friendly message
-        const msg = `500 Error — Please try again`;
-        setResult(msg)
-      } else {
-        setResult(res);
-      }
-
       // After showing result, get a fresh Turnstile token and THEN call /start
       setTimeout(async () => {
         try {
