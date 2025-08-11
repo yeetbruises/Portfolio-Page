@@ -1,51 +1,161 @@
 // GeoDemoButton.jsx
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import TurnstileForm from "./turnstile-widget.jsx";
 
-export default function GeoDemoButton({ label = "🎮 Try the Demo!", apiPrefix = "/api" }) {
-  const [open, setOpen] = useState(false);
+// ---- CONFIG: your Worker-backed API subdomain ----
+const API_BASE = "https://api.coastalvinny.dev";
+
+// --- Load Turnstile script once globally (safe to call multiple times) ---
+function useTurnstileScript() {
+  useEffect(() => {
+    const SRC = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+    if (typeof window !== "undefined" && window.turnstile) return;
+    if (!document.querySelector(`script[src="${SRC}"]`)) {
+      const s = document.createElement("script");
+      s.src = SRC; s.async = true; s.defer = true;
+      document.head.appendChild(s);
+    }
+  }, []);
+}
+
+// --- Minimal fetch helper; can include Turnstile token once via widgetId ---
+async function fetchJSON(path, body, { method = "POST", widgetId = null } = {}) {
+  const url = `${API_BASE}${path.startsWith("/") ? path : `/${path}`}`;
+  let payload = body ?? {};
+
+  if (widgetId && window.turnstile) {
+    // widgetId may be the id string or the numeric id returned by render()
+    let arg = widgetId;
+    if (typeof arg === "string") arg = document.getElementById(arg) || arg;
+    const token = window.turnstile.getResponse(arg);
+    if (!token) throw new Error("Please complete the Turnstile check.");
+    payload = { ...payload, "cf-turnstile-response": token };
+  }
+
+  const res = await fetch(url, {
+    method,
+    headers: { "Content-Type": "application/json" },
+    body: method === "GET" || method === "HEAD" ? undefined : JSON.stringify(payload),
+  });
+
+  const ct = res.headers.get("content-type") || "";
+  const data = ct.includes("application/json") ? await res.json() : await res.text();
+  if (!res.ok) throw new Error(typeof data === "string" ? data : JSON.stringify(data));
+  return data;
+}
+
+// --- Small Turnstile mount that returns widgetId when ready ---
+function TurnstileGate({ siteKey, onVerified }) {
+  useTurnstileScript();
+  const mountRef = useRef(null);
+  const widgetIdRef = useRef(null);
+  const [err, setErr] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const mount = () => {
+      if (!window.turnstile || !mountRef.current) return void setTimeout(mount, 50);
+      widgetIdRef.current = window.turnstile.render(mountRef.current, {
+        sitekey: siteKey,
+        callback: () => {}, // token becomes available
+        "expired-callback": () => {},
+        "error-callback": () => {},
+      });
+    };
+    mount();
+    return () => {
+      if (window.turnstile && widgetIdRef.current) {
+        try { window.turnstile.remove(widgetIdRef.current); } catch {}
+      }
+    };
+  }, [siteKey]);
+
+  const begin = async () => {
+    try {
+      setLoading(true);
+      setErr("");
+      // call /start ONCE with token
+      const data = await fetchJSON("/start", {}, { method: "POST", widgetId: widgetIdRef.current });
+      // reset widget so token can’t be reused
+      if (window.turnstile && widgetIdRef.current) window.turnstile.reset(widgetIdRef.current);
+      onVerified?.(data); // pass back session payload from /start
+    } catch (e) {
+      setErr(e.message || "Verification failed");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div style={{ display: "grid", gap: 10, placeItems: "center" }}>
+      <div ref={mountRef} className="cf-turnstile" id="ts-widget" />
+      <button onClick={begin} disabled={loading}>
+        {loading ? "Verifying..." : "Continue"}
+      </button>
+      {err && <div style={{ color: "crimson", fontSize: 13 }}>{err}</div>}
+    </div>
+  );
+}
+
+export default function GeoDemoButton({
+  label = "🎮 Try the Demo!",
+  siteKey = "0x4AAAAAABqY_gwKPS6vDh26",
+}) {
+  const [stage, setStage] = useState("idle"); // 'idle' | 'gate' | 'open'
+  const [initialSession, setInitialSession] = useState(null);
+
   return (
     <>
-      <TurnstileForm
-        siteKey="0x4AAAAAABqY_gwKPS6vDh26"
-        apiBase="https://api.coastalvinny.dev"
-        path="/start"
-        payload={{ level: 1 }}
-        onSuccess={(data) => console.log("OK:", data)}
-        onError={(e) => console.error(e)}
-      />
-      <button className="send-button" style={{borderRadius: "10px", margin: "auto", paddingUp: "5px", paddingDown: "5px", paddingLeft: "10px", paddingRight: "10px"}} onClick={() => setOpen(true)}>{label}</button>
-      {open && <GeoModal apiPrefix={apiPrefix} onClose={() => setOpen(false)} />}
+      {stage === "idle" && (
+        <button
+          className="send-button"
+          style={{ borderRadius: 10, margin: "auto", padding: "6px 12px" }}
+          onClick={() => setStage("gate")}
+        >
+          {label}
+        </button>
+      )}
+
+      {stage === "gate" && (
+        <div style={{ marginTop: 10 }}>
+          <TurnstileGate
+            siteKey={siteKey}
+            onVerified={(data) => {
+              setInitialSession(data);
+              setStage("open");
+            }}
+          />
+        </div>
+      )}
+
+      {stage === "open" && (
+        <GeoModal
+          initialSession={initialSession}
+          onClose={() => {
+            setStage("idle");
+            setInitialSession(null);
+          }}
+        />
+      )}
     </>
   );
 }
 
-function GeoModal({ apiPrefix = "/api", onClose }) {
-  const [session, setSession] = useState(null);
+// ===================== Demo Modal (your original UI, intact) =====================
+function GeoModal({ onClose, initialSession = null }) {
+  const [session, setSession] = useState(initialSession);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [result, setResult] = useState(null);
   const cardRef = useRef(null);
 
-  // --- Resolve API & image bases ---
-  const { apiBase, imageBase } = useMemo(() => {
-    // If apiPrefix is absolute, use it as-is
-    try {
-      const u = new URL(apiPrefix);
-      return { apiBase: u.href.replace(/\/$/, ""), imageBase: u.origin };
-    } catch (_) {
-      // Relative prefix: build origin; on localhost, default to port 3002
-      const loc = window.location;
-      const isLocal = ["localhost", "127.0.0.1"].includes(loc.hostname);
-      const port = isLocal ? "3002" : (loc.port || "");
-      const origin = `${loc.protocol}//${loc.hostname}${port ? `:${port}` : ""}`;
-      const base = apiPrefix.startsWith("/") ? apiPrefix : `/${apiPrefix}`;
-      return { apiBase: `${origin}${base}`.replace(/\/$/, ""), imageBase: origin };
-    }
-  }, [apiPrefix]);
+  // Resolve image base from API host (images served by your API subdomain)
+  const { imageBase } = useMemo(() => {
+    const u = new URL(API_BASE);
+    return { imageBase: u.origin };
+  }, []);
 
-  // styles once
+  // styles once (kept exactly as you provided)
   useEffect(() => {
     const id = "geo-demo-styles";
     if (!document.getElementById(id)) {
@@ -71,69 +181,28 @@ function GeoModal({ apiPrefix = "/api", onClose }) {
     }
   }, []);
 
-  useEffect(() => {
-    startGame();
-    const onKey = (e) => e.key === "Escape" && onClose?.();
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  // focus mgmt + escape to close
   useEffect(() => {
     const prev = document.activeElement;
     cardRef.current?.focus();
-    return () => prev && prev.focus?.();
-  }, []);
+    const onKey = (e) => e.key === "Escape" && onClose?.();
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      prev && prev.focus?.();
+    };
+  }, [onClose]);
 
-  const API_BASE = "https://api.coastalvinny.dev";
+  const bust = (u) => `${u}${u.includes("?") ? "&" : "?"}t=${Date.now()}`;
+  const toImg = (path) => (path?.startsWith("http") ? path : `${imageBase}${path || ""}`);
 
-  async function fetchJSON(pathOrUrl, body, opts = {}) {
-    const { method = "POST", turnstileWidgetId = null } = opts;
-
-    const url = pathOrUrl.startsWith("http")
-      ? pathOrUrl
-      : `${API_BASE}${pathOrUrl.startsWith("/") ? pathOrUrl : `/${pathOrUrl}`}`;
-
-    let payload = body ?? {};
-
-    if (turnstileWidgetId && window.turnstile) {
-      // allow passing either a widgetId, an element, or an element id string
-      let widgetArg = turnstileWidgetId;
-      if (typeof widgetArg === "string") {
-        widgetArg = document.getElementById(widgetArg) || widgetArg;
-      }
-      const token = window.turnstile.getResponse(widgetArg);
-      if (!token) throw new Error("Please complete the Turnstile check.");
-      payload = { ...payload, "cf-turnstile-response": token };
-    }
-
-    const res = await fetch(url, {
-      method,
-      headers: { "Content-Type": "application/json" },
-      body: method === "GET" || method === "HEAD" ? undefined : JSON.stringify(payload),
-    });
-
-    const ct = res.headers.get("content-type") || "";
-    const data = ct.includes("application/json") ? await res.json() : await res.text();
-    if (!res.ok) throw new Error(typeof data === "string" ? data : JSON.stringify(data));
-
-    if (window.turnstile) {
-      window.turnstile.reset(document.getElementById("ts-widget"));
-    }
-    
-    return data;
-  }
-
-
-
-  const bust = (u) => `${u}?t=${Date.now()}`;
-  const toImg = (path) => (path.startsWith("http") ? path : `${imageBase}${path}`);
-
+  // ====== Your requested functions (kept as-is, with minor safety tweaks) ======
   async function startGame() {
     setBusy(true);
     setResult(null);
     setError("");
     try {
+      // Subsequent /start calls: no Turnstile (already authorized)
       const data = await fetchJSON(`/start`);
       data.imageUrl = bust(toImg(data.imageUrl));
       setSession(data);
@@ -170,7 +239,7 @@ function GeoModal({ apiPrefix = "/api", onClose }) {
         userId: "guest",
       });
       setResult(res);
-      setTimeout(() => startGame(), 1400);
+      setTimeout(() => startGame(), 1400); // restart round
     } catch (e) {
       setError(`Guess failed: ${e.message}`);
     } finally {
@@ -178,6 +247,7 @@ function GeoModal({ apiPrefix = "/api", onClose }) {
     }
   }
 
+  // ===================== UI (markup, intact) =====================
   const body = (
     <div className="geo-overlay" role="dialog" aria-modal="true" onClick={onClose}>
       <div className="geo-card" ref={cardRef} tabIndex={-1} onClick={(e) => e.stopPropagation()} aria-label="Geo Demo">
