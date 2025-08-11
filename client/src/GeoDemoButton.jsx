@@ -290,6 +290,13 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
         userId: "guest",
       });
 
+      let data;
+      try {
+        data = ct.includes("application/json") ? await res.json() : await res.text();
+      } catch {
+        data = "";
+      }
+      
       if (!res.ok) {
         // If the body is HTML (like a default 500 page), replace with a friendly message
         const looksHtml = typeof data === "string" && /<\s*!doctype|<html/i.test(data);
