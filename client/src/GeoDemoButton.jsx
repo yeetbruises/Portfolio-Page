@@ -289,7 +289,7 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
         userId: "guest",
       });
 
-      setResult(msg);
+      setResult(res);
 
       // After showing result, get a fresh Turnstile token and THEN call /start
       setTimeout(async () => {
