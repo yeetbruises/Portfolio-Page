@@ -289,7 +289,24 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
         pick: pickIndex,
         userId: "guest",
       });
-      setResult(res);
+
+      if (!res.ok) {
+        // If the body is HTML (like a default 500 page), replace with a friendly message
+        const looksHtml = typeof data === "string" && /<\s*!doctype|<html/i.test(data);
+        const msg =
+          res.status >= 500
+            ? `500 Error — please try again`
+            : looksHtml
+            ? `Request failed (${res.status}). Please try again`
+            : typeof data === "string"
+            ? data
+            : JSON.stringify(data);
+  
+        setResult(msg)
+      } else {
+        setResult(res);
+      }
+
       // After showing result, get a fresh Turnstile token and THEN call /start
       setTimeout(async () => {
         try {
