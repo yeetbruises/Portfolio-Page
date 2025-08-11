@@ -1,7 +1,7 @@
 // GeoDemoButton.jsx
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { TurnstileForm } from "./turnstile-widget.jsx";
+import TurnstileForm from "./turnstile-widget.jsx";
 
 export default function GeoDemoButton({ label = "🎮 Try the Demo!", apiPrefix = "/api" }) {
   const [open, setOpen] = useState(false);
