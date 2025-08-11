@@ -343,7 +343,7 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
             </button>
           ))}
         </div>
-
+ 
         <InvisibleTurnstile siteKey={siteKey} ref={tsRef} />
 
         <div className="geo-res" aria-live="polite">
