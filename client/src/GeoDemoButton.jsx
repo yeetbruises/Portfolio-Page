@@ -151,7 +151,7 @@ export default function GeoDemoButton({
       {stage === "idle" && (
         <button
           className="send-button"
-          style={{ borderRadius: 10, margin: "auto", padding: "6px 12px" }}
+          style={{ borderRadius: 10, margin: "auto" }}
           onClick={() => setStage("gate")}
         >
           {label}
