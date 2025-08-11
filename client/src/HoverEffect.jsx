@@ -35,11 +35,11 @@ export default function HoverEffect({
                 whileHover={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 style={{
-                    boxShadow: hovered ? "0 0 20px 4px rgba(0, 150, 255, 0.7)" : "none",
+                    border: hovered ? "1px solid #00d5ff" : "1px solid var(--accent)",
                     background: hovered
                         ? "linear-gradient(to right top, rgba(0, 63, 122, 0.8), rgba(0, 0, 0, 0.5))"
                         : "black",
-                    transition: "background 0.4s ease-in-out, box-shadow 0.3s ease",
+                    transition: "background 0.4s ease-in-out, border 0.4s ease-in-out",
                     position: "relative",
                     borderRadius: "12px",
                     ...customStyle,
@@ -60,7 +60,7 @@ export default function HoverEffect({
                     }}
                 />
     
-                <div className="card-info">{children}</div>
+                <div id="internal-card" className="card-info">{typeof children === "function" ? children({ hovered }) : children}</div>
             </motion.div>
         );
     }
@@ -76,7 +76,7 @@ export default function HoverEffect({
                 whileHover={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 300 }}
                 style={{
-                    boxShadow: hovered ? "0 0 20px 4px rgba(0, 150, 255, 0.5)" : "none",
+                    boxShadow: hovered ? "0 0 20px 4px rgba(109, 194, 255, 0.5)" : "none",
                     transition: "background 0.4s ease-in-out, box-shadow 0.3s ease",
                     position: "relative",
                     borderRadius: "12px",
@@ -85,7 +85,8 @@ export default function HoverEffect({
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
-                    overflow: "hidden"
+                    overflow: "hidden",
+                    border: "1px solid white"
                 }}
             >
                 <motion.div
