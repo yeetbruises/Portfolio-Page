@@ -6,8 +6,6 @@ import { InvisibleTurnstile } from "./InvisibleTurnstile.jsx";
 // ---- CONFIG: your Worker-backed API subdomain ----
 const API_BASE = "https://api.coastalvinny.dev";
 
-const [score, setScore] = useState(0);
-
 // --- Load Turnstile script once globally (safe to call multiple times) ---
 function useTurnstileScript() {
   useEffect(() => {
@@ -178,7 +176,6 @@ export default function GeoDemoButton({
           onClose={() => {
             setStage("idle");
             setInitialSession(null);
-            setScore(0);
           }}
         />
       )}
@@ -194,6 +191,7 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
   const [result, setResult] = useState(null);
   const cardRef = useRef(null);
   const tsRef = useRef(null); // For invisible Turnstile
+  const [score, setScore] = useState(0);
 
   // Resolve image base from API host (images served by your API subdomain)
   const { imageBase } = useMemo(() => {
@@ -227,7 +225,6 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
     }
   }, []);
 
-  // focus mgmt + escape to close
   useEffect(() => {
     const prev = document.activeElement;
     cardRef.current?.focus();
