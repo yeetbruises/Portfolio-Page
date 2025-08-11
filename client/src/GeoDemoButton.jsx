@@ -45,57 +45,98 @@ async function fetchJSON(path, body, { method = "POST", widgetId = null } = {}) 
 }
 
 // --- Small Turnstile mount that returns widgetId when ready ---
-function TurnstileGate({ siteKey, onVerified }) {
+function TurnstileGate({ siteKey, onVerified, invisible = false }) {
   useTurnstileScript();
   const mountRef = useRef(null);
   const widgetIdRef = useRef(null);
+  const startedRef = useRef(false); // prevent double-starts
   const [err, setErr] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const handleToken = async (token) => {
+    if (!token) return;
+    if (startedRef.current) return;   // guard against duplicate callbacks
+    startedRef.current = true;
+
+    try {
+      setLoading(true);
+      setErr("");
+      // Send the token directly in the body; no need to use widgetId option
+      const data = await fetchJSON("/start", { "cf-turnstile-response": token }, { method: "POST" });
+      // reset so token can’t be reused
+      if (window.turnstile && widgetIdRef.current) window.turnstile.reset(widgetIdRef.current);
+      onVerified?.(data);
+    } catch (e) {
+      setErr(e.message || "Verification failed");
+      startedRef.current = false; // allow retry on error
+      // (optional) re-execute invisible widget to get a fresh token
+      if (invisible && window.turnstile && widgetIdRef.current) {
+        try { window.turnstile.execute(widgetIdRef.current); } catch {}
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     const mount = () => {
       if (!window.turnstile || !mountRef.current) return void setTimeout(mount, 50);
+
+      // Render Turnstile
       widgetIdRef.current = window.turnstile.render(mountRef.current, {
         sitekey: siteKey,
-        callback: () => {}, // token becomes available
-        "expired-callback": () => {},
-        "error-callback": () => {},
+        size: invisible ? "invisible" : "normal",
+        callback: handleToken,               // <-- auto-begin here
+        "expired-callback": () => {
+          startedRef.current = false;        // allow new begin
+          if (invisible && window.turnstile && widgetIdRef.current) {
+            try { window.turnstile.execute(widgetIdRef.current); } catch {}
+          }
+        },
+        "error-callback": () => {
+          setErr("Turnstile error, please try again.");
+          startedRef.current = false;
+        },
       });
+
+      // For invisible mode, immediately request a token
+      if (invisible) {
+        try { window.turnstile.execute(widgetIdRef.current); } catch {}
+      }
     };
+
     mount();
     return () => {
       if (window.turnstile && widgetIdRef.current) {
-        try { 
-          window.turnstile.remove(widgetIdRef.current);
-          begin();
-        } catch {}
+        try { window.turnstile.remove(widgetIdRef.current); } catch {}
       }
     };
-  }, [siteKey]);
+  }, [siteKey, invisible]);
 
-  const begin = async () => {
-    try {
-      setLoading(true);
-      setErr("");
-      // call /start ONCE with token
-      const data = await fetchJSON("/start", {}, { method: "POST", widgetId: widgetIdRef.current });
-      // reset widget so token can’t be reused
-      if (window.turnstile && widgetIdRef.current) window.turnstile.reset(widgetIdRef.current);
-      onVerified?.(data); // pass back session payload from /start
-    } catch (e) {
-      setErr(e.message || "Verification failed");
-    } finally {
-      setLoading(false);
+  // Fallback manual button (only shown if you keep visible mode and want a retry button)
+  const manualBegin = () => {
+    if (window.turnstile && widgetIdRef.current) {
+      try {
+        // For visible mode, get current token and start
+        const token = window.turnstile.getResponse(widgetIdRef.current);
+        if (token) handleToken(token);
+      } catch {}
     }
   };
 
   return (
     <div style={{ display: "grid", gap: 10, placeItems: "center" }}>
       <div ref={mountRef} className="cf-turnstile" id="ts-widget" />
+      {!invisible && (
+        <button onClick={manualBegin} disabled={loading}>
+          {loading ? "Verifying..." : "Continue"}
+        </button>
+      )}
       {err && <div style={{ color: "crimson", fontSize: 13 }}>{err}</div>}
     </div>
   );
 }
+
 
 export default function GeoDemoButton({
   label = "🎮 Try the Demo!",
