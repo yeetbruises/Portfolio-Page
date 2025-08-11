@@ -254,7 +254,7 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
     try {
       // Subsequent /start calls: no Turnstile (already authorized)
       const body = token ? { "cf-turnstile-response": token } : undefined;
-      const data = await fetchJSON(`/start`);
+      const data = await fetchJSON(`/start`, body, { method: "POST" });
       data.imageUrl = stripToDataUrl(toImg(data.imageUrl));
       setSession(data);
     } catch (e) {
