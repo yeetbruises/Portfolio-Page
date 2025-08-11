@@ -1,6 +1,7 @@
 // GeoDemoButton.jsx
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import InvisibleTurnstile from "./InvisibleTurnstile.jsx";
 
 // ---- CONFIG: your Worker-backed API subdomain ----
 const API_BASE = "https://api.coastalvinny.dev";
@@ -171,6 +172,7 @@ export default function GeoDemoButton({
 
       {stage === "open" && (
         <GeoModal
+          siteKey={siteKey}
           initialSession={initialSession}
           onClose={() => {
             setStage("idle");
@@ -183,7 +185,7 @@ export default function GeoDemoButton({
 }
 
 // ===================== Demo Modal (your original UI, intact) =====================
-function GeoModal({ onClose, initialSession = null }) {
+function GeoModal({ onClose, initialSession = null, siteKey }) {
   const [session, setSession] = useState(initialSession);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -251,6 +253,7 @@ function GeoModal({ onClose, initialSession = null }) {
     setError("");
     try {
       // Subsequent /start calls: no Turnstile (already authorized)
+      const body = token ? { "cf-turnstile-response": token } : undefined;
       const data = await fetchJSON(`/start`);
       data.imageUrl = stripToDataUrl(toImg(data.imageUrl));
       setSession(data);
@@ -287,7 +290,17 @@ function GeoModal({ onClose, initialSession = null }) {
         userId: "guest",
       });
       setResult(res);
-      setTimeout(() => startGame(), 1400); // restart round
+      // After showing result, get a fresh Turnstile token and THEN call /start
+      setTimeout(async () => {
+        try {
+          if (!tsRef.current) throw new Error("Turnstile not ready");
+          const token = await tsRef.current.execute();
+          await startGame(token);
+        } catch (e) {
+          setError(`Verification failed: ${e.message}`);
+          setBusy(false);
+        }
+      }, 1400);
     } catch (e) {
       setError(`Guess failed: ${e.message}`);
     } finally {
@@ -323,6 +336,8 @@ function GeoModal({ onClose, initialSession = null }) {
             </button>
           ))}
         </div>
+
+        <InvisibleTurnstile siteKey={siteKey} ref={tsRef} />
 
         <div className="geo-res" aria-live="polite">
           {result && (
