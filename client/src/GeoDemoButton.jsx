@@ -193,8 +193,15 @@ function GeoModal({ onClose, initialSession = null }) {
     };
   }, [onClose]);
 
-  const bust = (u) => `${u}${u.includes("?") ? "&" : "?"}t=${Date.now()}`;
-  const toImg = (path) => (path?.startsWith("http") ? path : `${imageBase}${path || ""}`);
+  // somewhere shared in your UI
+  function toImg(path) {
+    if (!path) return "";
+    if (path.startsWith("data:")) return path;        // data URL? just use it as-is
+    if (path.startsWith("http")) return path;
+    return `${path}`;     
+  }
+
+  const stripToDataUrl = s => (s || "").replace(/^[\s\S]*?(?=data:)/, "");
 
   // ====== Your requested functions (kept as-is, with minor safety tweaks) ======
   async function startGame() {
@@ -204,7 +211,7 @@ function GeoModal({ onClose, initialSession = null }) {
     try {
       // Subsequent /start calls: no Turnstile (already authorized)
       const data = await fetchJSON(`/start`);
-      data.imageUrl = bust(toImg(data.imageUrl));
+      data.imageUrl = stripToDataUrl(toImg(data.imageUrl));
       setSession(data);
     } catch (e) {
       setError(`Failed to start: ${e.message}`);
@@ -219,7 +226,7 @@ function GeoModal({ onClose, initialSession = null }) {
     setError("");
     try {
       const data = await fetchJSON(`/action`, { sessionId: session.sessionId, action });
-      data.imageUrl = bust(toImg(data.imageUrl));
+      data.imageUrl = stripToDataUrl(toImg(data.imageUrl));
       setSession((s) => ({ ...s, ...data }));
     } catch (e) {
       setError(`Action failed: ${e.message}`);
