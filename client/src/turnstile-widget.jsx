@@ -116,8 +116,8 @@ export default function TurnstileForm({
 
   return (
     <form onSubmit={handleSubmit} style={{ display: "grid", gap: 12, maxWidth: 420 }}>
-      {/* Turnstile mounts here */}
-      <div ref={widgetContainerRef} className="cf-turnstile" />
+      <div ref={widgetContainerRef} className="cf-turnstile" id="ts-widget" />
+
 
       <button type="submit" disabled={submitting || !token}>
         {submitting ? "Submitting..." : "Run demo"}
