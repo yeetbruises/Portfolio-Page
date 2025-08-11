@@ -290,26 +290,9 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
         userId: "guest",
       });
 
-      const ct = res.headers.get("content-type") || "";
-      let data;
-      try {
-        data = ct.includes("application/json") ? await res.json() : await res.text();
-      } catch {
-        data = "";
-      }
-      
       if (!res.ok) {
         // If the body is HTML (like a default 500 page), replace with a friendly message
-        const looksHtml = typeof data === "string" && /<\s*!doctype|<html/i.test(data);
-        const msg =
-          res.status >= 500
-            ? `500 Error — please try again`
-            : looksHtml
-            ? `Request failed (${res.status}). Please try again`
-            : typeof data === "string"
-            ? data
-            : JSON.stringify(data);
-  
+        const msg = `500 Error — Please try again`;
         setResult(msg)
       } else {
         setResult(res);
