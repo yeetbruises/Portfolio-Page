@@ -20,7 +20,7 @@ function useTurnstileScript() {
 
 // --- Minimal fetch helper; can include Turnstile token once via widgetId ---
 async function fetchJSON(path, body, { method = "POST", widgetId = null } = {}) {
-  const url = `${API_BASE}${path.startsWith("/") ? path : `/${path}`}`;
+  const url = `${path.startsWith("/") ? path : `/${path}`}`;
   let payload = body ?? {};
 
   if (widgetId && window.turnstile) {
