@@ -290,6 +290,7 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
         userId: "guest",
       });
 
+      const ct = res.headers.get("content-type") || "";
       let data;
       try {
         data = ct.includes("application/json") ? await res.json() : await res.text();
