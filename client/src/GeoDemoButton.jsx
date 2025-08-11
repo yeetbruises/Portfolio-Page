@@ -6,6 +6,8 @@ import { InvisibleTurnstile } from "./InvisibleTurnstile.jsx";
 // ---- CONFIG: your Worker-backed API subdomain ----
 const API_BASE = "https://api.coastalvinny.dev";
 
+const [score, setScore] = useState(0);
+
 // --- Load Turnstile script once globally (safe to call multiple times) ---
 function useTurnstileScript() {
   useEffect(() => {
@@ -190,7 +192,6 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [result, setResult] = useState(null);
-  const [score, setScore] = useState(0);
   const cardRef = useRef(null);
   const tsRef = useRef(null); // For invisible Turnstile
 
