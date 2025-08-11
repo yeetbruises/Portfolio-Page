@@ -85,27 +85,30 @@ function GeoModal({ apiPrefix = "/api", onClose }) {
     return () => prev && prev.focus?.();
   }, []);
 
-  // point all API calls to your Worker-backed subdomain
-  const API_BASE = "https://api.coastalvinny.dev"; // <- change to your real domain
+  const API_BASE = "https://api.coastalvinny.dev";
 
-  /**
-   * fetchJSON("/start", { foo: "bar" }, { method: "POST", turnstileWidgetId: "ts-widget-id" })
-   * fetchJSON("/leaderboard.json", null, { method: "GET" })
-   */
-  async function fetchJSON(path, body, opts = { method: "POST", turnstileWidgetId: "ts-widget" }) {
+  async function fetchJSON(pathOrUrl, body, opts = {}) {
     const { method = "POST", turnstileWidgetId = null } = opts;
-    const url = `${API_BASE}${path.startsWith("/") ? path : `/${path}`}`;
 
-    // build payload & (optionally) add Turnstile token
+    const url = pathOrUrl.startsWith("http")
+      ? pathOrUrl
+      : `${API_BASE}${pathOrUrl.startsWith("/") ? pathOrUrl : `/${pathOrUrl}`}`;
+
     let payload = body ?? {};
+
     if (turnstileWidgetId && window.turnstile) {
-      const token = await turnstile.getResponse(turnstileWidgetId);
+      // allow passing either a widgetId, an element, or an element id string
+      let widgetArg = turnstileWidgetId;
+      if (typeof widgetArg === "string") {
+        widgetArg = document.getElementById(widgetArg) || widgetArg;
+      }
+      const token = window.turnstile.getResponse(widgetArg);
+      if (!token) throw new Error("Please complete the Turnstile check.");
       payload = { ...payload, "cf-turnstile-response": token };
     }
 
     const res = await fetch(url, {
       method,
-      mode: "cors",
       headers: { "Content-Type": "application/json" },
       body: method === "GET" || method === "HEAD" ? undefined : JSON.stringify(payload),
     });
@@ -113,8 +116,14 @@ function GeoModal({ apiPrefix = "/api", onClose }) {
     const ct = res.headers.get("content-type") || "";
     const data = ct.includes("application/json") ? await res.json() : await res.text();
     if (!res.ok) throw new Error(typeof data === "string" ? data : JSON.stringify(data));
+
+    if (window.turnstile) {
+      window.turnstile.reset(document.getElementById("ts-widget"));
+    }
+    
     return data;
   }
+
 
 
   const bust = (u) => `${u}?t=${Date.now()}`;
@@ -125,7 +134,7 @@ function GeoModal({ apiPrefix = "/api", onClose }) {
     setResult(null);
     setError("");
     try {
-      const data = await fetchJSON(`${apiBase}/start`);
+      const data = await fetchJSON(`/start`);
       data.imageUrl = bust(toImg(data.imageUrl));
       setSession(data);
     } catch (e) {
@@ -140,7 +149,7 @@ function GeoModal({ apiPrefix = "/api", onClose }) {
     setBusy(true);
     setError("");
     try {
-      const data = await fetchJSON(`${apiBase}/action`, { sessionId: session.sessionId, action });
+      const data = await fetchJSON(`/action`, { sessionId: session.sessionId, action });
       data.imageUrl = bust(toImg(data.imageUrl));
       setSession((s) => ({ ...s, ...data }));
     } catch (e) {
@@ -155,7 +164,7 @@ function GeoModal({ apiPrefix = "/api", onClose }) {
     setBusy(true);
     setError("");
     try {
-      const res = await fetchJSON(`${apiBase}/guess`, {
+      const res = await fetchJSON(`/guess`, {
         sessionId: session.sessionId,
         pick: pickIndex,
         userId: "guest",
