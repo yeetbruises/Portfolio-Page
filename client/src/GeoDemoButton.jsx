@@ -138,11 +138,10 @@ function TurnstileGate({ siteKey, onVerified, invisible = false }) {
   );
 }
 
-const SITE_KEY = process.env.TURNSTILE_SITE_KEY;
 
 export default function GeoDemoButton({
   label = "🎮 Try the Demo!",
-  siteKey = SITE_KEY,
+  siteKey = process.env.TURNSTILE_SITE_KEY,
 }) {
   const [stage, setStage] = useState("idle"); // 'idle' | 'gate' | 'open'
   const [initialSession, setInitialSession] = useState(null);
