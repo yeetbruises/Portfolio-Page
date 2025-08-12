@@ -206,7 +206,7 @@ function App() {
                 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet" />
                 <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet" />
                 <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet" />      
-                <title>Portfolio Page</title>
+                <title>Portfolio Page Test</title>
                 <link rel="stylesheet" href="./style.css" />
             </Helmet>
             <main className='viewportRatio'>
