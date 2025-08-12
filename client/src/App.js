@@ -425,7 +425,7 @@ function App() {
                                                     {({ hovered }) => (
                                                         <>
                                                             <div style={{ textAlign: 'left' }}>
-                                                                <img src="/images/creativeinquirylogo.png" alt="Creative Inquiry Program Logo" className="card-logo" style={{ width: '14vw', height: 'auto' }} />
+                                                                <img src="/images/creativeinquirylogo.png" alt="Creative Inquiry Program Logo" className="card-logo" style={{ width: '200px', height: 'auto' }} />
                                                             </div>
                                                             <div className="card-info work" style={{ justifyContent: "space-between", display: 'flex', gap: '0.9rem' }}>
                                                                 <h2 style={{ color: hovered ? "lime" : "white"}} className={`${theme}`}>Undergraduate Researcher with Watt AI</h2>
