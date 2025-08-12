@@ -638,6 +638,48 @@ h1.light {
 
 
 
+/* Smooth transition */
+.hoveredGTLabel {
+  background-color: #B3A369;
+  transition: background-color .2s ease;
+  border-radius: 8px; 
+
+  background: linear-gradient(
+    0deg,
+    rgba(179, 163, 105, 0.72) 0%,
+    rgba(179, 163, 105, 0.68) 0,
+    rgba(179, 163, 105, 0.145) 14%,
+    rgba(179, 163, 105, 0) 33%
+  ),
+  linear-gradient(
+    180deg,
+    rgba(179, 163, 105, 0.72) 0%,
+    rgba(179, 163, 105, 0.68) 0,
+    rgba(179, 163, 105, 0.145) 14%,
+    rgba(179, 163, 105, 0) 33%
+  );
+
+  
+  border: 1px solid white;
+  border-radius: 20px;
+  right: 25px;
+  position: static;
+  color: white;
+
+  white-space: nowrap;     
+  display: inline-flex;   
+  align-items: center;    
+  gap: 0.5rem;        
+  padding: 0.3rem 0.5rem;  
+  max-width: none;  
+  
+  height: min-content;
+}
+
+/* Option B: dynamic lighten using color-mix (modern browsers) */
+.hoveredGTLabel:hover {
+  background-color: color-mix(in srgb, #ccba79 80%, white);
+}
 
 
 

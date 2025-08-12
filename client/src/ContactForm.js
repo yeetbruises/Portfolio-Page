@@ -46,7 +46,7 @@ export default function ContactSection() {
         {/* Keep your existing contact info cards unchanged */}
         <div className="info-cards" style={{ paddingLeft: '25px'}}>
           <div className="info-card" style={{ display: 'contents' }}>
-            <h2>Contact Info</h2>
+            <h2>Let's Connect</h2>
             <br />
             <p><strong>Email</strong><br /><a style={{color: '#0FFF50'}} href="vsaraf6@gatech.edu">vsaraf6@gatech.edu</a></p>
             <br />
@@ -56,7 +56,6 @@ export default function ContactSection() {
           </div>
           <br />
           <div className="info-card" style={{ display: 'contents' }}>
-            <h2>Let's Connect</h2>
             <div className="social-icons">
               <i className="fab fa-linkedin" />
               <i className="fab fa-github" />

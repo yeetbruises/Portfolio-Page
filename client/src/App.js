@@ -11,6 +11,7 @@ import { Arrow } from "./Arrow.jsx";
 import { ArrowUp } from "./ArrowUp.jsx";
 import ContactSection from './ContactForm.js';
 import GeoDemoButton from "./GeoDemoButton";
+import VSWordMark from './VSWordMark.jsx';
 
 //inspo https://port-folio-nine-lemon-27.vercel.app/
 
@@ -206,14 +207,18 @@ function App() {
                 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet" />
                 <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet" />
                 <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet" />      
-                <title>Portfolio Page Test</title>
+                <title>Welcome!</title>
                 <link rel="stylesheet" href="./style.css" />
             </Helmet>
             <main className='viewportRatio'>
                 <section className={`glass ${theme}`} style={{border: '0.2px solid skyblue', height: '360px'}}>
                     <div className={`dashboard ${theme}`}>
                         <div className="user">
-                            <img src="images/favicon.png" />
+                            <VSWordMark size={50} stroke={2} />
+                            <br/>
+                            <div id="workedDates" style={{marginTop: '20px'}}>
+                                <p> MSCS @ Georgia Tech </p>
+                            </div>
                         </div>
                         <NavBar prop={classes} />
                         
@@ -281,9 +286,17 @@ function App() {
                                                         </div>
                                                     </div>
                                                     <p className={`${theme}`}></p>
-                                                    <p style={{color: "lime"}}><b>GPA: x.xx</b></p>
-                                                    <p>Incoming Masters student at Georgia Tech for Computer Science!</p>
                                                     <br/>
+                                                    <p style={{color: "lime"}}><b>GPA: x.xx</b></p>
+                                                    <br/>
+                                                    <p>Incoming Masters student at Georgia Tech for Computer Science!</p>
+                                                    <div class="hoveredGTLabel" style={{marginTop: '20px'}}>
+                                                        <p> 
+                                                            <a href="https://sites.gatech.edu/vineet/"  target="_blank"> 
+                                                                <b style={{color: 'white'}}> Check Out My Georgia Tech Website </b>
+                                                            </a>
+                                                        </p> 
+                                                    </div>
                                                     <div className="showcase"></div>
                                                 </div>
                                             </div>
@@ -299,11 +312,13 @@ function App() {
                                                         </div>
                                                     </div>
                                                     <p className={`${theme}`}></p>
+                                                    <br/>
                                                     <p style={{color: "lime"}}><b>GPA: 3.55</b> — (1x) President’s List, (4x) Dean’s List</p>
+                                                    <br/>
                                                     <p><b>Academic Honors:</b> UPE–Upsilon Pi Epsilon | Palmetto Fellows Scholarship, SC Life Scholarship</p>
+                                                    <br/>
                                                     <p><b>Relevant Coursework:</b> Reinforcement Learning, Linear Algebra, Machine Learning, Data Science, Networking, Software
                                                     Engineering, Databases, Data Structures, Computer Architecture, Operating Systems, Differential Equations</p>
-                                                    <br/>
                                                     <div className="showcase">
                                                     </div>
                                                 </div>
