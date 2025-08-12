@@ -347,8 +347,8 @@ function App() {
                                                 <HoverEffect theme={theme}>
                                                     {({ hovered }) => (
                                                         <>
-                                                            <div style={{ textAlign: 'center' }}>
-                                                                <img src="/images/LPL.png" alt="LPL Financial Logo" style={{ width: '45%' }} />
+                                                            <div style={{ textAlign: 'left' }}>
+                                                                <img src="/images/LPL.png" alt="LPL Financial Logo" style={{ width: '14vw', height: 'auto' }} />
                                                             </div>
                                                             <div className="card-info work" style={{ justifyContent: "space-between", display: 'flex', gap: '0.9rem' }}>
                                                                 <h2 style={{ color: hovered ? "lime" : "white"}} className={`${theme}`}>Software Engineering Intern</h2>
@@ -371,8 +371,8 @@ function App() {
                                                 <HoverEffect theme={theme}>
                                                     {({ hovered }) => (
                                                         <>
-                                                            <div style={{ textAlign: 'center' }}>
-                                                                <img src="/images/arc.png" alt="Arccos Golf Logo" style={{ width: '45%' }} />
+                                                            <div style={{ textAlign: 'left' }}>
+                                                                <img src="/images/arc.png" alt="Arccos Golf Logo" style={{ width: '14vw', height: 'auto' }} />
                                                             </div>
                                                             <div className="card-info work" style={{ justifyContent: "space-between", display: 'flex', gap: '0.9rem'  }}>
                                                                 <h2 style={{ color: hovered ? "lime" : "white"}} className={`${theme}`}>Arccos Golf - University Senior Design Capstone Program</h2>
@@ -395,8 +395,8 @@ function App() {
                                                 <HoverEffect theme={theme}>
                                                     {({ hovered }) => (
                                                         <>
-                                                            <div style={{ textAlign: 'center' }}>
-                                                                <img src="/images/jrautologo.png" alt="JR Automation" />
+                                                            <div style={{ textAlign: 'left' }}>
+                                                                <img src="/images/jrautologo.png" alt="JR Automation" style={{ width: '14vw', height: 'auto' }} />
                                                             </div>
                                                             <div className="card-info work" style={{ justifyContent: "space-between", display: 'flex', gap: '0.9rem'}}>
                                                                 
@@ -424,8 +424,8 @@ function App() {
                                                 <HoverEffect theme={theme}>
                                                     {({ hovered }) => (
                                                         <>
-                                                            <div style={{ textAlign: 'center' }}>
-                                                                <img src="/images/creativeinquirylogo.png" alt="Creative Inquiry Program Logo" className="card-logo" />
+                                                            <div style={{ textAlign: 'left' }}>
+                                                                <img src="/images/creativeinquirylogo.png" alt="Creative Inquiry Program Logo" className="card-logo" style={{ width: '14vw', height: 'auto' }} />
                                                             </div>
                                                             <div className="card-info work" style={{ justifyContent: "space-between", display: 'flex', gap: '0.9rem' }}>
                                                                 <h2 style={{ color: hovered ? "lime" : "white"}} className={`${theme}`}>Undergraduate Researcher with Watt AI</h2>

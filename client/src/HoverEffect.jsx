@@ -42,6 +42,7 @@ export default function HoverEffect({
                     transition: "background 0.4s ease-in-out, border 0.4s ease-in-out",
                     position: "relative",
                     borderRadius: "12px",
+                    width: "100%",
                     ...customStyle,
                 }}
             >
@@ -86,6 +87,7 @@ export default function HoverEffect({
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
                     overflow: "hidden",
+                    width: "100%",
                     border: "1px solid white"
                 }}
             >
