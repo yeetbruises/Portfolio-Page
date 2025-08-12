@@ -257,10 +257,10 @@ function App() {
                                                         
                                                         <div className='tools' style={{ marginTop: '10px' }}>
                                                             <a href='https://www.linkedin.com/in/vineet-saraf'>
-                                                                <img src="/images/badges/linkedin.svg" />
+                                                                <img src="/images/badges/linkedin.svg" style={{width: '100px', height: 'auto'}} />
                                                             </a>
                                                             <a href='https://github.com/yeetbruises'>
-                                                                <img src="/images/badges/github.svg" />
+                                                                <img src="/images/badges/github.svg" style={{width: '100px', height: 'auto'}} />
                                                             </a>
                                                         </div>
                                                     </div>
