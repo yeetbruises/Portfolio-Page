@@ -217,7 +217,11 @@ function App() {
                             <VSWordMark size={50} stroke={2} />
                             <br/>
                             <div id="workedDates" style={{marginTop: '20px'}}>
-                                <p> MSCS @ Georgia Tech </p>
+                                <p>
+                                    <a href="https://sites.gatech.edu/vineet/" target='_blank'> 
+                                        MSCS @ Georgia Tech
+                                    </a>
+                                </p>
                             </div>
                         </div>
                         <NavBar prop={classes} />
