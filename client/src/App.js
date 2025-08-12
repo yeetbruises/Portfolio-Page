@@ -348,7 +348,7 @@ function App() {
                                                     {({ hovered }) => (
                                                         <>
                                                             <div style={{ textAlign: 'left' }}>
-                                                                <img src="/images/LPL.png" alt="LPL Financial Logo" style={{ width: '14vw', height: 'auto' }} />
+                                                                <img src="/images/LPL.png" alt="LPL Financial Logo" style={{ minWidth: '200px', width: '10vw', height: 'auto' }} />
                                                             </div>
                                                             <div className="card-info work" style={{ justifyContent: "space-between", display: 'flex', gap: '0.9rem' }}>
                                                                 <h2 style={{ color: hovered ? "lime" : "white"}} className={`${theme}`}>Software Engineering Intern</h2>
@@ -372,7 +372,7 @@ function App() {
                                                     {({ hovered }) => (
                                                         <>
                                                             <div style={{ textAlign: 'left' }}>
-                                                                <img src="/images/arc.png" alt="Arccos Golf Logo" style={{ width: '14vw', height: 'auto' }} />
+                                                                <img src="/images/arc.png" alt="Arccos Golf Logo" style={{ minWidth: '200px', width: '10vw', height: 'auto' }} />
                                                             </div>
                                                             <div className="card-info work" style={{ justifyContent: "space-between", display: 'flex', gap: '0.9rem'  }}>
                                                                 <h2 style={{ color: hovered ? "lime" : "white"}} className={`${theme}`}>Arccos Golf - University Senior Design Capstone Program</h2>
@@ -396,7 +396,7 @@ function App() {
                                                     {({ hovered }) => (
                                                         <>
                                                             <div style={{ textAlign: 'left' }}>
-                                                                <img src="/images/jrautologo.png" alt="JR Automation" style={{ width: '14vw', height: 'auto' }} />
+                                                                <img src="/images/jrautologo.png" alt="JR Automation" style={{ minWidth: '200px', width: '10vw', height: 'auto' }} />
                                                             </div>
                                                             <div className="card-info work" style={{ justifyContent: "space-between", display: 'flex', gap: '0.9rem'}}>
                                                                 
