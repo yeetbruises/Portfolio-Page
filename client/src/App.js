@@ -472,7 +472,9 @@ function App() {
                                                             <a style={{marginTop: "auto", marginBottom: "auto"}} class='repolink' href="https://github.com/yeetbruises/Hurricane-Helene-Power-Outage-Visual/tree/main"  target="_blank"> 
                                                                 Click for Repo  
                                                             </a>
-                                                            <button id="HurricaneDemo" className="send-button" style={{borderRadius: "10px", margin: "auto", paddingUp: "5px", paddingDown: "5px", paddingLeft: "10px", paddingRight: "10px"}}> 🎮 Try the Demo! </button>
+                                                            <button id="HurricaneDemo" className="send-button" style={{borderRadius: "10px", margin: "auto", paddingUp: "5px", paddingDown: "5px", paddingLeft: "10px", paddingRight: "10px"}}> 
+                                                                🔍 Check It Out!    
+                                                            </button>
                                                         </p>
                                                         <br/>
                                                         <div className='tools'>
