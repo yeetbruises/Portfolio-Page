@@ -20,6 +20,33 @@ export default function resized() {
             //document.querySelector("main").style.maxWidth = `${window.innerWidth}px`;
         }
 
+        if (window.innerWidth < 1200) {
+            if (document.querySelector("#mainpic") && document.querySelector("#mainpic2")) {
+                document.querySelector("#mainpic").style.display = 'block';
+                document.querySelector("#mainpic2").style.display = 'none';
+            } 
+            if (document.querySelector('.intro')){
+                document.querySelector('.intro').style.display = "flex";
+                document.querySelector('.intro').style.flexDirection = "column";
+            }
+            if (document.querySelector('#nameDiv')){
+                document.querySelector('#nameDiv').style.margin = "auto auto auto auto";
+            }
+        }
+        if (window.innerWidth > 1200) {
+            if (document.querySelector("#mainpic") && document.querySelector("#mainpic2")) {
+                document.querySelector("#mainpic").style.display = 'none';
+                document.querySelector("#mainpic2").style.display = 'block';
+            } 
+            if (document.querySelector('.intro')){
+                document.querySelector('.intro').style.display = "flex";
+                document.querySelector('.intro').style.flexDirection = "row";
+            }
+            if (document.querySelector('#nameDiv')){
+                document.querySelector('#nameDiv').style.margin = "auto auto auto 3em";
+            }
+        }
+
         // Check if the screen is in portrait mode
         if (isPortrait() && dashboard && document.querySelector('#slider-parent')) {
             // MOBILE VIEW 
@@ -37,10 +64,21 @@ export default function resized() {
             dashboard.style.flexDirection = 'row';
             dashboard.style.paddingTop = '0px';
             dashboard.style.flex = '0.8 1';
+            dashboard.style.maxHeight = '60px';
+
 
             // make profile pic go on top
             if (document.querySelector('.intro')){
+                document.querySelector('.intro').style.display = "flex";
                 document.querySelector('.intro').style.flexDirection = "column";
+            }
+            if (document.querySelector("#mainpic") && document.querySelector("#mainpic2")) {
+                document.querySelector("#mainpic").style.display = 'block';
+                document.querySelector("#mainpic2").style.display = 'none';
+            }  
+
+            if (document.querySelector('#t1')){
+                document.querySelector('#t1').style.width = "100%";
             }
 
             // Changing introduction slide
@@ -61,9 +99,8 @@ export default function resized() {
             slider.style.width = '25%';
             var bar = document.querySelector('#bar');
             bar.style.height = '100%';
-            dashboard.style.maxHeight = '100px';
             document.querySelector('#slider-parent').style.minHeight = '0em'; //10em
-            document.querySelector('#slider-parent').style.height = '100px';
+            document.querySelector('#slider-parent').style.height = '60px';
             if (document.querySelector('.links')){
                 document.querySelector('.links').style.alignItems = 'center';
                 document.querySelector('.links').style.flexDirection = 'row';
@@ -149,12 +186,24 @@ export default function resized() {
                 element.style.display = 'block';
             });
 
-            document.querySelectorAll('p').forEach(element => {
+            /*document.querySelectorAll('p').forEach(element => {
                 element.style.fontSize = '20px';
+            });*/
+
+            document.querySelectorAll('.social-link svg').forEach(element => {
+                element.style.width = '2.5em';
+                element.style.height = '2.5em';
             });
 
             document.querySelectorAll('#workedDates').forEach(element => {
                 element.style.zoom = '0.8';
+            });
+
+            document.querySelectorAll('p').forEach(element => {
+                element.style.fontSize = "clamp(16px, 5dvw, 25px)";
+            });
+            document.querySelectorAll('h2').forEach(element => {
+                element.style.fontSize = "30px";
             });
 
             if (document.querySelector('#contactSection')) {
@@ -218,13 +267,29 @@ export default function resized() {
                 element.style.visibility = 'visible';
             });
 
-            // make profile pic go on top
+            document.querySelectorAll('p').forEach(element => {
+                element.style.fontSize = "clamp(10px, 1.5dvw, 15px)";
+            });
+            document.querySelectorAll('h2').forEach(element => {
+                element.style.fontSize = "25px";
+            });
+
+            // make profile pic go on the side
             if (document.querySelector('.intro')){
+                document.querySelector('.intro').style.display = "flex";
                 document.querySelector('.intro').style.flexDirection = "row";
             }
+            if (document.querySelector("#mainpic") && document.querySelector("#mainpic2")) {
+                document.querySelector("#mainpic").style.display = 'none';
+                document.querySelector("#mainpic2").style.display = 'block';
+            }  
 
             document.querySelector('.glass').style.width = '83%';
             document.querySelector('.glass').style.height = '360px';
+
+            if (document.querySelector('#t1')){
+                document.querySelector('#t1').style.width = "75%";
+            }
 
             // Nav menu
             var slider = document.querySelector('.slider');
@@ -251,13 +316,18 @@ export default function resized() {
                 document.querySelector("main").style.alignItems = 'center';
             }
 
+            document.querySelectorAll('.social-link svg').forEach(element => {
+                element.style.width = '1em';
+                element.style.height = '1em';
+            });
+
             document.querySelectorAll('.card-info .work').forEach(element => {
                 element.style.display = 'flex';
             });
 
-            document.querySelectorAll('p').forEach(element => {
+            /*document.querySelectorAll('p').forEach(element => {
                 element.style.fontSize = '15px';
-            });
+            });*/
 
             if (document.querySelector('.card-info')) {
                 document.querySelector('.card-info').style.margin = 'auto';
@@ -350,9 +420,6 @@ export default function resized() {
                 document.querySelector('#div0').style.zoom = '1';
             }
 
-            document.querySelectorAll('p').forEach(element => {
-                element.style.fontSize = '15px';
-            });
 
             document.querySelectorAll('#workedDates').forEach(element => {
                 element.style.zoom = '1';

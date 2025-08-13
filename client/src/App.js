@@ -216,24 +216,20 @@ function App() {
                         <div className="user">
                             <VSWordMark size={50} stroke={2} />
                             <br/>
-                            <div
-                                id="workedDates"
-                                style={{ width: '80%', marginTop: '20px', containerType: 'inline-size' }}
-                                >
+                            <div id="workedDates" style={{ width: '80%', height: 'auto', marginTop: '20px', containerType: 'inline-size' }}>
                                 <p style={{ margin: 0 }}>
                                     <a
-                                    href="https://sites.gatech.edu/vineet/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={{
-                                        display: 'inline-block',
-                                        maxWidth: '100%',
-                                        fontSize: 'clamp(10px, 6cqw, 20px)', // 1cqw = 1% of container width
-                                        lineHeight: 1,
-                                        whiteSpace: 'nowrap',
-                                        overflow: 'hidden',
-                                        textOverflow: 'ellipsis' // trims if it’s still too long
-                                    }}
+                                        href="https://sites.gatech.edu/vineet/"
+                                        rel="noopener noreferrer"
+                                        style={{
+                                            display: 'inline-block',
+                                            maxWidth: '100%',
+                                            fontSize: 'clamp(10px, 6cqw, 20px)', // 1cqw = 1% of container width
+                                            lineHeight: 1,
+                                            whiteSpace: 'normal',
+                                            overflow: 'hidden',
+                                            textOverflow: 'ellipsis' // trims if it’s still too long
+                                        }}
                                     >
                                     MSCS @ Georgia Tech
                                     </a>
@@ -252,14 +248,15 @@ function App() {
                                 <img src="./images/testtree2.png" style={{opacity: "0.1", width: "auto", height: "2000px", marginTop: "4000px", borderRadius: "10px", position: "absolute", zIndex: "-1", left: "0"}}/>
                             </div>
                             
-                            <div id="t1" style={{ width: '75%', margin: 'auto' }} ref={myRef1}>
+                            <div id="t1" style={{margin: 'auto', width: "75%" }} ref={myRef1}>
                                 <div className="cards" style={{ margin: 'auto', alignItems: 'center', display: 'flex', justifyContent: 'center'}}>
 
                                     <HoverEffect theme={theme} id="intoCard">
                                         {({ hovered }) => (
                                             <>
-                                                <div className='intro' style={{ display: 'inline-flex', margin: 'auto' }}>
-                                                    <img style={{alignSelf: "center"}} className='rotate-2' src="images/IMG_4549.webp" />
+                                                <div className='intro' style={{flexDirection: 'row', display: 'flex'}}>
+                                                    <img id="mainpic" style={{margin: 'auto', width: '100%', display: 'none'}} src="images/IMG_4549.jpg" />
+                                                    <img id="mainpic2" style={{display: 'block', margin: 'auto'}} src="images/IMG_4549_portrait.webp" />
                                                     <div id='nameDiv' style={{ margin: 'auto', marginLeft: '3em' }}>
                                                         <h1 style={{ color: hovered ? "lime" : "white", paddingBottom: '10px' }} className={`${theme}`}>Vineet Saraf</h1>
                                                         <p className={`${theme}`}>
@@ -292,7 +289,7 @@ function App() {
                                                                 </svg>
                                                                 </a>
                                                             </li>
-
+                                                            <br /><br /><br />
                                                             <li>
                                                                 <a href="https://github.com/yeetbruises"
                                                                     rel="noopener noreferrer"
@@ -303,7 +300,7 @@ function App() {
                                                                 </svg>
                                                                 </a>
                                                             </li>
-
+                                                            <br /><br /><br />
                                                             <li>
                                                                 <a href="#t5"
                                                                     rel="noopener noreferrer"
@@ -314,8 +311,7 @@ function App() {
                                                                 </svg>
                                                                 </a>
                                                             </li>
-                                                            </ul>
-
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </>
@@ -348,11 +344,9 @@ function App() {
                                                     <br/>
                                                     <p>Incoming Masters student at Georgia Tech for Computer Science!</p>
                                                     <div class="hoveredGTLabel" style={{marginTop: '20px'}}>
-                                                        <p> 
-                                                            <a href="https://sites.gatech.edu/vineet/"  target="_blank"> 
-                                                                <b style={{color: 'white'}}> Check Out My Georgia Tech Website </b>
-                                                            </a>
-                                                        </p> 
+                                                        <a href="https://sites.gatech.edu/vineet/"  target="_blank"> 
+                                                            <b style={{color: 'white'}}> Check Out My Georgia Tech Website </b>
+                                                        </a>
                                                     </div>
                                                     <div className="showcase"></div>
                                                 </div>
@@ -555,10 +549,6 @@ function App() {
                                                             I successfully published the game and had it merged into an existing Discord bot that 
                                                             services over 2000 users on a university server. Additionally, I created GeoJSON maps 
                                                             in QGIS software, which were used to fine-tune potential player locations within the game.
-                                                        </p>
-                                                        <br/>
-                                                        <p>
-                                                            Coming soon, I will be adding a live demo of the game to this site!
                                                         </p>
                                                         <br/>
                                                         <p className={`${theme}`} style={{display: "flex"}}>
