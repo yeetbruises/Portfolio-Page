@@ -216,13 +216,30 @@ function App() {
                         <div className="user">
                             <VSWordMark size={50} stroke={2} />
                             <br/>
-                            <div id="workedDates" style={{marginTop: '20px'}}>
-                                <p>
-                                    <a href="https://sites.gatech.edu/vineet/" target='_blank'> 
+                            <div
+                                id="workedDates"
+                                style={{ width: '80%', marginTop: '20px', containerType: 'inline-size' }}
+                                >
+                                <p style={{ margin: 0 }}>
+                                    <a
+                                    href="https://sites.gatech.edu/vineet/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{
+                                        display: 'inline-block',
+                                        maxWidth: '100%',
+                                        fontSize: 'clamp(10px, 6cqw, 20px)', // 1cqw = 1% of container width
+                                        lineHeight: 1,
+                                        whiteSpace: 'nowrap',
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis' // trims if it’s still too long
+                                    }}
+                                    >
                                         MSCS @ Georgia Tech
                                     </a>
                                 </p>
                             </div>
+
                         </div>
                         <NavBar prop={classes} />
                         
