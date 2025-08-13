@@ -26,7 +26,7 @@ export default function ContactSection() {
 
   return (
     <section id="contactSection">
-      <h1 style={{ color: 'white', fontFamily: 'Rajdhani, sans-serif', fontWeight: '900' }}>Contact</h1>
+      <h1 id="t5" style={{ color: 'white', fontFamily: 'Rajdhani, sans-serif', fontWeight: '900' }}>Contact</h1>
       <div className="contact-container">
         <form ref={form} onSubmit={sendEmail} className="" style={{ maxWidth: '500px' }}>
           <h2>Send a Message</h2>
