@@ -139,7 +139,7 @@ function TurnstileGate({ siteKey, onVerified, invisible = false }) {
 }
 
 export default function GeoDemoButton({
-  label = "🎮 Try the Demo!",
+  label = "🎮 Try the In-Browser Demo!",
   siteKey = "0x4AAAAAABqY_gwKPS6vDh26",
 }) {
   const [stage, setStage] = useState("idle"); // 'idle' | 'gate' | 'open'
@@ -150,7 +150,7 @@ export default function GeoDemoButton({
       {stage === "idle" && (
         <button
           className="send-button"
-          style={{ borderRadius: 10, margin: "auto" }}
+          style={{ borderRadius: "10px", margin: "auto", paddingUp: "5px", paddingDown: "5px", paddingLeft: "10px", paddingRight: "10px" }}
           onClick={() => setStage("gate")}
         >
           {label}
