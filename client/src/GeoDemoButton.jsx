@@ -206,8 +206,9 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
       const style = document.createElement("style");
       style.id = id;
       style.textContent = `
-      .geo-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:9999}
-      .geo-card{width:min(860px,92vw);background:#111827;color:#e5e7eb;border:1px solid #1f2937;border-radius:14px;box-shadow:0 10px 50px rgba(0,0,0,.4);padding:16px;position:relative}
+      .background{width:100%;height:100%;backgroundColor:rbga(0, 0, 0, 0.8)}
+      .geo-overlay{width:fit-content;height:fit-content;margin:auto;position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:9999}
+      .geo-card{width:min(860px,90dvh);background:#111827;color:#e5e7eb;border:1px solid #1f2937;border-radius:14px;box-shadow:0 10px 50px rgba(0,0,0,.4);padding:16px;position:relative}
       .geo-close{position:absolute;right:10px;top:10px;border:1px solid #374151;background:#111827;color:#9ca3af;border-radius:8px;padding:6px 10px;cursor:pointer}
       .geo-h{margin:0 0 8px 0;font:600 18px/1.2 system-ui,-apple-system,Segoe UI,Roboto}
       .geo-meta{display:flex;gap:8px;align-items:center;opacity:.85;margin:6px 0 10px}
@@ -314,49 +315,52 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
 
   // ===================== UI (markup, intact) =====================
   const body = (
-    <div className="geo-overlay" role="dialog" aria-modal="true" onClick={onClose}>
-      <div className="geo-card" ref={cardRef} tabIndex={-1} onClick={(e) => e.stopPropagation()} aria-label="Geo Demo">
-        <button className="geo-close" onClick={onClose} title="Close">✕</button>
-        <h3 className="geo-h">Geo Bot — Live Demo</h3>
-        <div className="geo-meta">
-          <span className="geo-pill">Web Demo</span>
-          <span className="geo-pill">Moves: {session ? session.movesLeft : "—"}</span>
-          <span className="geo-pill">Score: {score} </span>
-          {busy && <span className="geo-pill">Working…</span>}
-        </div>
+    <>
+      <div className="background"></div>
+      <div className="geo-overlay" role="dialog" aria-modal="true" onClick={onClose}>
+        <div className="geo-card" ref={cardRef} tabIndex={-1} onClick={(e) => e.stopPropagation()} aria-label="Geo Demo">
+          <button className="geo-close" onClick={onClose} title="Close">✕</button>
+          <h3 className="geo-h">Geo Bot — Live Demo</h3>
+          <div className="geo-meta">
+            <span className="geo-pill">Web Demo</span>
+            <span className="geo-pill">Moves: {session ? session.movesLeft : "—"}</span>
+            <span className="geo-pill">Score: {score} </span>
+            {busy && <span className="geo-pill">Working…</span>}
+          </div>
 
-        <img className="geo-img" src={session?.imageUrl || ""} alt="Street View" draggable={false} />
+          <img className="geo-img" src={session?.imageUrl || ""} alt="Street View" draggable={false} />
 
-        <div className="geo-row">
-          <button className="geo-btn" disabled={busy} onClick={() => act("left")}>⬅️ Left</button>
-          <button className="geo-btn" disabled={busy} onClick={() => act("right")}>➡️ Right</button>
-          <button className="geo-btn" disabled={busy} onClick={() => act("zoom_in")}>🔎 Zoom In</button>
-          <button className="geo-btn" disabled={busy} onClick={() => act("zoom_out")}>🔭 Zoom Out</button>
-        </div>
+          <div className="geo-row">
+            <button className="geo-btn" disabled={busy} onClick={() => act("left")}>⬅️ Left</button>
+            <button className="geo-btn" disabled={busy} onClick={() => act("right")}>➡️ Right</button>
+            <button className="geo-btn" disabled={busy} onClick={() => act("zoom_in")}>🔎 Zoom In</button>
+            <button className="geo-btn" disabled={busy} onClick={() => act("zoom_out")}>🔭 Zoom Out</button>
+          </div>
 
-        <div className="geo-row">
-          {(session?.options || []).map((name, i) => (
-            <button key={i} className="geo-btn geo-country" disabled={busy} onClick={() => guess(i)}>
-              {name}
-            </button>
-          ))}
-        </div>
- 
-        <InvisibleTurnstile siteKey={siteKey} ref={tsRef} />
+          <div className="geo-row">
+            {(session?.options || []).map((name, i) => (
+              <button key={i} className="geo-btn geo-country" disabled={busy} onClick={() => guess(i)}>
+                {name}
+              </button>
+            ))}
+          </div>
+  
+          <InvisibleTurnstile siteKey={siteKey} ref={tsRef} />
 
-        <div className="geo-res" aria-live="polite">
-          {result && (
-            <>
-              <span className={`geo-pill ${result.result === "correct" ? "geo-ok" : "geo-bad"}`}>
-                {result.result === "correct" ? "Correct!" : "Wrong :("}
-              </span>
-              &nbsp; Answer: {result.revealLabel} · +{result.points} pts
-            </>
-          )}
-          {error && <div style={{ marginTop: 6 }}>{error}</div>}
+          <div className="geo-res" aria-live="polite">
+            {result && (
+              <>
+                <span className={`geo-pill ${result.result === "correct" ? "geo-ok" : "geo-bad"}`}>
+                  {result.result === "correct" ? "Correct!" : "Wrong :("}
+                </span>
+                &nbsp; Answer: {result.revealLabel} · +{result.points} pts
+              </>
+            )}
+            {error && <div style={{ marginTop: 6 }}>{error}</div>}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 
   return createPortal(body, document.body);
