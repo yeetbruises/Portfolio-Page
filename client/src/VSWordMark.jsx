@@ -14,7 +14,7 @@ export default function VSWordMark({
           href="https://fonts.googleapis.com/css2?family=Anton:wght@400&display=swap"
           rel="stylesheet"
         />
-        <div style="display: flex; flex-direction: column; padding: 10px;">
+        <div style={{display: "flex", flexDirection: "column", padding: "10px"}}>
             <span className="solid">VINEET</span>
             <span className="outlined">SARAF</span>
         </div>
