@@ -19,7 +19,7 @@ import GeoAccessGate from "./GeoAccessGate"; // <-- add this
 
 //inspo https://port-folio-nine-lemon-27.vercel.app/
 
-function App() {
+function Home() {
     //const [hovered, setHovered] = useState(false);
 
     const { ref: myRef1, inView: obj, entry} = useInView();
@@ -199,6 +199,7 @@ function App() {
 
 
     return (
+    <>
         <div className={`App ${theme}`}>
             
             <Helmet>
@@ -641,7 +642,41 @@ function App() {
                                 </div> 
                                 <br/><br/>
                                 <ContactSection />
-                                <div id="bumpermain" style={{height: "100px"}}></div>
+                                <br/><br/>
+                                <div className="cards" id="projects">
+                                    <HoverEffect theme={theme} style={{padding: '0rem'}}>
+                                        {({ hovered }) => (
+                                            <>
+                                                <div className="showcase" style={{position: "absolute"}}>
+                                                    <img src="/images/bgimg.jpg" />
+                                                </div>
+                                                <div className="card-info">
+                                                    <h2 style={{ fontSize: "34px", color: hovered ? "lime" : "black"}} className={`${theme}`}>
+                                                        Photography
+                                                    </h2>
+                                                    <p className={`${theme}`} style={{color:"black"}}>
+                                                        Check out my photography!
+                                                    </p>
+                                                    <br/>
+                                                    <a href="/photography" target="_blank" rel="noopener noreferrer" style={{textDecoration: "none"}}>
+                                                        <p className={`${theme}`} style={{display: "flex"}}>
+                                                            <button id="HurricaneDemo" className="send-button" 
+                                                                style={{ borderRadius: "10px", 
+                                                                        margin: "auto", 
+                                                                        paddingUp: "5px", 
+                                                                        paddingDown: "5px", 
+                                                                        paddingLeft: "10px", 
+                                                                        paddingRight: "10px"}}> 
+                                                                🔍 Check It Out!    
+                                                            </button>
+                                                        </p>
+                                                    </a>
+                                                </div>
+                                            </>
+                                        )}
+                                    </HoverEffect>  
+                                </div>  
+                                <br/>
                             </div> 
                             <br/>    
                             <img id="phonepacman" src='./images/pacman.gif' style={{display: 'none', height: "auto", width: "99%", margin: "1px", backgroundColor: "black", borderRadius: "10px"}}/>       
@@ -667,7 +702,21 @@ function App() {
 
             <div className={`circle2 ${theme}`}></div>
         </div>
+    </>
     )
+}
+
+export function App() {
+    return (
+      <GeoAccessGate>
+            <BrowserRouter>
+                <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/photography" element={<Photography />} />
+                </Routes>
+            </BrowserRouter>
+      </GeoAccessGate>
+    );
 }
 
 export default App;
