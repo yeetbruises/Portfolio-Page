@@ -708,14 +708,14 @@ function Home() {
 
 export function App() {
     return (
-      // disabled for debug<Gate>
+      <Gate>
             <BrowserRouter>
                 <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/photography" element={<Photography />} />
                 </Routes>
             </BrowserRouter>
-      // </Gate>
+      </Gate>
     );
   }
 

@@ -26,6 +26,35 @@ const ALBUMS = [
   { id: "People", label: "People" },
 ];
 
+// ADD: load Tailwind CDN only while this page is mounted
+function useTailwindOnThisPage() {
+    useEffect(() => {
+      // remember existing styles so we can remove only what we add
+      const before = new Set([...document.head.querySelectorAll('style,link[rel="stylesheet"]')]);
+  
+      // turn off Tailwind's global reset to avoid overriding your site CSS
+      const cfg = document.createElement("script");
+      cfg.text = `tailwind = { config: { corePlugins: { preflight: false } } }`;
+      document.head.appendChild(cfg);
+  
+      // load the CDN script
+      const s = document.createElement("script");
+      s.src = "https://cdn.tailwindcss.com";
+      s.async = true;
+      document.head.appendChild(s);
+  
+      // cleanup on unmount (remove only the styles we added)
+      return () => {
+        s.remove();
+        cfg.remove();
+        const after = [...document.head.querySelectorAll('style,link[rel="stylesheet"]')];
+        for (const el of after) if (!before.has(el)) el.remove();
+        if (typeof window !== "undefined" && "tailwind" in window) delete window.tailwind;
+      };
+    }, []);
+  }
+  
+
 function useKey(handler) {
   useEffect(() => {
     const onKey = (e) => handler(e);
@@ -309,9 +338,12 @@ function wrapIndex(i, len, delta) {
 }
 
 export default function Photography() {
+  useTailwindOnThisPage();
+
   const [activeAlbum, setActiveAlbum] = useState("all");
   const [aboutOpen, setAboutOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(null);
+
 
   // Counts for badges
   const counts = useMemo(() => {
