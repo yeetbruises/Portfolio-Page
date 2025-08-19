@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const GATE = "https://gate.coastalvinny.dev";
 const ON_FAIL = "https://www.linkedin.com/in/vineet-saraf/";
 
-export default function GeoAccessGate({ children }) {
+export default function Gate({ children }) {
   const [ok, setOk] = useState(null);
 
   useEffect(() => {

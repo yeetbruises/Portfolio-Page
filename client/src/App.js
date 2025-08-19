@@ -15,7 +15,7 @@ import VSWordMark from './VSWordMark.jsx';
 import TrustedDomains from "./TrustedDomains";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Photography from "./Photography";
-import GeoAccessGate from "./GeoAccessGate"; // <-- add this
+import Gate from "./Gate"; // <-- add this
 
 //inspo https://port-folio-nine-lemon-27.vercel.app/
 
@@ -708,14 +708,14 @@ function Home() {
 
 export function App() {
     return (
-      <GeoAccessGate>
+      // disabled for debug<Gate>
             <BrowserRouter>
                 <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/photography" element={<Photography />} />
                 </Routes>
             </BrowserRouter>
-      </GeoAccessGate>
+      // </Gate>
     );
   }
 
