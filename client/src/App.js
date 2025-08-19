@@ -12,6 +12,10 @@ import { ArrowUp } from "./ArrowUp.jsx";
 import ContactSection from './ContactForm.js';
 import GeoDemoButton from "./GeoDemoButton";
 import VSWordMark from './VSWordMark.jsx';
+import TrustedDomains from "./TrustedDomains";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Photography from "./Photography";
+import GeoAccessGate from "./GeoAccessGate"; // <-- add this
 
 //inspo https://port-folio-nine-lemon-27.vercel.app/
 
@@ -246,6 +250,13 @@ function App() {
                                 <img src="./images/testtree2.png" style={{opacity: "0.1", width: "auto", height: "2000px", marginTop: "0px", borderRadius: "10px", position: "absolute", zIndex: "-1", left: "0"}}/>
                                 <img src="./images/testtree2.png" style={{opacity: "0.1", width: "auto", height: "2000px", marginTop: "2000px", borderRadius: "10px", position: "absolute", zIndex: "-1", left: "0"}}/>
                                 <img src="./images/testtree2.png" style={{opacity: "0.1", width: "auto", height: "2000px", marginTop: "4000px", borderRadius: "10px", position: "absolute", zIndex: "-1", left: "0"}}/>
+                            </div>
+
+                            <div style={{width: "90%", margin: "auto"}}>
+                                <TrustedDomains allowed={[
+                                    "www.coastalvinny.dev",
+                                    "sites.gatech.edu/coastalvinny"
+                                ]}/>
                             </div>
                             
                             <div id="t1" style={{margin: 'auto', width: "75%" }} ref={myRef1}>

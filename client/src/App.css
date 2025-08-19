@@ -5,6 +5,28 @@
   --accent: rgb(96, 96, 96);
 }
 
+.trusted-domains {
+  color: white;
+  margin-top: 2rem;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0,255,0,0.25);
+  background: linear-gradient(180deg, rgba(0,255,0,0.05), rgba(0,0,0,0.06));
+}
+.trusted-domains ul {
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem 1.25rem;
+  margin: .5rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas;
+  font-size: .9rem;
+}
+.trusted-domains a { text-decoration: underline; }
+
+
 :root {
   --viewport-y: 1;
   --viewport-x: 1.7;
@@ -97,7 +119,7 @@ a {
 
   .slider .bar{
     width: 100%;
-    height: 25%;
+    height: 20%;
     background: linear-gradient(
         to right,
         rgba(0, 251, 255,1),
