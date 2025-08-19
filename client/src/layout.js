@@ -66,6 +66,9 @@ export default function resized() {
             dashboard.style.flex = '0.8 1';
             dashboard.style.maxHeight = '60px';
 
+            if (document.querySelector('#photolink')){
+                document.querySelector('#photolink').style.display = 'none';
+            }
 
             // make profile pic go on top
             if (document.querySelector('.intro')){
@@ -259,6 +262,10 @@ export default function resized() {
                 }
             }
 
+            if (document.querySelector('#photolink')){
+                document.querySelector('#photolink').style.display = 'block';
+            }
+
             if (document.querySelector('#contactSection')) {
                 document.querySelector('#contactSection').style.padding = '0rem';
             }
@@ -295,7 +302,7 @@ export default function resized() {
             var slider = document.querySelector('.slider');
             slider.style.width = '100%';
             var bar = document.querySelector('#bar');
-            bar.style.height = '25%';
+            bar.style.height = '20%';
             dashboard.style.maxHeight = '';
             document.querySelector('#slider-parent').style.minHeight = '10em';
             document.querySelector('#slider-parent').style.height = '';

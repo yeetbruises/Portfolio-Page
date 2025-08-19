@@ -23,6 +23,9 @@ export function NavBar({ prop }) {
                 <div style={{width:'100%'}}>
                     <h2 id="label4" className="un"><a href="#t4" style={{fontSize: '20px'}}>Projects</a></h2> 
                 </div>
+                <div style={{width:'100%'}} id="photolink">
+                    <h2 className="un"><a href="#t4" style={{fontSize: '20px'}}>Photography</a></h2> 
+                </div>
             </div>
         </div>
     );
