@@ -259,7 +259,7 @@ function Home() {
                                     "sites.gatech.edu/coastalvinny"
                                 ]}/>
                             </div>
-                            
+
                             <div id="t1" style={{margin: 'auto', width: "75%" }} ref={myRef1}>
                                 <div className="cards" style={{ margin: 'auto', alignItems: 'center', display: 'flex', justifyContent: 'center'}}>
 
@@ -639,7 +639,7 @@ function Home() {
                                             )}
                                         </HoverEffect>
                                     </div>
-                                </div> 
+                                </div>       
                                 <br/><br/>
                                 <ContactSection />
                                 <br/><br/>
@@ -717,6 +717,6 @@ export function App() {
             </BrowserRouter>
       </GeoAccessGate>
     );
-}
+  }
 
 export default App;
