@@ -925,6 +925,7 @@ h1.light {
     font-family: 'Segoe UI', sans-serif;
     flex-wrap: nowrap;
     width: fit-content;
+    margin: auto;
   }
   
   .form-card,

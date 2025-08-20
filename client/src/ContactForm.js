@@ -26,10 +26,9 @@ export default function ContactSection() {
 
   return (
     <section id="contactSection">
-      <h1 id="t5" style={{ color: 'white', fontFamily: 'Rajdhani, sans-serif', fontWeight: '900' }}>Contact</h1>
       <div className="contact-container">
         <form ref={form} onSubmit={sendEmail} className="" style={{ maxWidth: '500px' }}>
-          <h2>Send a Message</h2>
+          <h2>Let's Connect</h2>
           <br />
           <label>Your Name</label>
           {/* The name attributes below must match the EmailJS template variables */}
@@ -46,7 +45,6 @@ export default function ContactSection() {
         {/* Keep your existing contact info cards unchanged */}
         <div className="info-cards" style={{ paddingLeft: '25px'}}>
           <div className="info-card" style={{ display: 'contents' }}>
-            <h2>Let's Connect</h2>
             <br />
             <p><strong>Email</strong><br /><a style={{color: '#0FFF50'}} href="vsaraf6@gatech.edu">vsaraf6@gatech.edu</a></p>
             <br />
