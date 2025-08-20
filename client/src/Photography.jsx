@@ -3,18 +3,31 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 const BRAND = "Your Name";
 const HERO_URL = "/images/hero.jpg"; 
 
+// put near your IMAGES array
+const R2_ORIGIN = "https://img.coastalvinny.dev"; // your R2 custom domain
+
+// turn "5.JPG" into "5.preview.webp"
+const previewPath = (p) =>
+  p.replace(/^\/+/, "").replace(/[^/]+$/, (name) => {
+    const stem = name.replace(/\.[^.]+$/, "");
+    return `${stem}.preview.jpg`;
+  });
+
+// build full URLs
+const r2 = (key) => `${R2_ORIGIN}/${key.replace(/^\/+/, "")}`;
+
 
 const IMAGES = [
-  { src: "/images/photography/1.jpg", w: 4032, h: 3024, alt: "Dawn ridge", album: "Landscapes", exif: { desc: "", camera: "Fujifilm X-T5", lens: "23mm", iso: 160, f: "f/5.6", s: "1/500" } },
-  { src: "/images/photography/2.jpg", w: 4032, h: 3024, alt: "Pine fog", album: "Landscapes", exif: { desc: "", camera: "Sony A7C II", lens: "55mm", iso: 200, f: "f/4", s: "1/400" } },
-  { src: "/images/photography/3.jpg", w: 3024, h: 4032, alt: "Street rain", album: "Street", exif: { desc: "", camera: "Ricoh GR III", lens: "18mm", iso: 800, f: "f/2.8", s: "1/250" } },
-  { src: "/images/photography/4.jpg", w: 4032, h: 3024, alt: "Coastal dusk", album: "Seascapes", exif: { desc: "", camera: "Nikon Zf", lens: "35mm", iso: 100, f: "f/8", s: "1/125" } },
-  { src: "/images/photography/5.JPG", w: 4032, h: 3024, alt: "Mountain trail", album: "Landscapes", exif: { desc: "", camera: "Canon R6 II", lens: "24-70", iso: 100, f: "f/7.1", s: "1/320" } },
-  { src: "/images/photography/6.JPG", w: 4032, h: 3024, alt: "Neon alley", album: "Street", exif: { desc: "", camera: "Leica Q2", lens: "28mm", iso: 1600, f: "f/1.7", s: "1/60" } },
-  { src: "/images/photography/7.jpg", w: 3020, h: 3940, alt: "Sea stacks", album: "Seascapes", exif: { desc: "", camera: "Sony A7R V", lens: "70-200", iso: 100, f: "f/11", s: "1/6" } },
-  { src: "/images/photography/8.jpg", w: 4032, h: 3024, alt: "City blue hour", album: "City", exif: { desc: "", camera: "Fujifilm X100V", lens: "23mm", iso: 640, f: "f/2", s: "1/200" } },
-  { src: "/images/photography/9.JPG", w: 4032, h: 3024, alt: "Portrait window", album: "People", exif: { desc: "", camera: "Canon R5", lens: "85mm", iso: 200, f: "f/2.0", s: "1/320" } },
-  { src: "/images/photography/10.jpg", w: 4032, h: 3024, alt: "Desert road", album: "Landscapes", exif: { desc: "", camera: "Nikon Z6 II", lens: "24-70", iso: 100, f: "f/9", s: "1/200" } },
+  { src: "1.jpg", w: 4032, h: 3024, alt: "Dawn ridge", album: "Landscapes", exif: { desc: "", camera: "Fujifilm X-T5", lens: "23mm", iso: 160, f: "f/5.6", s: "1/500" } },
+  { src: "2.jpg", w: 4032, h: 3024, alt: "Pine fog", album: "Landscapes", exif: { desc: "", camera: "Sony A7C II", lens: "55mm", iso: 200, f: "f/4", s: "1/400" } },
+  { src: "3.jpg", w: 3024, h: 4032, alt: "Street rain", album: "Street", exif: { desc: "", camera: "Ricoh GR III", lens: "18mm", iso: 800, f: "f/2.8", s: "1/250" } },
+  { src: "4.jpg", w: 4032, h: 3024, alt: "Coastal dusk", album: "Seascapes", exif: { desc: "", camera: "Nikon Zf", lens: "35mm", iso: 100, f: "f/8", s: "1/125" } },
+  { src: "5.jpg", w: 4032, h: 3024, alt: "Mountain trail", album: "Landscapes", exif: { desc: "", camera: "Canon R6 II", lens: "24-70", iso: 100, f: "f/7.1", s: "1/320" } },
+  { src: "6.jpg", w: 4032, h: 3024, alt: "Neon alley", album: "Street", exif: { desc: "", camera: "Leica Q2", lens: "28mm", iso: 1600, f: "f/1.7", s: "1/60" } },
+  { src: "7.jpg", w: 3020, h: 3940, alt: "Sea stacks", album: "Seascapes", exif: { desc: "", camera: "Sony A7R V", lens: "70-200", iso: 100, f: "f/11", s: "1/6" } },
+  { src: "8.jpg", w: 4032, h: 3024, alt: "City blue hour", album: "City", exif: { desc: "", camera: "Fujifilm X100V", lens: "23mm", iso: 640, f: "f/2", s: "1/200" } },
+  { src: "9.jpg", w: 4032, h: 3024, alt: "Portrait window", album: "People", exif: { desc: "", camera: "Canon R5", lens: "85mm", iso: 200, f: "f/2.0", s: "1/320" } },
+  { src: "10.jpg", w: 4032, h: 3024, alt: "Desert road", album: "Landscapes", exif: { desc: "", camera: "Nikon Z6 II", lens: "24-70", iso: 100, f: "f/9", s: "1/200" } },
 ];
 
 const ALBUMS = [
@@ -220,11 +233,11 @@ function JustifiedGallery({ items, onOpen }) {
               style={{ width: img.width + "px", height: img.height + "px" }}
             >
               <button onClick={() => onOpen(img.idx)} className="group block w-full h-full text-left">
-                <img
-                  src={img.src}
-                  alt={img.alt || "Photo"}
-                  loading="lazy"
-                  className="block w-full h-full"
+              <img
+                src={r2(previewPath(img.src))}
+                alt={img.alt || "Photo"}
+                loading="lazy"
+                className="block w-full h-full object-cover"
                 />
                 {/* <figcaption className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-3">
                   <span className="text-white text-sm opacity-90 group-hover:opacity-100 transition">{img.alt || " "}</span>
@@ -304,7 +317,7 @@ function Lightbox({ items, index, onClose, onPrev, onNext }) {
           <figure className="w-full">
             <img
               ref={imgRef}
-              src={img.src}
+              src={r2(img.src.replace(/^\/+/, ""))}
               alt={img.alt || "Large photo"}
               className="mx-auto max-h-[92vh] w-auto object-contain rounded-none"
               onDoubleClick={toggleFs}
