@@ -39,8 +39,15 @@
     <script>
       tailwind = {
         config: {
-          corePlugins: { preflight: false },   // <-- no resets
-          prefix: "tw-",                    // <-- optional
+          content: ["./src/**/*.{jsx,ts,tsx}"],
+          corePlugins: { 
+            preflight: false 
+          },   // <-- no resets
+          prefix: "tw-", 
+          theme: {
+            extend: {},
+          },
+          plugins: []                   // <-- optional
         }
       }
     </script>
