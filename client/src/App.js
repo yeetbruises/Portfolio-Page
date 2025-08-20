@@ -586,7 +586,7 @@ function Home() {
                                         <HoverEffect theme={theme}>
                                             {({ hovered }) => (
                                                 <>
-                                                    <div className="showcase">
+                                                    <div className="showcase" style={{gap: "0em", flexWrap: "nowrap", display: "flex", overflow: "hidden", alignItems: "center", justifyContent: "center"}}>
                                                         <img src="/images/graph2.png" alt="Training a Two Arm Actuator" />
                                                         <img src="/images/graph.png" alt="Training a Two Arm Actuator" />
                                                     </div>
