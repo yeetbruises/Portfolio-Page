@@ -253,12 +253,12 @@ function Home() {
                                 <img src="./images/testtree2.png" style={{opacity: "0.1", width: "auto", height: "2000px", marginTop: "4000px", borderRadius: "10px", position: "absolute", zIndex: "-1", left: "0"}}/>
                             </div>
 
-                            <div style={{width: "90%", margin: "auto"}}>
+                            {/*<div style={{width: "90%", margin: "auto"}}>
                                 <TrustedDomains allowed={[
                                     "www.coastalvinny.dev",
                                     "sites.gatech.edu/coastalvinny"
                                 ]}/>
-                            </div>
+                            </div>*/}
 
                             <div id="t1" style={{margin: 'auto', width: "75%" }} ref={myRef1}>
                                 <div className="cards" style={{ margin: 'auto', alignItems: 'center', display: 'flex', justifyContent: 'center'}}>
@@ -641,8 +641,6 @@ function Home() {
                                     </div>
                                 </div>       
                                 <br/><br/>
-                                <ContactSection />
-                                <br/><br/>
                                 <div className="cards" id="projects">
                                     <HoverEffect theme={theme} style={{padding: '0rem'}}>
                                         {({ hovered }) => (
@@ -675,6 +673,8 @@ function Home() {
                                 </div>  
                                 <br/>
                             </div> 
+                            <br/><br/>
+                            <ContactSection />
                             <br/>    
                             <img id="phonepacman" src='./images/pacman.gif' style={{display: 'none', height: "auto", width: "99%", margin: "1px", backgroundColor: "black", borderRadius: "10px"}}/>       
                             <div ref={cropRef} style={{backgroundColor: "black", borderRadius: "10px", display:"flex"}}>
