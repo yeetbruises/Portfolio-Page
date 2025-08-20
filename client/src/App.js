@@ -647,14 +647,11 @@ function Home() {
                                     <HoverEffect theme={theme} style={{padding: '0rem'}}>
                                         {({ hovered }) => (
                                             <>
-                                                <div className="showcase" style={{position: "absolute"}}>
-                                                    <img src="/images/bgimg.jpg" />
-                                                </div>
                                                 <div className="card-info">
-                                                    <h2 style={{ fontSize: "34px", color: hovered ? "lime" : "black"}} className={`${theme}`}>
+                                                    <h2 style={{ fontSize: "34px", color: hovered ? "lime" : "white"}} className={`${theme}`}>
                                                         Photography
                                                     </h2>
-                                                    <p className={`${theme}`} style={{color:"black"}}>
+                                                    <p className={`${theme}`} style={{color:"white"}}>
                                                         Check out my photography!
                                                     </p>
                                                     <br/>
