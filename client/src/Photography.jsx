@@ -40,7 +40,7 @@ const ALBUMS = [
 ];
 
 // ADD: load Tailwind CDN only while this page is mounted
-function useTailwindOnThisPage() {
+/*function useTailwindOnThisPage() {
     useEffect(() => {
       // remember existing styles so we can remove only what we add
       const before = new Set([...document.head.querySelectorAll('style,link[rel="stylesheet"]')]);
@@ -65,7 +65,7 @@ function useTailwindOnThisPage() {
         if (typeof window !== "undefined" && "tailwind" in window) delete window.tailwind;
       };
     }, []);
-  }
+  }*/
   
 
 function useKey(handler) {
@@ -351,7 +351,7 @@ function wrapIndex(i, len, delta) {
 }
 
 export default function Photography() {
-  useTailwindOnThisPage();
+  //useTailwindOnThisPage();
 
   const [activeAlbum, setActiveAlbum] = useState("all");
   const [aboutOpen, setAboutOpen] = useState(false);
