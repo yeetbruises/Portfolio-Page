@@ -372,7 +372,9 @@ export default function Photography() {
 
       {/* Portfolio */}
       <section id="portfolio" style={{paddingTop: "50px", paddingLeft: "10px", paddingRight: "10px"}} className="mx-auto w-full max-w-none px-2 sm:px-3 md:px-4 lg:px-6 xl:px-0 py-6">        
-        <AlbumFilter active={activeAlbum} counts={counts} onChange={setActiveAlbum} />
+        
+        {/* TODO: Add this back eventually */}
+        {/* <AlbumFilter active={activeAlbum} counts={counts} onChange={setActiveAlbum} /> */}
 
         <div className="mt-6">
           <JustifiedGallery items={list} onOpen={openAt} />
