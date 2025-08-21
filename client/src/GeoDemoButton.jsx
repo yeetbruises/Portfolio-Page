@@ -210,7 +210,7 @@ function GeoModal({ onClose, initialSession = null, siteKey }) {
       .geo-overlay{width:fit-content;height:fit-content;margin:auto;position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:9999}
       .geo-card{width:min(860px,90dvh);background:#111827;color:#e5e7eb;border:1px solid #1f2937;border-radius:14px;box-shadow:0 10px 50px rgba(0,0,0,.4);padding:16px;position:relative}
       .geo-close{position:absolute;right:10px;top:10px;border:1px solid #374151;background:#111827;color:#9ca3af;border-radius:8px;padding:6px 10px;cursor:pointer}
-      .geo-h{margin:0 0 8px 0;font:600 18px/1.2 system-ui,-apple-system,Segoe UI,Roboto}
+      .geo-h{width:fit-content;margin:0 0 8px 0;font:600 18px/1.2 system-ui,-apple-system,Segoe UI,Roboto}
       .geo-meta{display:flex;gap:8px;align-items:center;opacity:.85;margin:6px 0 10px}
       .geo-pill{border:1px solid #374151;border-radius:999px;padding:3px 10px;font-size:13px}
       .geo-img{width:100%;border-radius:10px;background:#0b1020;aspect-ratio:16/10;object-fit:cover}
