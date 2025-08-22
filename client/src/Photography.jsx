@@ -18,16 +18,16 @@ const r2 = (key) => `${R2_ORIGIN}/${key.replace(/^\/+/, "")}`;
 
 
 const IMAGES = [
-  { src: "1.jpg", w: 4032, h: 3024, alt: "Dawn ridge", album: "Landscapes", exif: { desc: "", camera: "Fujifilm X-T5", lens: "23mm", iso: 160, f: "f/5.6", s: "1/500" } },
-  { src: "2.jpg", w: 4032, h: 3024, alt: "Pine fog", album: "Landscapes", exif: { desc: "", camera: "Sony A7C II", lens: "55mm", iso: 200, f: "f/4", s: "1/400" } },
-  { src: "3.jpg", w: 3024, h: 4032, alt: "Street rain", album: "Street", exif: { desc: "", camera: "Ricoh GR III", lens: "18mm", iso: 800, f: "f/2.8", s: "1/250" } },
-  { src: "4.jpg", w: 4032, h: 3024, alt: "Coastal dusk", album: "Seascapes", exif: { desc: "", camera: "Nikon Zf", lens: "35mm", iso: 100, f: "f/8", s: "1/125" } },
-  { src: "5.jpg", w: 4032, h: 3024, alt: "Mountain trail", album: "Landscapes", exif: { desc: "", camera: "Canon R6 II", lens: "24-70", iso: 100, f: "f/7.1", s: "1/320" } },
-  { src: "6.jpg", w: 4032, h: 3024, alt: "Neon alley", album: "Street", exif: { desc: "", camera: "Leica Q2", lens: "28mm", iso: 1600, f: "f/1.7", s: "1/60" } },
-  { src: "7.jpg", w: 3020, h: 3940, alt: "Sea stacks", album: "Seascapes", exif: { desc: "", camera: "Sony A7R V", lens: "70-200", iso: 100, f: "f/11", s: "1/6" } },
-  { src: "8.jpg", w: 4032, h: 3024, alt: "City blue hour", album: "City", exif: { desc: "", camera: "Fujifilm X100V", lens: "23mm", iso: 640, f: "f/2", s: "1/200" } },
-  { src: "9.jpg", w: 4032, h: 3024, alt: "Portrait window", album: "People", exif: { desc: "", camera: "Canon R5", lens: "85mm", iso: 200, f: "f/2.0", s: "1/320" } },
-  { src: "10.jpg", w: 4032, h: 3024, alt: "Desert road", album: "Landscapes", exif: { desc: "", camera: "Nikon Z6 II", lens: "24-70", iso: 100, f: "f/9", s: "1/200" } },
+  { src: "1.jpg",  w: 4032, h: 3024,  alt: "Dawn ridge",      album: "Landscapes",  exif: { desc: "", camera: "",  lens: "",   iso: 160,  f: "", s: "" } },
+  { src: "2.jpg",  w: 4032, h: 3024,  alt: "Pine fog",        album: "Landscapes",  exif: { desc: "", camera: " ", lens: "",   iso: 200,  f: "", s: "" } },
+  { src: "3.jpg",  w: 3024, h: 4032,  alt: "Street rain",     album: "Street",      exif: { desc: "", camera: "",  lens: "",   iso: 800,  f: "", s: "" } },
+  { src: "4.jpg",  w: 4032, h: 3024,  alt: "Coastal dusk",    album: "Seascapes",   exif: { desc: "", camera: "",  lens: "",   iso: 100,  f: "", s: "" } },
+  { src: "5.jpg",  w: 4032, h: 3024,  alt: "Mountain trail",  album: "Landscapes",  exif: { desc: "", camera: "",  lens: "",   iso: 100,  f: "", s: "" } },
+  { src: "6.jpg",  w: 4032, h: 3024,  alt: "Neon alley",      album: "Street",      exif: { desc: "", camera: "",  lens: "",   iso: 1600, f: "", s: "" } },
+  { src: "7.jpg",  w: 3020, h: 3940,  alt: "Sea stacks",      album: "Seascapes",   exif: { desc: "", camera: "",  lens: "",   iso: 100,  f: "", s: "" } },
+  { src: "8.jpg",  w: 4032, h: 3024,  alt: "City blue hour",  album: "City",        exif: { desc: "", camera: "",  lens: "",   iso: 640,  f: "", s: "" } },
+  { src: "9.jpg",  w: 4032, h: 3024,  alt: "Portrait window", album: "People",      exif: { desc: "", camera: "",  lens: "",   iso: 200,  f: "", s: "" } },
+  { src: "10.jpg", w: 4032, h: 3024,  alt: "Desert road",     album: "Landscapes",  exif: { desc: "", camera: "",  lens: "",   iso: 100,  f: "", s: "" } },
 ];
 
 const ALBUMS = [
