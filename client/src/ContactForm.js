@@ -25,8 +25,8 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contactSection" className="card" style={{ backgroundColor: 'black', width: '100%', margin: 'auto' }}>
-      <div className="contact-container">
+    <div id="contactSection"  style={{ backgroundColor: 'black', width: '100%', margin: 'auto' }}>
+      <div className="contact-container" style={{ width: '90%'}}>
         <form ref={form} onSubmit={sendEmail} className="" style={{ maxWidth: '500px' }}>
           <h2>Let's Connect</h2>
           <br />
@@ -38,7 +38,7 @@ export default function ContactSection() {
           <label>Message</label>
           <textarea name="message" placeholder="Your message here..." required />
           <button type="submit" className="send-button">
-            <span>✈️ Send Message</span>
+            <span>Send Message</span>
           </button>
         </form>
 
@@ -62,6 +62,6 @@ export default function ContactSection() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

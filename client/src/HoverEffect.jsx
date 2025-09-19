@@ -6,7 +6,8 @@ export default function HoverEffect({
     children, 
     id = "", 
     customStyle = {}, 
-    className = "" 
+    className = "",
+    disabled = false
 }) {
     var URL_name = "";
 
@@ -20,6 +21,7 @@ export default function HoverEffect({
         URL_name = "https://i.imgur.com/kn1UNUe.png";
         custom_color = "#B3A369";
     }
+
 
     const [hovered, setHovered] = useState(false);
 

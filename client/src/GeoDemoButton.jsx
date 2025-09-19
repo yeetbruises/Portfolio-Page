@@ -139,7 +139,7 @@ function TurnstileGate({ siteKey, onVerified, invisible = false }) {
 }
 
 export default function GeoDemoButton({
-  label = "🎮 Try the In-Browser Demo!",
+  label = "Try the In-Browser Demo!",
   siteKey = "0x4AAAAAABqY_gwKPS6vDh26",
 }) {
   const [stage, setStage] = useState("idle"); // 'idle' | 'gate' | 'open'

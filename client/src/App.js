@@ -532,7 +532,7 @@ function Home() {
                                                                 Click for Repo  
                                                             </a>
                                                             <button id="HurricaneDemo" className="send-button" style={{borderRadius: "10px", margin: "auto", paddingUp: "5px", paddingDown: "5px", paddingLeft: "10px", paddingRight: "10px"}}> 
-                                                                🔍 Check It Out!    
+                                                                Check It Out!    
                                                             </button>
                                                         </p>
                                                         <br/>
@@ -653,7 +653,7 @@ function Home() {
                                                         Check out my photography!
                                                     </p>
                                                     <br/>
-                                                    <a href="/photography" target="_blank" rel="noopener noreferrer" style={{textDecoration: "none"}}>
+                                                    <a href="/photography" target="" rel="noopener noreferrer" style={{textDecoration: "none"}}>
                                                         <p className={`${theme}`} style={{display: "flex"}}>
                                                             <button id="HurricaneDemo" className="send-button" 
                                                                 style={{ borderRadius: "10px", 
@@ -662,7 +662,7 @@ function Home() {
                                                                         paddingDown: "5px", 
                                                                         paddingLeft: "10px", 
                                                                         paddingRight: "10px"}}> 
-                                                                🔍 Check It Out!    
+                                                                Check It Out!    
                                                             </button>
                                                         </p>
                                                     </a>
@@ -672,9 +672,29 @@ function Home() {
                                     </HoverEffect>  
                                 </div>  
                                 <br/>
+                                <motion.div
+                                    className='card'
+                                    style={{
+                                        border: "1px solid var(--accent)",
+                                        background: "black",
+                                        position: "relative",
+                                        borderRadius: "12px",
+                                        width: "100%",
+                                        transform: "scale(0.96)"
+                                    }}
+                                >
+
+                                    <div id="internal-card" className="card-info">
+                                        <>
+                                            <div className="card-info">
+                                                <ContactSection />
+                                            </div>
+                                        </>
+                                    </div>
+
+                                </motion.div>
                             </div> 
                             <br/><br/>
-                            <ContactSection />
                             <br/>    
                             <img id="phonepacman" src='./images/pacman.gif' style={{display: 'none', height: "auto", width: "99%", margin: "1px", backgroundColor: "black", borderRadius: "10px"}}/>       
                             <div ref={cropRef} style={{backgroundColor: "black", borderRadius: "10px", display:"flex"}}>
