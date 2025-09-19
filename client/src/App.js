@@ -672,7 +672,6 @@ function Home() {
                                     </HoverEffect>  
                                 </div>  
                                 <br/>
-                                <ContactSection />
                             </div> 
                             <br/><br/>
                             <ContactSection />
