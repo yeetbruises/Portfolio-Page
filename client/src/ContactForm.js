@@ -25,7 +25,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contactSection">
+    <section id="contactSection" className="card" style={{ backgroundColor: 'black', width: '75%', margin: 'auto' }}>
       <div className="contact-container">
         <form ref={form} onSubmit={sendEmail} className="" style={{ maxWidth: '500px' }}>
           <h2>Let's Connect</h2>
